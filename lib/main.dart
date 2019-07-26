@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+final pantone186 = const Color(0xffcc0033);
 final bigTextStyle = const TextStyle(fontSize: 22);
 
 class MyApp extends StatelessWidget {
@@ -10,8 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primaryColor: pantone186,
+          accentColor: pantone186 // TODO Maybe change this?
+          ),
       routes: {
         "/": (context) => OnboardingRoute(),
         "/second": (context) => MainRoute()
