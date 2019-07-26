@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+final bigTextStyle = const TextStyle(fontSize: 22);
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,23 +21,48 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class OnboardingRoute extends StatelessWidget {
+class OnboardingRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => OnboardingState();
+}
+
+class OnboardingState extends State<OnboardingRoute> {
+  var currentPageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Onboarding page"),
       ),
-      body: Builder(
-        builder: (context) {
-          return Center(
-              child: RaisedButton(
-            child: Text("Go to main page"),
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, "/second");
-            },
-          ));
-        },
+      body: Stack(
+        children: <Widget>[
+          PageView(
+            onPageChanged: (newPageIndex) => setState(() {
+              currentPageIndex = newPageIndex;
+            }),
+            children: <Widget>[
+              Center(
+                  child: Text(
+                "Onboarding content",
+                style: bigTextStyle,
+              )),
+              Center(
+                  child: Text("More onboarding content", style: bigTextStyle)),
+              Center(
+                  child: RaisedButton(
+                child: Text("Go to main page", style: bigTextStyle),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, "/second");
+                },
+              ))
+            ],
+          ),
+          Align(
+            alignment: Alignment(0, 0.75),
+            child: Text("Page ${currentPageIndex + 1}", style: bigTextStyle),
+          )
+        ],
       ),
     );
   }
@@ -48,13 +75,9 @@ class MainRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text("Main page"),
       ),
-      body: Builder(
-        builder: (context) {
-          return Center(
-              child: Text(
-                  "This is the main page. If you try to go back, the app will close!"));
-        },
-      ),
+      body: Center(
+          child: Text(
+              "This is the main page. If you try to go back, the app will close!")),
     );
   }
 }
