@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+const appTitle = "Rutgers";
 final pantone186 = const Color(0xffcc0033);
 final bigTextStyle = const TextStyle(fontSize: 22);
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: appTitle,
       theme: ThemeData(
           primaryColor: pantone186,
           accentColor: pantone186 // TODO Maybe change this?
@@ -75,7 +76,7 @@ class MainRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Main page"),
+        title: Text(appTitle),
       ),
       body: Center(
           child: Text(
