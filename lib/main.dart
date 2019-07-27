@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -63,7 +64,11 @@ class OnboardingState extends State<OnboardingRoute> {
           ),
           Align(
             alignment: Alignment(0, 0.75),
-            child: Text("Page ${currentPageIndex + 1}", style: bigTextStyle),
+            child: DotsIndicator(
+              dotsCount: 3,
+              position: currentPageIndex,
+              decorator: DotsDecorator(activeColor: pantone186),
+            ),
           )
         ],
       ),
