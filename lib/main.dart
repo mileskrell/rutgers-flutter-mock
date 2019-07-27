@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           ),
       routes: {
         "/": (context) => OnboardingRoute(),
-        "/second": (context) => MainRoute()
+        "/second": (context) => HomeRoute()
       },
       initialRoute: "/",
     );
@@ -76,7 +76,7 @@ class OnboardingState extends State<OnboardingRoute> {
   }
 }
 
-class MainRoute extends StatelessWidget {
+class HomeRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
