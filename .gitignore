@@ -71,8 +71,15 @@
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
-# Exceptions for top-level IntelliJ files
-!/*.iml
-!/*.ipr
-!/*.iws
+################ Added stuff:
+
+# Don't ignore top-level IntelliJ files
 !/.idea/
+
+# But actually do ignore some of them
+
+/.idea/*.iml
+/.idea/caches/build_file_checksums.ser
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
