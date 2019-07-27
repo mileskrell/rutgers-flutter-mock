@@ -1,11 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
+import 'resources.dart';
+
 void main() => runApp(MyApp());
 
 const appTitle = "Rutgers";
-final pantone186 = const Color(0xffcc0033);
-final bigTextStyle = const TextStyle(fontSize: 22);
 
 class MyApp extends StatelessWidget {
   @override
