@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="rutgers_basic_flutter_mock"
+        android:label="Rutgers Basic Flutter Mock"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
