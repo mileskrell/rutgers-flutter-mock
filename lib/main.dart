@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
           accentColor: pantone186 // TODO Maybe change this?
           ),
       routes: {
-        "/": (context) => OnboardingRoute(),
-        "/second": (context) => HomeRoute()
+        "/onboarding": (context) => OnboardingRoute(),
+        "/home": (context) => HomeRoute()
       },
-      initialRoute: "/",
+      initialRoute: "/onboarding",
     );
   }
 }
