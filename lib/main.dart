@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'resources.dart' show pantone186;
+import 'resources.dart';
 import 'route_home.dart' show HomeRoute;
 import 'route_onboarding.dart' show OnboardingRoute;
 
 void main() => runApp(MyApp());
-
-const appTitle = "Rutgers";
 
 class MyApp extends StatelessWidget {
   @override
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
           ),
       routes: {
         "/": (context) => OnboardingRoute(),
-        "/second": (context) => HomeRoute(appTitle)
+        "/second": (context) => HomeRoute()
       },
       initialRoute: "/",
     );
