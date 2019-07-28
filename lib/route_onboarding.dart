@@ -35,7 +35,7 @@ class OnboardingState extends State<OnboardingRoute> {
                   child: RaisedButton(
                     child: Text("Go to main page", style: bigTextStyle),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/second");
+                      Navigator.pushReplacementNamed(context, "/home");
                     },
                   ))
             ],
