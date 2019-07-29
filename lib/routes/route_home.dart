@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:rutgers_basic_flutter_mock/home_pages/page_bus.dart';
+import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/page_bus.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_apps.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_dashboard.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_day.dart';
@@ -85,9 +85,15 @@ class HomeState extends State<HomeRoute> {
         selectedItemColor: pantone186,
         showUnselectedLabels: true,
         currentIndex: currentPageIndex < pages.length ? currentPageIndex : 0,
-        onTap: (newIndex) => setState(() {
-          currentPageIndex = newIndex;
-        }),
+        onTap: (newIndex) {
+          if ((bottomNavBarItems[newIndex].title as Text).data == "Bus") {
+            Navigator.pushNamed(context, "/bus");
+          } else {
+            setState(() {
+              currentPageIndex = newIndex;
+            });
+          }
+        },
         items: bottomNavBarItems,
       ),
     );
