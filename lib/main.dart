@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_state.dart';
+import 'home_pages/page_bus/page_bus.dart';
 import 'resources.dart';
 import 'routes/route_home.dart' show HomeRoute;
 import 'routes/route_onboarding.dart' show OnboardingRoute;
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => OnboardingCheckRoute(appState),
         "/onboarding": (context) => OnboardingRoute(appState),
-        "/home": (context) => HomeRoute(appState)
+        "/home": (context) => HomeRoute(appState),
+        "/bus": (context) => Bus()
       },
       initialRoute: "/",
     );
