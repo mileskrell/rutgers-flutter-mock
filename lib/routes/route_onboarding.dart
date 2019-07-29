@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'resources.dart' show bigTextStyle, pantone186;
+import '../resources.dart' show bigTextStyle, pantone186;
 
 class OnboardingRoute extends StatefulWidget {
   @override
