@@ -4,7 +4,7 @@ import 'package:rutgers_basic_flutter_mock/home_pages/page_bus.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_apps.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_dashboard.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_day.dart';
-import 'resources.dart';
+import '../resources.dart';
 
 class HomeRoute extends StatefulWidget {
   final bottomNavBarItems = [
