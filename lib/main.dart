@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'resources.dart';
-import 'route_home.dart' show HomeRoute;
-import 'route_onboarding.dart' show OnboardingRoute;
-import 'route_onboarding_check.dart' show OnboardingCheckRoute;
+import 'routes/route_home.dart' show HomeRoute;
+import 'routes/route_onboarding.dart' show OnboardingRoute;
+import 'routes/route_onboarding_check.dart' show OnboardingCheckRoute;
 
 void main() => runApp(MyApp());
 
