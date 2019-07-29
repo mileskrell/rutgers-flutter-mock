@@ -14,12 +14,13 @@ description: Basic Rutgers Flutter app mockup
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   shared_preferences: ^0.5.3+4
+  webview_flutter: ^0.3.10+4
   dots_indicator: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
