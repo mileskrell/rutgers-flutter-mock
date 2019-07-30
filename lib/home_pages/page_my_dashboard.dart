@@ -38,6 +38,23 @@ class MyDashboardState extends State<MyDashboard> {
                   children: <TableRow>[
                     TableRow(children: <Widget>[
                       Center(
+                        child: Text("Course",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      Center(
+                        child: Text("Subject",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      Center(
+                        child: Text("Grade",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                    ]),
+                    TableRow(children: <Widget>[
+                      Center(
                         child: Text(
                           "Intro to Carribean Studies",
                           textAlign: TextAlign.center,
