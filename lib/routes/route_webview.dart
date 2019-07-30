@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewRoute extends StatefulWidget {
-  String url;
-  String title;
+  final String url;
+  final String title;
 
-  WebViewRoute(this.url, this.title);
+  const WebViewRoute(this.url, this.title);
 
   @override
   State<StatefulWidget> createState() => WebViewRouteState();

@@ -26,7 +26,7 @@ Future<List<BusRoute>> fetchRoutes() async {
   returnMeRoutes.forEach((activeRoute) {
     final thisRouteInfoList = rutgersRoutes
         .where((rutgersRoute) => rutgersRoute.routeId == activeRoute.routeId);
-    if (thisRouteInfoList.length > 0) {
+    if (thisRouteInfoList.isNotEmpty) {
       final thisRouteInfo = thisRouteInfoList.toList()[0];
       activeRoute.routeName = thisRouteInfo.longName;
       // I think this is the only difference from the JS version;
@@ -94,14 +94,13 @@ Future<List<BusRoute>> fetchRoutes() async {
   return returnMeRoutes;
 }
 
-/**
- * Move a route to the front of a routes object
- *
- * @param routes routes object to modify
- * @param routeName name of route to move to front
- */
-void moveRouteToFront(List<BusRoute> routes, routeName) {
-  var routeIndex =
+
+/// Move a route to the front of a routes object
+///
+/// @param routes routes object to modify
+/// @param routeName name of route to move to front
+void moveRouteToFront(List<BusRoute> routes, String routeName) {
+  final routeIndex =
       routes.map((route) => route.routeName).toList().indexOf(routeName);
 
   if (routeIndex != -1) {

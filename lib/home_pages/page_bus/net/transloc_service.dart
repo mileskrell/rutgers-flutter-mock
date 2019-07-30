@@ -18,7 +18,7 @@ const headers = {
 };
 
 Future<List<PredictionListBundle>> fetchTransLocArrivalEstimates() async {
-  var response = await http.get(
+  final response = await http.get(
       Uri.https(AUTHORITY, "arrival-estimates.json", queryParams),
       headers: headers);
   if (response.statusCode == 200) {
@@ -31,7 +31,7 @@ Future<List<PredictionListBundle>> fetchTransLocArrivalEstimates() async {
 }
 
 Future<List<Route>> fetchTransLocRoutes() async {
-  var response = await http.get(
+  final response = await http.get(
       Uri.https(AUTHORITY, "routes.json", queryParams),
       headers: headers);
   if (response.statusCode == 200) {
@@ -44,7 +44,7 @@ Future<List<Route>> fetchTransLocRoutes() async {
 }
 
 Future<List<Stop>> fetchTransLocStops() async {
-  var response = await http.get(
+  final response = await http.get(
       Uri.https(AUTHORITY, "stops.json", queryParams),
       headers: headers);
   if (response.statusCode == 200) {

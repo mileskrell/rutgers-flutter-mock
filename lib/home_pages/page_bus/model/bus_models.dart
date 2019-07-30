@@ -28,7 +28,7 @@ class BusStop {
   BusStop([this.stopId]);
 
   String getArrivalEstimateString() {
-    if (_minutesUntilArrivals.length == 0) {
+    if (_minutesUntilArrivals.isEmpty) {
       return "No estimated arrivals";
     }
 
@@ -59,7 +59,7 @@ class BusStop {
   }
 
   int getTextColor() {
-    if (_minutesUntilArrivals.length == 0) {
+    if (_minutesUntilArrivals.isEmpty) {
       return 0xff000000; // black
     }
 
