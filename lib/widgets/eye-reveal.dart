@@ -6,14 +6,11 @@ class EyeReveal extends StatefulWidget {
   EyeReveal(this.text);
 
   @override
-  State<StatefulWidget> createState() => EyeRevealState(text);
+  State<StatefulWidget> createState() => EyeRevealState();
 }
 
 class EyeRevealState extends State<EyeReveal> {
-  final String text;
   var revealed = false;
-
-  EyeRevealState(this.text);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +20,7 @@ class EyeRevealState extends State<EyeReveal> {
           children: <Widget>[
             Opacity(
               opacity: revealed ? 1 : 0,
-              child: Text(text),
+              child: Text(widget.text),
             ),
             Opacity(
               opacity: revealed ? 0 : 1,
