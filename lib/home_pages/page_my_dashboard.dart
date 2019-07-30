@@ -29,7 +29,83 @@ class MyDashboardState extends State<MyDashboard> {
         ),
         Card(
           child: ExpansionTile(
-              title: Text("My Grades"),
+              title: Text("My Degree", style: TextStyle(color: pantone186)),
+              initiallyExpanded: true,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                    ),
+                    Text("Major(s): ",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text("Unspecified (matriculating)"),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                ),
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                    ),
+                    Text("School: ",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text("School of Arts and Sciences"),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            "GPA\n(cumulative)",
+                            textAlign: TextAlign.center,
+                          ),
+                          EyeReveal(
+                            "3.333",
+                            color: Colors.blue,
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            "GPA\n(last term)",
+                            textAlign: TextAlign.center,
+                          ),
+                          EyeReveal(
+                            "3.444",
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            "Degree\nCredits",
+                            textAlign: TextAlign.center,
+                          ),
+                          EyeReveal(
+                            "34.5",
+                            color: Colors.green,
+                          )
+                        ],
+                      ),
+                    ]),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                ),
+              ]),
+        ),
+        Card(
+          child: ExpansionTile(
+              title: Text("My Grades", style: TextStyle(color: pantone186)),
               initiallyExpanded: true,
               children: <Widget>[
                 Table(
@@ -143,7 +219,7 @@ class MyDashboardState extends State<MyDashboard> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 8),
                 ),
               ]),
         ),
