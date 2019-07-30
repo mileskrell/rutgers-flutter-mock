@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class EyeReveal extends StatefulWidget {
   final String text;
+  final Color color;
 
-  EyeReveal(this.text);
+  EyeReveal(this.text, {this.color});
 
   @override
   State<StatefulWidget> createState() => EyeRevealState();
@@ -24,7 +25,10 @@ class EyeRevealState extends State<EyeReveal> {
             ),
             Opacity(
               opacity: revealed ? 0 : 1,
-              child: Icon(Icons.remove_red_eye),
+              child: Icon(
+                Icons.remove_red_eye,
+                color: widget.color,
+              ),
             ),
           ],
         ),
