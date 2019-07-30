@@ -1,3 +1,9 @@
+// ignore_for_file: strong_mode_implicit_dynamic_type
+// ignore_for_file: strong_mode_implicit_dynamic_method
+// ignore_for_file: strong_mode_implicit_dynamic_parameter
+// ignore_for_file: strong_mode_implicit_dynamic_map_literal
+// ignore_for_file: argument_type_not_assignable
+
 // To parse this JSON data, do
 //
 //     final stopsResponse = stopsResponseFromJson(jsonString);
