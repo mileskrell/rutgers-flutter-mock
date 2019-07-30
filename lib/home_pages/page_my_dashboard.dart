@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedantic/pedantic.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_basic_flutter_mock/widgets/eye-reveal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,7 +8,7 @@ import '../app_state.dart';
 import '../resources.dart';
 
 class MyDashboard extends StatefulWidget {
-  AppState appState;
+  final AppState appState;
 
   MyDashboard(this.appState);
 
@@ -239,7 +240,7 @@ class MyDashboardState extends State<MyDashboard> {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
+                              MaterialPageRoute<Null>(
                                   builder: (context) => WebViewRoute(
                                       "https://sims.rutgers.edu/webreg/",
                                       "WebReg")));
@@ -251,7 +252,7 @@ class MyDashboardState extends State<MyDashboard> {
                                 decoration: TextDecoration.underline,
                                 color: pantone186)),
                         onTap: () {
-                          Navigator.push(
+                          Navigator.push<Null>(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => WebViewRoute(
@@ -305,7 +306,7 @@ class MyDashboardState extends State<MyDashboard> {
             RaisedButton(
               child: Text("Log in with NetID", style: bigTextStyle),
               onPressed: () async {
-                var loggedIn = await Navigator.push(context,
+                await Navigator.push<bool>(context,
                     MaterialPageRoute(builder: (context) {
                   return WebViewRoute(
                       "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
@@ -316,12 +317,12 @@ class MyDashboardState extends State<MyDashboard> {
                   widget.appState.userType = UserType.NETID;
                 });
 
-                Navigator.pushReplacementNamed(context, "/home");
-                () async {
+                unawaited(Navigator.pushReplacementNamed(context, "/home"));
+                unawaited(() async {
                   final prefs = await SharedPreferences.getInstance();
-                  prefs.setString("user_type", "net");
-                  prefs.setBool("has_completed_tutorial", true);
-                }();
+                  unawaited(prefs.setString("user_type", "net"));
+                  unawaited(prefs.setBool("has_completed_tutorial", true));
+                }());
               },
             ),
           ],

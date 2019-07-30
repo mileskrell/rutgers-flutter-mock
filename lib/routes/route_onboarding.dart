@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:pedantic/pedantic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_state.dart';
@@ -7,7 +8,7 @@ import '../resources.dart' show bigTextStyle, pantone186;
 import 'route_webview.dart';
 
 class OnboardingRoute extends StatefulWidget {
-  AppState appState;
+  final AppState appState;
 
   OnboardingRoute(this.appState);
 
@@ -45,7 +46,7 @@ class OnboardingState extends State<OnboardingRoute> {
                   RaisedButton(
                     child: Text("Log in with NetID", style: bigTextStyle),
                     onPressed: () async {
-                      var loggedIn = await Navigator.push(context,
+                      await Navigator.push<bool>(context,
                           MaterialPageRoute(builder: (context) {
                         return WebViewRoute(
                             "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
@@ -54,12 +55,12 @@ class OnboardingState extends State<OnboardingRoute> {
 
                       widget.appState.userType = UserType.NETID;
 
-                      Navigator.pushReplacementNamed(context, "/home");
-                      () async {
+                      unawaited(Navigator.pushReplacementNamed(context, "/home"));
+                      unawaited(() async {
                         final prefs = await SharedPreferences.getInstance();
-                        prefs.setString("user_type", "net");
-                        prefs.setBool("has_completed_tutorial", true);
-                      }();
+                        unawaited(prefs.setString("user_type", "net"));
+                        unawaited(prefs.setBool("has_completed_tutorial", true));
+                      }());
                     },
                   ),
                   Padding(
@@ -69,7 +70,7 @@ class OnboardingState extends State<OnboardingRoute> {
                     child:
                         Text("Log in with Community ID", style: bigTextStyle),
                     onPressed: () async {
-                      var loggedIn = await Navigator.push(context,
+                      await Navigator.push<bool>(context,
                           MaterialPageRoute(builder: (context) {
                         return WebViewRoute(
                             "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
@@ -78,12 +79,12 @@ class OnboardingState extends State<OnboardingRoute> {
 
                       widget.appState.userType = UserType.COMMUNITY_ID;
 
-                      Navigator.pushReplacementNamed(context, "/home");
-                      () async {
+                      unawaited(Navigator.pushReplacementNamed(context, "/home"));
+                      unawaited(() async {
                         final prefs = await SharedPreferences.getInstance();
-                        prefs.setString("user_type", "community");
-                        prefs.setBool("has_completed_tutorial", true);
-                      }();
+                        unawaited(prefs.setString("user_type", "community"));
+                        unawaited(prefs.setBool("has_completed_tutorial", true));
+                      }());
                     },
                   ),
                   Padding(
@@ -95,8 +96,8 @@ class OnboardingState extends State<OnboardingRoute> {
                       Navigator.pushReplacementNamed(context, "/home");
                       () async {
                         final prefs = await SharedPreferences.getInstance();
-                        prefs.setString("user_type", null);
-                        prefs.setBool("has_completed_tutorial", true);
+                        unawaited(prefs.setString("user_type", null));
+                        unawaited(prefs.setBool("has_completed_tutorial", true));
                       }();
                     },
                   )

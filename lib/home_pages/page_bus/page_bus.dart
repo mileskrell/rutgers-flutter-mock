@@ -39,18 +39,18 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
       });
     }
 
-    var newRoutes = await fetchRoutes();
+    final newRoutes = await fetchRoutes();
     setState(() {
       _routeAgeTitle = "0 seconds since estimates fetched";
     });
 
     _ticker?.cancel();
-    var updateTime = DateTime.now();
+    final updateTime = DateTime.now();
 
     _ticker = Timer.periodic(Duration(seconds: 1), (timer) {
-      var secondsSinceRoutesFetched =
+      final secondsSinceRoutesFetched =
           DateTime.now().difference(updateTime).inSeconds;
-      var newRouteAgeTitle;
+      String newRouteAgeTitle;
       if (secondsSinceRoutesFetched == 1) {
         newRouteAgeTitle = "1 second since estimates fetched";
       } else {
@@ -67,8 +67,8 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
     // If the route the user had been viewing is also contained in the new data,
     // store its new position; otherwise, store -1.
     var newIndex = -1;
-    if (_tabController != null && _routes.length > 0 && newRoutes.length > 0) {
-      var oldRouteName = _routes[_tabController.index].routeName;
+    if (_tabController != null && _routes.isNotEmpty && newRoutes.isNotEmpty) {
+      final oldRouteName = _routes[_tabController.index].routeName;
       newIndex = newRoutes.indexOf(
           newRoutes.where((route) => route.routeName == oldRouteName).first);
     }
@@ -77,7 +77,7 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
       // Save new routes
       _routes = newRoutes;
 
-      if (newRoutes.length > 0) {
+      if (newRoutes.isNotEmpty) {
         // Create new TabController
         _tabController = TabController(length: newRoutes.length, vsync: this)
           // Switch tabs to the route the user had been looking at (if still present)
@@ -110,8 +110,8 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
     }
 
     // Routes are present; display them
-    if (_routes.length > 0) {
-      var tabs = _routes
+    if (_routes.isNotEmpty) {
+      final tabs = _routes
           .map((route) => RefreshIndicator(
                 onRefresh: loadRoutes,
                 child: ListView.separated(
