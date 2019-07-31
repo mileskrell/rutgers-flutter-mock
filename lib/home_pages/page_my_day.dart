@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
-import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../app_state.dart';
-import '../resources.dart';
+import 'package:rutgers_basic_flutter_mock/app_state.dart';
+import 'package:rutgers_basic_flutter_mock/resources.dart';
+import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 
 class MyDay extends StatelessWidget {
   @override
