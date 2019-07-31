@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_state.dart';
@@ -8,10 +9,6 @@ import '../resources.dart' show bigTextStyle, pantone186;
 import 'route_webview.dart';
 
 class OnboardingRoute extends StatefulWidget {
-  final AppState appState;
-
-  OnboardingRoute(this.appState);
-
   @override
   State<StatefulWidget> createState() => OnboardingState();
 }
@@ -21,6 +18,9 @@ class OnboardingState extends State<OnboardingRoute> {
 
   @override
   Widget build(BuildContext context) {
+
+    final appState = Provider.of<AppState>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Onboarding page"),
@@ -53,7 +53,7 @@ class OnboardingState extends State<OnboardingRoute> {
                         "Log in with NetID");
                       }));
 
-                      widget.appState.userType = UserType.NETID;
+                      appState.userType = UserType.NETID;
 
                       unawaited(Navigator.pushReplacementNamed(context, "/home"));
                       unawaited(() async {
@@ -77,7 +77,7 @@ class OnboardingState extends State<OnboardingRoute> {
                         "Log in with Community ID");
                       }));
 
-                      widget.appState.userType = UserType.COMMUNITY_ID;
+                      appState.userType = UserType.COMMUNITY_ID;
 
                       unawaited(Navigator.pushReplacementNamed(context, "/home"));
                       unawaited(() async {
