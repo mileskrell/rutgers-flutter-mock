@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'app_state.dart';
-import 'home_pages/page_bus/page_bus.dart';
-import 'resources.dart';
-import 'routes/route_home.dart' show HomeRoute;
-import 'routes/route_onboarding.dart' show OnboardingRoute;
-import 'routes/route_onboarding_check.dart' show OnboardingCheckRoute;
+import 'package:rutgers_basic_flutter_mock/app_state.dart';
+import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/page_bus.dart';
+import 'package:rutgers_basic_flutter_mock/resources.dart';
+import 'package:rutgers_basic_flutter_mock/routes/route_home.dart';
+import 'package:rutgers_basic_flutter_mock/routes/route_onboarding.dart';
+import 'package:rutgers_basic_flutter_mock/routes/route_onboarding_check.dart';
 
 void main() => runApp(MyApp());
 

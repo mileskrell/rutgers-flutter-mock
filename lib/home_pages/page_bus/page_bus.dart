@@ -1,9 +1,8 @@
 import 'dart:async';
-
-import 'repo/repository.dart';
 import 'package:flutter/material.dart';
 
-import 'model/bus_models.dart';
+import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/model/bus_models.dart';
+import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/repo/repository.dart';
 
 class Bus extends StatefulWidget {
   @override
