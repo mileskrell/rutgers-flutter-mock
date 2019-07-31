@@ -21,7 +21,10 @@ class EyeRevealState extends State<EyeReveal> {
           children: <Widget>[
             Opacity(
               opacity: revealed ? 1 : 0,
-              child: Text(widget.text),
+              child: Text(
+                widget.text,
+                style: TextStyle(color: widget.color),
+              ),
             ),
             Opacity(
               opacity: revealed ? 0 : 1,
