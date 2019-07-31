@@ -47,6 +47,10 @@ flutter:
 
   assets:
     - assets/miles_profile.png
+    - assets/fa_compass_431.png
+    - assets/fa_exchange_alt_431.png
+    - assets/fa_graduation_cap_431.png
+    - assets/fa_list_alt_431.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
