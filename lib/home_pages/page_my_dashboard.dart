@@ -132,7 +132,8 @@ class MyDashboard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
-                    GestureDetector(
+                    InkWell(
+                      borderRadius: BorderRadius.circular(5),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -141,20 +142,24 @@ class MyDashboard extends StatelessWidget {
                                     "https://dn.rutgers.edu",
                                     "Degree Navigator")));
                       },
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/fa_compass_431.png",
-                            width: 25,
-                          ),
-                          Text(
-                            "Degree Navigator",
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/fa_compass_431.png",
+                              width: 30,
+                            ),
+                            Text(
+                              "Degree Navigator",
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    GestureDetector(
+                    InkWell(
+                      borderRadius: BorderRadius.circular(5),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -163,30 +168,31 @@ class MyDashboard extends StatelessWidget {
                                     "https://transcripts.rutgers.edu/transcripts/studentTranscriptGateway.login",
                                     "Transcript Request / Enrollment Verification")));
                       },
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/fa_list_alt_431.png",
-                            width: 25,
-                          ),
-                          Text(
-                            "Request transcript\nor verification",
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/fa_list_alt_431.png",
+                              width: 30,
+                            ),
+                            Text(
+                              "Request transcript\nor verification",
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
-                    GestureDetector(
+                    InkWell(
+                      borderRadius: BorderRadius.circular(5),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -195,20 +201,24 @@ class MyDashboard extends StatelessWidget {
                                     "https://www.ugadmissions.rutgers.edu/schooltoschool/",
                                     "Apply for school to school transfer")));
                       },
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/fa_exchange_alt_431.png",
-                            width: 25,
-                          ),
-                          Text(
-                            "Apply for school \nto school transfer",
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/fa_exchange_alt_431.png",
+                              width: 30,
+                            ),
+                            Text(
+                              "Apply for school \nto school transfer",
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    GestureDetector(
+                    InkWell(
+                      borderRadius: BorderRadius.circular(5),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -217,14 +227,17 @@ class MyDashboard extends StatelessWidget {
                                     "https://grad.admissions.rutgers.edu/Diploma/Login.aspx?ReturnUrl=%2fDiploma",
                                     "Apply for diploma")));
                       },
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/fa_graduation_cap_431.png",
-                            width: 25,
-                          ),
-                          Text("Apply for diploma"),
-                        ],
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/fa_graduation_cap_431.png",
+                              width: 30,
+                            ),
+                            Text("Apply for diploma"),
+                          ],
+                        ),
                       ),
                     ),
                   ],
