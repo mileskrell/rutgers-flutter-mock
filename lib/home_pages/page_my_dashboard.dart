@@ -58,7 +58,7 @@ class MyDashboardState extends State<MyDashboard> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: 16),
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,6 +99,111 @@ class MyDashboardState extends State<MyDashboard> {
                         ],
                       ),
                     ]),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute<Null>(
+                                builder: (context) => WebViewRoute(
+                                    "https://dn.rutgers.edu",
+                                    "Degree Navigator")));
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            "assets/fa_compass_431.png",
+                            width: 25,
+                          ),
+                          Text(
+                            "Degree Navigator",
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute<Null>(
+                                builder: (context) => WebViewRoute(
+                                    "https://transcripts.rutgers.edu/transcripts/studentTranscriptGateway.login",
+                                    "Transcript Request / Enrollment Verification")));
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            "assets/fa_list_alt_431.png",
+                            width: 25,
+                          ),
+                          Text(
+                            "Request transcript\nor verification",
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute<Null>(
+                                builder: (context) => WebViewRoute(
+                                    "https://www.ugadmissions.rutgers.edu/schooltoschool/",
+                                    "Apply for school to school transfer")));
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            "assets/fa_exchange_alt_431.png",
+                            width: 25,
+                          ),
+                          Text(
+                            "Apply for school \nto school transfer",
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute<Null>(
+                                builder: (context) => WebViewRoute(
+                                    "https://grad.admissions.rutgers.edu/Diploma/Login.aspx?ReturnUrl=%2fDiploma",
+                                    "Apply for diploma")));
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            "assets/fa_graduation_cap_431.png",
+                            width: 25,
+                          ),
+                          Text("Apply for diploma"),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8),
                 ),
@@ -229,38 +334,19 @@ class MyDashboardState extends State<MyDashboard> {
               title: Text("My Schedule", style: TextStyle(color: pantone186)),
               initiallyExpanded: true,
               children: <Widget>[
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Text("WebReg",
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: pantone186)),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute<Null>(
-                                  builder: (context) => WebViewRoute(
-                                      "https://sims.rutgers.edu/webreg/",
-                                      "WebReg")));
-                        },
-                      ),
-                      GestureDetector(
-                        child: Text("Degree Navigator",
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: pantone186)),
-                        onTap: () {
-                          Navigator.push<Null>(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => WebViewRoute(
-                                      "https://nbdn.rutgers.edu/",
-                                      "Degree Navigator")));
-                        },
-                      )
-                    ]),
+                GestureDetector(
+                  child: Text("WebReg",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: pantone186)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute<Null>(
+                            builder: (context) => WebViewRoute(
+                                "https://sims.rutgers.edu/webreg/", "WebReg")));
+                  },
+                ),
                 ListTile(
                   title: Text("Intro to Carribean Studies"),
                   subtitle: Text("MW: 1:10 PM - 2:30 PM @ HH-B2"),
