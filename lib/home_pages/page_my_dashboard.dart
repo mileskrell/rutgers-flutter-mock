@@ -39,7 +39,7 @@ class MyDashboard extends StatelessWidget {
                   title: Text("Calc II Math/Phys"),
                   isThreeLine: true,
                   subtitle: Text(
-                      "MW: LSH-A142 12:00pm-1:20pm\nTh: BE-121 5:00 PM - 6:20 PM"),
+                      "MW: 12:00 PM - 1:20 PM @ LSH-A142\nTh: 5:00 PM - 6:20 PM @ BE-121"),
                 ),
                 ListTile(
                   title: Text("Computer Architecture"),
@@ -49,7 +49,7 @@ class MyDashboard extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text("Theater Appreciation"),
-                  subtitle: Text("Hill 103: TTh 3:10pm-5:30pm"),
+                  subtitle: Text("TTh 3:10 PM - 5:30 PM @ HLL-103"),
                 ),
               ]),
         ),
