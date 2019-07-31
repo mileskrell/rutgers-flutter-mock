@@ -23,7 +23,7 @@ class OnboardingState extends State<OnboardingRoute> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Onboarding page"),
+        title: Text("Rutgers"),
       ),
       body: Stack(
         children: <Widget>[
