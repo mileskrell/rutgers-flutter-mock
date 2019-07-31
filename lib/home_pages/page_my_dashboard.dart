@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
+import 'package:provider/provider.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_basic_flutter_mock/widgets/eye-reveal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,19 +8,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../app_state.dart';
 import '../resources.dart';
 
-class MyDashboard extends StatefulWidget {
-  final AppState appState;
-
-  MyDashboard(this.appState);
-
-  @override
-  State<StatefulWidget> createState() => MyDashboardState();
-}
-
-class MyDashboardState extends State<MyDashboard> {
+class MyDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (widget.appState.userType == UserType.NETID) {
+    final appState = Provider.of<AppState>(context);
+
+    if (appState.userType == UserType.NETID) {
       return ListView(children: [
         Card(
           child: ListTile(
@@ -386,9 +380,7 @@ class MyDashboardState extends State<MyDashboard> {
                       "Log in with NetID");
                 }));
 
-                setState(() {
-                  widget.appState.userType = UserType.NETID;
-                });
+                appState.userType = UserType.NETID;
 
                 unawaited(Navigator.pushReplacementNamed(context, "/home"));
                 unawaited(() async {
