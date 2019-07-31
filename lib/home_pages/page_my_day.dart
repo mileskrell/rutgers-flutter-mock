@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
+import 'package:provider/provider.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_state.dart';
 import '../resources.dart';
 
-class MyDay extends StatefulWidget {
-  final AppState appState;
-
-  MyDay(this.appState);
-
-  @override
-  State<StatefulWidget> createState() => MyDayState();
-}
-
-class MyDayState extends State<MyDay> {
+class MyDay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (widget.appState.userType == UserType.NETID) {
+    final appState = Provider.of<AppState>(context);
+
+    if (appState.userType == UserType.NETID) {
       return Center(
         child: Text("My Day page for NetID user"),
       );
@@ -47,9 +41,7 @@ class MyDayState extends State<MyDay> {
                       "Log in with NetID");
                 }));
 
-                setState(() {
-                  widget.appState.userType = UserType.NETID;
-                });
+                appState.userType = UserType.NETID;
 
                 unawaited(Navigator.pushReplacementNamed(context, "/home"));
                 unawaited(() async {

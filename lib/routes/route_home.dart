@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
+import 'package:provider/provider.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/page_bus.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_apps.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_dashboard.dart';
@@ -9,10 +10,6 @@ import '../app_state.dart';
 import '../resources.dart';
 
 class HomeRoute extends StatefulWidget {
-  final AppState appState;
-
-  HomeRoute(this.appState);
-
   @override
   State<StatefulWidget> createState() => HomeState();
 }
@@ -28,20 +25,22 @@ class HomeState extends State<HomeRoute> {
 
   @override
   Widget build(BuildContext context) {
+    final appState = Provider.of<AppState>(context);
+
     final pages = <Widget>[
-      if (widget.appState.userType != UserType.COMMUNITY_ID)
-        MyDay(widget.appState),
-      if (widget.appState.userType != UserType.COMMUNITY_ID)
-        MyDashboard(widget.appState),
+      if (appState.userType != UserType.COMMUNITY_ID)
+        MyDay(),
+      if (appState.userType != UserType.COMMUNITY_ID)
+        MyDashboard(),
       MyApps(),
       Bus(),
     ];
 
     bottomNavBarItems = [
-      if (widget.appState.userType != UserType.COMMUNITY_ID)
+      if (appState.userType != UserType.COMMUNITY_ID)
         BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today), title: Text("My Day")),
-      if (widget.appState.userType != UserType.COMMUNITY_ID)
+      if (appState.userType != UserType.COMMUNITY_ID)
         BottomNavigationBarItem(
             icon: Icon(Icons.person), title: Text("My Dashboard")),
       BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text("My Apps")),
@@ -49,7 +48,7 @@ class HomeState extends State<HomeRoute> {
           icon: Icon(Icons.directions_bus), title: Text("Bus")),
     ];
 
-    final logOutString = "Log out (currently ${widget.appState.userType})";
+    final logOutString = "Log out (currently ${appState.userType})";
 
     return Scaffold(
       appBar: AppBar(
@@ -57,14 +56,12 @@ class HomeState extends State<HomeRoute> {
                 currentPageIndex < pages.length ? currentPageIndex : 0]
             .title,
         actions: <Widget>[
-          if (widget.appState.userType != null)
+          if (appState.userType != null)
             IconButton(
               icon: Icon(Icons.person_outline),
               tooltip: logOutString,
               onPressed: () async {
-                setState(() {
-                  widget.appState.userType = null;
-                });
+                appState.userType = null;
                 final prefs = await SharedPreferences.getInstance();
                 unawaited(prefs.setString("user_type", null));
               },

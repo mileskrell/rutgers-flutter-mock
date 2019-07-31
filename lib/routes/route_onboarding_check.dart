@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_state.dart';
 
-class OnboardingCheckRoute extends StatefulWidget {
-  final AppState appState;
-
-  OnboardingCheckRoute(this.appState);
-
+class OnboardingCheckRoute extends StatelessWidget {
   @override
-  State<StatefulWidget> createState() => OnboardingCheckState();
-}
+  Widget build(BuildContext context) {
+    final appState = Provider.of<AppState>(context, listen: false);
 
-class OnboardingCheckState extends State<OnboardingCheckRoute> {
-  OnboardingCheckState() {
     () async {
       final prefs = await SharedPreferences.getInstance();
 
-      widget.appState.userType = {
+      appState.userType = {
         "net": UserType.NETID,
         "community": UserType.COMMUNITY_ID,
         null: null
@@ -31,10 +26,7 @@ class OnboardingCheckState extends State<OnboardingCheckRoute> {
         unawaited(Navigator.pushReplacementNamed(context, "/onboarding"));
       }
     }();
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Rutgers"),
