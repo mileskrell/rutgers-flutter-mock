@@ -30,6 +30,37 @@ class MyDashboardState extends State<MyDashboard> {
         ),
         Card(
           child: ExpansionTile(
+              title: Text("My Schedule", style: TextStyle(color: pantone186)),
+              initiallyExpanded: true,
+              children: <Widget>[
+                ListTile(
+                  title: Text("Intro to Carribean Studies"),
+                  subtitle: Text("MW: 1:10 PM - 2:30 PM @ HH-B2"),
+                ),
+                ListTile(
+                  title: Text("The Byrne Seminars"),
+                  subtitle: Text("T: 12:00 PM - 1:20 PM @ BME-128"),
+                ),
+                ListTile(
+                  title: Text("Calc II Math/Phys"),
+                  isThreeLine: true,
+                  subtitle: Text(
+                      "MW: LSH-A142 12:00pm-1:20pm\nTh: BE-121 5:00 PM - 6:20 PM"),
+                ),
+                ListTile(
+                  title: Text("Computer Architecture"),
+                  isThreeLine: true,
+                  subtitle: Text(
+                      "TF: 8:40 AM - 10:00 AM @ ARC-103\nT: 6:55 PM - 7:50 PM @ COR-101"),
+                ),
+                ListTile(
+                  title: Text("Theater Appreciation"),
+                  subtitle: Text("Hill 103: TTh 3:10pm-5:30pm"),
+                ),
+              ]),
+        ),
+        Card(
+          child: ExpansionTile(
               title: Text("My Degree", style: TextStyle(color: pantone186)),
               initiallyExpanded: true,
               children: <Widget>[
@@ -326,50 +357,6 @@ class MyDashboardState extends State<MyDashboard> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8),
-                ),
-              ]),
-        ),
-        Card(
-          child: ExpansionTile(
-              title: Text("My Schedule", style: TextStyle(color: pantone186)),
-              initiallyExpanded: true,
-              children: <Widget>[
-                GestureDetector(
-                  child: Text("WebReg",
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: pantone186)),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute<Null>(
-                            builder: (context) => WebViewRoute(
-                                "https://sims.rutgers.edu/webreg/", "WebReg")));
-                  },
-                ),
-                ListTile(
-                  title: Text("Intro to Carribean Studies"),
-                  subtitle: Text("MW: 1:10 PM - 2:30 PM @ HH-B2"),
-                ),
-                ListTile(
-                  title: Text("The Byrne Seminars"),
-                  subtitle: Text("T: 12:00 PM - 1:20 PM @ BME-128"),
-                ),
-                ListTile(
-                  title: Text("Calc II Math/Phys"),
-                  isThreeLine: true,
-                  subtitle: Text(
-                      "MW: LSH-A142 12:00pm-1:20pm\nTh: BE-121 5:00 PM - 6:20 PM"),
-                ),
-                ListTile(
-                  title: Text("Computer Architecture"),
-                  isThreeLine: true,
-                  subtitle: Text(
-                      "TF: 8:40 AM - 10:00 AM @ ARC-103\nT: 6:55 PM - 7:50 PM @ COR-101"),
-                ),
-                ListTile(
-                  title: Text("Theater Appreciation"),
-                  subtitle: Text("Hill 103: TTh 3:10pm-5:30pm"),
                 ),
               ]),
         ),
