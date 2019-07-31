@@ -3,7 +3,7 @@ import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../app_state.dart';
+import 'package:rutgers_basic_flutter_mock/app_state.dart';
 
 class OnboardingCheckRoute extends StatelessWidget {
   @override
