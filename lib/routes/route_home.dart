@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:rutgers_basic_flutter_mock/app_state.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/page_bus.dart';
-import 'package:rutgers_basic_flutter_mock/home_pages/page_my_apps.dart';
+import 'package:rutgers_basic_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_dashboard.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_my_day.dart';
 import 'package:rutgers_basic_flutter_mock/resources.dart';
@@ -14,22 +14,27 @@ class HomeRoute extends StatefulWidget {
 }
 
 class HomeState extends State<HomeRoute> {
-  var currentPageIndex = 0;
-  List<BottomNavigationBarItem> bottomNavBarItems;
+  AppState appState;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  var currentPageIndex = 0;
+
+  var currentlySearching = false;
+  String searchText = "";
+
+  List<BottomNavigationBarItem> bottomNavBarItems;
+  List<Widget> pages;
+  PopupMenuButton popupMenuButton;
+
+  AppBar appBar;
 
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<AppState>(context);
+    appState = Provider.of<AppState>(context);
 
-    final pages = <Widget>[
+    pages = <Widget>[
       if (appState.userType == UserType.CURRENT_STUDENT) MyDay(),
       if (appState.userType == UserType.CURRENT_STUDENT) MyDashboard(),
-      MyApps(),
+      MyApps(searchText),
       Bus(),
     ];
 
@@ -45,32 +50,37 @@ class HomeState extends State<HomeRoute> {
           icon: Icon(Icons.directions_bus), title: Text("Bus")),
     ];
 
-    final logOutString =
-        "Log out (currently ${userTypeToString(appState.userType)})";
+    popupMenuButton ??= PopupMenuButton<String>(
+      itemBuilder: (context) {
+        return [
+          PopupMenuItem<String>(
+            value: "tutorial",
+            child: Text("View tutorial again"),
+          ),
+          PopupMenuItem<String>(
+            value: "log_out",
+            child: Text("Log out"),
+          ),
+        ];
+      },
+      onSelected: (tag) {
+        switch (tag) {
+          case "tutorial":
+            Navigator.pushReplacementNamed(context, "/onboarding");
+            break;
+          case "log_out":
+            // The login page will log out the user, so it doesn't happen
+            // while still on this page.
+            Navigator.pushReplacementNamed(context, "/login");
+            break;
+        }
+      },
+    );
+
+    setAppBarState();
 
     return Scaffold(
-      appBar: AppBar(
-        title: bottomNavBarItems[
-                currentPageIndex < pages.length ? currentPageIndex : 0]
-            .title,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.help_outline),
-            tooltip: "Open tutorial again",
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, "/onboarding");
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.exit_to_app),
-            tooltip: logOutString,
-            onPressed: () async {
-              appState.userType = null;
-              Navigator.pushReplacementNamed(context, "/login");
-            },
-          ),
-        ],
-      ),
+      appBar: appBar,
       body: pages[currentPageIndex < pages.length ? currentPageIndex : 0],
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: pantone431,
@@ -89,5 +99,63 @@ class HomeState extends State<HomeRoute> {
         items: bottomNavBarItems,
       ),
     );
+  }
+
+  void onPressSearch() {
+    currentlySearching = !currentlySearching;
+    if (!currentlySearching) {
+      searchText = "";
+    }
+    setAppBarState();
+  }
+
+  void setAppBarState() {
+    if (!((bottomNavBarItems[currentPageIndex].title as Text).data ==
+        "My Apps")) {
+      setState(() {
+        appBar = AppBar(
+          title: bottomNavBarItems[
+                  currentPageIndex < pages.length ? currentPageIndex : 0]
+              .title,
+          actions: [popupMenuButton],
+        );
+      });
+      return;
+    }
+    if (currentlySearching) {
+      setState(() {
+        appBar = AppBar(
+          leading: IconButton(
+              tooltip: "Close",
+              icon: Icon(Icons.close),
+              onPressed: () => onPressSearch()),
+          title: TextField(
+            autofocus: true,
+            autocorrect: false,
+            style: TextStyle(color: Colors.white),
+            onChanged: (input) {
+              setState(() {
+                searchText = input;
+              });
+            },
+          ),
+        );
+      });
+    } else {
+      setState(() {
+        appBar = AppBar(
+          title: bottomNavBarItems[
+                  currentPageIndex < pages.length ? currentPageIndex : 0]
+              .title,
+          actions: <Widget>[
+            IconButton(
+                tooltip: "Search",
+                icon: Icon(Icons.search),
+                onPressed: () => onPressSearch()),
+            popupMenuButton,
+          ],
+        );
+      });
+    }
   }
 }
