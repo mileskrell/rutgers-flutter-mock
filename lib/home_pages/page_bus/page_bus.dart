@@ -33,17 +33,15 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
     // which would cause an error (setState would be called before
     // the widget was mounted, it seems).
     if (!_refreshing) {
-      setState(() {
+      safeSetState(() {
         _refreshing = true;
       });
     }
 
     final newRoutes = await fetchRoutes();
-    if (mounted) {
-      setState(() {
-        _routeAgeTitle = "0 seconds since estimates fetched";
-      });
-    }
+    safeSetState(() {
+      _routeAgeTitle = "0 seconds since estimates fetched";
+    });
 
     _ticker?.cancel();
     final updateTime = DateTime.now();
@@ -56,13 +54,11 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
         newRouteAgeTitle = "1 second since estimates fetched";
       } else {
         newRouteAgeTitle =
-        "$secondsSinceRoutesFetched seconds since estimates fetched";
+            "$secondsSinceRoutesFetched seconds since estimates fetched";
       }
-      if (mounted) {
-        setState(() {
-          _routeAgeTitle = newRouteAgeTitle;
-        });
-      }
+      safeSetState(() {
+        _routeAgeTitle = newRouteAgeTitle;
+      });
     });
 
     // If the route the user had been viewing is also contained in the new data,
@@ -74,7 +70,7 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
           newRoutes.where((route) => route.routeName == oldRouteName).first);
     }
 
-    setState(() {
+    safeSetState(() {
       // Save new routes
       _routes = newRoutes;
 
@@ -86,7 +82,7 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
       }
     });
 
-    setState(() {
+    safeSetState(() {
       _refreshing = false;
     });
     return null;
@@ -227,5 +223,12 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  // Temporary fix for memory leaks (maybe?)
+  void safeSetState(void Function() func) {
+    if (mounted) {
+      setState(func);
+    }
   }
 }
