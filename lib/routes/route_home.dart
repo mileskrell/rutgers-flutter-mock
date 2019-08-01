@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,19 +28,17 @@ class HomeState extends State<HomeRoute> {
     final appState = Provider.of<AppState>(context);
 
     final pages = <Widget>[
-      if (appState.userType != UserType.COMMUNITY_ID)
-        MyDay(),
-      if (appState.userType != UserType.COMMUNITY_ID)
-        MyDashboard(),
+      if (appState.userType == UserType.CURRENT_STUDENT) MyDay(),
+      if (appState.userType == UserType.CURRENT_STUDENT) MyDashboard(),
       MyApps(),
       Bus(),
     ];
 
     bottomNavBarItems = [
-      if (appState.userType != UserType.COMMUNITY_ID)
+      if (appState.userType == UserType.CURRENT_STUDENT)
         BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today), title: Text("My Day")),
-      if (appState.userType != UserType.COMMUNITY_ID)
+      if (appState.userType == UserType.CURRENT_STUDENT)
         BottomNavigationBarItem(
             icon: Icon(Icons.person), title: Text("My Dashboard")),
       BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text("My Apps")),
@@ -59,22 +56,21 @@ class HomeState extends State<HomeRoute> {
         actions: <Widget>[
           if (appState.userType != null)
             IconButton(
-              icon: Icon(Icons.person_outline),
-              tooltip: logOutString,
+              icon: Icon(Icons.help_outline),
+              tooltip: "Reset tutorial status",
               onPressed: () async {
-                appState.userType = null;
                 final prefs = await SharedPreferences.getInstance();
-                unawaited(prefs.setString("user_type", null));
+                prefs.setBool("has_completed_tutorial", null);
               },
             ),
           IconButton(
-            icon: Icon(Icons.help_outline),
-            tooltip: "Reset tutorial status",
+            icon: Icon(Icons.exit_to_app),
+            tooltip: logOutString,
             onPressed: () async {
-              final prefs = await SharedPreferences.getInstance();
-              unawaited(prefs.setBool("has_completed_tutorial", null));
+              appState.userType = null;
+              Navigator.pushReplacementNamed(context, "/login");
             },
-          )
+          ),
         ],
       ),
       body: pages[currentPageIndex < pages.length ? currentPageIndex : 0],

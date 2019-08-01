@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,7 +11,7 @@ class MyDay extends StatelessWidget {
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context);
 
-    if (appState.userType == UserType.NETID) {
+    if (appState.userType == UserType.CURRENT_STUDENT) {
       return Center(
         child: Text("My Day page for NetID user"),
       );
@@ -41,14 +40,13 @@ class MyDay extends StatelessWidget {
                       "Log in with NetID");
                 }));
 
-                appState.userType = UserType.NETID;
+                appState.userType = UserType.CURRENT_STUDENT;
 
-                unawaited(Navigator.pushReplacementNamed(context, "/home"));
-                unawaited(() async {
+                Navigator.pushReplacementNamed(context, "/home");
+                () async {
                   final prefs = await SharedPreferences.getInstance();
-                  unawaited(prefs.setString("user_type", "net"));
-                  unawaited(prefs.setBool("has_completed_tutorial", true));
-                }());
+                  prefs.setBool("has_completed_tutorial", true);
+                }();
               },
             ),
           ],

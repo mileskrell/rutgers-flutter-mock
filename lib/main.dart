@@ -5,6 +5,7 @@ import 'package:rutgers_basic_flutter_mock/app_state.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/page_bus.dart';
 import 'package:rutgers_basic_flutter_mock/resources.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_home.dart';
+import 'package:rutgers_basic_flutter_mock/routes/route_login.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_onboarding.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_onboarding_check.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "/": (context) => OnboardingCheckRoute(),
           "/onboarding": (context) => OnboardingRoute(),
+          "/login": (context) => LoginRoute(), // as a standalone route
           "/home": (context) => HomeRoute(),
           "/bus": (context) => Bus()
         },

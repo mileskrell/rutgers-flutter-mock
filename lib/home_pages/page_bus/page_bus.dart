@@ -39,9 +39,11 @@ class BusState extends State<Bus> with TickerProviderStateMixin {
     }
 
     final newRoutes = await fetchRoutes();
-    setState(() {
-      _routeAgeTitle = "0 seconds since estimates fetched";
-    });
+    if (mounted) {
+      setState(() {
+        _routeAgeTitle = "0 seconds since estimates fetched";
+      });
+    }
 
     _ticker?.cancel();
     final updateTime = DateTime.now();
