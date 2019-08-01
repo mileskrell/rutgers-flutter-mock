@@ -89,7 +89,7 @@ class LoginRoute extends StatelessWidget {
           ),
           RaisedButton(
             child: Text(
-              "Other users",
+              "Use without logging in",
               style: bigTextStyle,
             ),
             color: Colors.white,
