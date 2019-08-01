@@ -7,7 +7,24 @@ import 'package:rutgers_basic_flutter_mock/resources.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_basic_flutter_mock/widgets/eye-reveal.dart';
 
+class Grade {
+  String course;
+  String subject;
+  String grade;
+
+  Grade(this.course, this.subject, this.grade);
+}
+
 class MyDashboard extends StatelessWidget {
+  final grades = [
+    Grade("Intro to Carribean Studies", "Latino and Hispanic Carribean Studies",
+        "A"),
+    Grade("The Byrne Seminars", "Arts and Sciences", "B"),
+    Grade("Calc II Math/Phys", "Mathematics", "C"),
+    Grade("Computer Architecture", "Computer Science", "D"),
+    Grade("Theater Appreciation", "Theater", "E"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context);
@@ -252,113 +269,42 @@ class MyDashboard extends StatelessWidget {
               initiallyExpanded: true,
               children: <Widget>[
                 Table(
-                  border: TableBorder.all(),
+                  border: TableBorder.all(color: Colors.transparent),
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   children: <TableRow>[
                     TableRow(children: <Widget>[
-                      Center(
-                        child: Text("Course",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      Center(
-                        child: Text("Subject",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      Center(
-                        child: Text("Grade",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
+                      ...["Course", "Subject", "Grade"].map((text) {
+                        return Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Center(
+                            child: Text(text,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ),
+                        );
+                      }),
                     ]),
-                    TableRow(children: <Widget>[
-                      Center(
-                        child: Text(
-                          "Intro to Carribean Studies",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: Text(
-                          "Latino And Hispanic Caribbean Studies",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: EyeReveal("A"),
-                      ),
-                    ]),
-                    TableRow(children: <Widget>[
-                      Center(
-                        child: Text(
-                          "The Byrne Seminars",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: Text(
-                          "Arts and Sciences",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: EyeReveal("B"),
-                      ),
-                    ]),
-                    TableRow(children: <Widget>[
-                      Center(
-                        child: Text(
-                          "Calc II Math/Phys",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: Text(
-                          "Mathematics",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: Center(
-                          child: EyeReveal("C"),
-                        ),
-                      ),
-                    ]),
-                    TableRow(children: <Widget>[
-                      Center(
-                        child: Text(
-                          "Computer Architecture",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: Text(
-                          "Computer Science",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: EyeReveal("D"),
-                      ),
-                    ]),
-                    TableRow(children: <Widget>[
-                      Center(
-                        child: Text(
-                          "Theater Appreciation",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: Text(
-                          "Theater",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: EyeReveal("E"),
-                      ),
-                    ])
+                    ...grades.map((grade) {
+                      return TableRow(children: [
+                        ...[grade.course, grade.subject].map((text) {
+                          return Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Center(
+                              child: Text(
+                                text,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          );
+                        }),
+                        Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Center(
+                            child: EyeReveal(grade.grade),
+                          ),
+                        )
+                      ]);
+                    }),
                   ],
                 ),
                 Padding(
@@ -387,15 +333,15 @@ class MyDashboard extends StatelessWidget {
               onPressed: () async {
                 await Navigator.push<bool>(context,
                     MaterialPageRoute(builder: (context) {
-                  return WebViewRoute(
-                      "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
-                      "Log in with NetID");
-                }));
+                      return WebViewRoute(
+                          "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
+                          "Log in with NetID");
+                    }));
 
                 appState.userType = UserType.CURRENT_STUDENT;
 
                 Navigator.pushReplacementNamed(context, "/home");
-                () async {
+                    () async {
                   final prefs = await SharedPreferences.getInstance();
                   prefs.setBool("has_completed_tutorial", true);
                 }();
