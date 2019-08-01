@@ -25,7 +25,7 @@ enum UserType {
   ADMITTED_STUDENT,
   PARENT,
   ALUMNUS,
-  VISITOR
+  GUEST
 }
 
 String userTypeToString(UserType userType) {
@@ -45,8 +45,8 @@ String userTypeToString(UserType userType) {
       return "parent";
     case UserType.ALUMNUS:
       return "alumnus";
-    case UserType.VISITOR:
-      return "visitor";
+    case UserType.GUEST:
+      return "guest";
     default:
       throw "Unknown user type $userType";
   }
@@ -66,8 +66,8 @@ UserType stringToUserType(String userType) {
       return UserType.PARENT;
     case "alumnus":
       return UserType.ALUMNUS;
-    case "visitor":
-      return UserType.VISITOR;
+    case "guest":
+      return UserType.GUEST;
     default:
       throw "Unknown user type $userType";
   }

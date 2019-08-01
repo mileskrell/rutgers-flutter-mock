@@ -115,9 +115,9 @@ class LoginRoute extends StatelessWidget {
                         ),
                         SimpleDialogOption(
                           onPressed: () {
-                            Navigator.pop(context, UserType.VISITOR);
+                            Navigator.pop(context, UserType.GUEST);
                           },
-                          child: Text("Visitor"),
+                          child: Text("Guest"),
                         ),
                       ],
                     );
