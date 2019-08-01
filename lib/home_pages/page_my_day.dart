@@ -13,7 +13,7 @@ class MyDay extends StatelessWidget {
 
     if (appState.userType == UserType.CURRENT_STUDENT) {
       return Center(
-        child: Text("My Day page (only for current students)"),
+        child: Text("My Day page (only shown to current students)"),
       );
     }
     return Container(
