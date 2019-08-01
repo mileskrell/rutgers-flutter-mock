@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:rutgers_basic_flutter_mock/app_state.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/page_bus.dart';
@@ -46,7 +45,8 @@ class HomeState extends State<HomeRoute> {
           icon: Icon(Icons.directions_bus), title: Text("Bus")),
     ];
 
-    final logOutString = "Log out (currently ${appState.userType})";
+    final logOutString =
+        "Log out (currently ${userTypeToString(appState.userType)})";
 
     return Scaffold(
       appBar: AppBar(
@@ -54,15 +54,13 @@ class HomeState extends State<HomeRoute> {
                 currentPageIndex < pages.length ? currentPageIndex : 0]
             .title,
         actions: <Widget>[
-          if (appState.userType != null)
-            IconButton(
-              icon: Icon(Icons.help_outline),
-              tooltip: "Reset tutorial status",
-              onPressed: () async {
-                final prefs = await SharedPreferences.getInstance();
-                prefs.setBool("has_completed_tutorial", null);
-              },
-            ),
+          IconButton(
+            icon: Icon(Icons.help_outline),
+            tooltip: "Open tutorial again",
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, "/onboarding");
+            },
+          ),
           IconButton(
             icon: Icon(Icons.exit_to_app),
             tooltip: logOutString,
