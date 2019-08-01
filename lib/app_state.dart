@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// A class for holding app-wide state
 
@@ -10,7 +11,64 @@ class AppState extends ChangeNotifier {
   set userType(UserType userType) {
     _userType = userType;
     notifyListeners();
+    () async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString("user_type", userTypeToString(userType));
+    }();
   }
 }
 
-enum UserType { NETID, COMMUNITY_ID }
+enum UserType {
+  CURRENT_STUDENT,
+  FACULTY,
+  STAFF,
+  ADMITTED_STUDENT,
+  PARENT,
+  ALUMNUS,
+  VISITOR
+}
+
+String userTypeToString(UserType userType) {
+  if (userType == null) {
+    return null;
+  }
+  switch (userType) {
+    case UserType.CURRENT_STUDENT:
+      return "current_student";
+    case UserType.FACULTY:
+      return "faculty";
+    case UserType.STAFF:
+      return "staff";
+    case UserType.ADMITTED_STUDENT:
+      return "admitted_student";
+    case UserType.PARENT:
+      return "parent";
+    case UserType.ALUMNUS:
+      return "alumnus";
+    case UserType.VISITOR:
+      return "visitor";
+    default:
+      throw "Unknown user type $userType";
+  }
+}
+
+UserType stringToUserType(String userType) {
+  switch (userType) {
+    case "current_student":
+      return UserType.CURRENT_STUDENT;
+    case "faculty":
+      return UserType.FACULTY;
+    case "staff":
+      return UserType.STAFF;
+    case "admitted_student":
+      return UserType.ADMITTED_STUDENT;
+    case "parent":
+      return UserType.PARENT;
+    case "alumnus":
+      return UserType.ALUMNUS;
+    case "visitor":
+      return UserType.VISITOR;
+    default:
+      throw "Unknown user type $userType";
+  }
+}
