@@ -22,7 +22,7 @@ class MyDashboard extends StatelessWidget {
     Grade("The Byrne Seminars", "Arts and Sciences", "B"),
     Grade("Calc II Math/Phys", "Mathematics", "C"),
     Grade("Computer Architecture", "Computer Science", "D"),
-    Grade("Theater Appreciation", "Theater", "E"),
+    Grade("Theater Appreciation", "Theater", "F"),
   ];
 
   @override
