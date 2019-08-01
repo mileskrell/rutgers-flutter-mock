@@ -19,9 +19,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: appTitle,
         theme: ThemeData(
-            primaryColor: pantone186,
-            accentColor: pantone186 // TODO Maybe change this?
-            ),
+          primaryColor: pantone186,
+          accentColor: pantone186, // TODO Maybe change this?
+          cursorColor: Colors.white,
+          textSelectionColor: pantone431,
+          textSelectionHandleColor: pantone431,
+        ),
         routes: {
           "/": (context) => OnboardingCheckRoute(),
           "/onboarding": (context) => OnboardingRoute(),

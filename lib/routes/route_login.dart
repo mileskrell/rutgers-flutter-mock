@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///
 /// By default, it acts as a standalone route.
 /// It's also used as the final page of the onboarding route.
-class LoginRoute extends StatelessWidget {
+class LoginRoute extends StatefulWidget {
   /// If true, only returns the body.
   /// By default, returns a [Scaffold].
   final bool onboardingMode;
@@ -18,20 +18,42 @@ class LoginRoute extends StatelessWidget {
   LoginRoute({this.onboardingMode = false});
 
   @override
+  State<StatefulWidget> createState() => LoginRouteState();
+}
+
+class LoginRouteState extends State<LoginRoute> {
+  bool alreadySetUserTypeToNull = false;
+
+  @override
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context, listen: false);
+
+    // When this is launched as a standalone route, it means that the user has
+    // just logged out.
+    //
+    // To ensure the user isn't logged out until they've actually moved to this
+    // route, we actually handle the logout here.
+    if (!widget.onboardingMode && !alreadySetUserTypeToNull) {
+      alreadySetUserTypeToNull = true;
+      () async {
+        // Delay so we don't set state during build
+        await Future<Null>.delayed(Duration(seconds: 1));
+        // Make sure we only do this once
+        appState.userType = null;
+      }();
+    }
 
     final body = Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          if (onboardingMode)
+          if (widget.onboardingMode)
             Text(
               "Choose an option\nbelow to get started",
               style: bigTextStyle,
               textAlign: TextAlign.center,
             ),
-          if (onboardingMode)
+          if (widget.onboardingMode)
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16),
             ),
@@ -132,7 +154,7 @@ class LoginRoute extends StatelessWidget {
       ),
     );
 
-    if (onboardingMode) {
+    if (widget.onboardingMode) {
       return body;
     } else {
       return Scaffold(
