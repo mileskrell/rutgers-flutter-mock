@@ -1,12 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:pedantic/pedantic.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:rutgers_basic_flutter_mock/app_state.dart';
 import 'package:rutgers_basic_flutter_mock/resources.dart';
-import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
+import 'package:rutgers_basic_flutter_mock/routes/route_login.dart';
 
 class OnboardingRoute extends StatefulWidget {
   @override
@@ -18,9 +14,6 @@ class OnboardingState extends State<OnboardingRoute> {
 
   @override
   Widget build(BuildContext context) {
-
-    final appState = Provider.of<AppState>(context, listen: false);
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Rutgers"),
@@ -39,70 +32,9 @@ class OnboardingState extends State<OnboardingRoute> {
               )),
               Center(
                   child: Text("More onboarding content", style: bigTextStyle)),
-              Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton(
-                    child: Text("Log in with NetID", style: bigTextStyle),
-                    onPressed: () async {
-                      await Navigator.push<bool>(context,
-                          MaterialPageRoute(builder: (context) {
-                        return WebViewRoute(
-                            "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
-                        "Log in with NetID");
-                      }));
-
-                      appState.userType = UserType.NETID;
-
-                      unawaited(Navigator.pushReplacementNamed(context, "/home"));
-                      unawaited(() async {
-                        final prefs = await SharedPreferences.getInstance();
-                        unawaited(prefs.setString("user_type", "net"));
-                        unawaited(prefs.setBool("has_completed_tutorial", true));
-                      }());
-                    },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                  ),
-                  RaisedButton(
-                    child:
-                        Text("Log in with Community ID", style: bigTextStyle),
-                    onPressed: () async {
-                      await Navigator.push<bool>(context,
-                          MaterialPageRoute(builder: (context) {
-                        return WebViewRoute(
-                            "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
-                        "Log in with Community ID");
-                      }));
-
-                      appState.userType = UserType.COMMUNITY_ID;
-
-                      unawaited(Navigator.pushReplacementNamed(context, "/home"));
-                      unawaited(() async {
-                        final prefs = await SharedPreferences.getInstance();
-                        unawaited(prefs.setString("user_type", "community"));
-                        unawaited(prefs.setBool("has_completed_tutorial", true));
-                      }());
-                    },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 32),
-                  ),
-                  RaisedButton(
-                    child: Text("Enter without logging in"),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/home");
-                      () async {
-                        final prefs = await SharedPreferences.getInstance();
-                        unawaited(prefs.setString("user_type", null));
-                        unawaited(prefs.setBool("has_completed_tutorial", true));
-                      }();
-                    },
-                  )
-                ],
-              ))
+              LoginRoute(
+                onboardingMode: true,
+              ),
             ],
           ),
           Align(

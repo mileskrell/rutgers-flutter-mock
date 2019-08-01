@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,17 +12,17 @@ class OnboardingCheckRoute extends StatelessWidget {
     () async {
       final prefs = await SharedPreferences.getInstance();
 
-      appState.userType = {
-        "net": UserType.NETID,
-        "community": UserType.COMMUNITY_ID,
-        null: null
-      }[prefs.getString("user_type")];
-
       final hasSeenTutorial = prefs.getBool("has_completed_tutorial") ?? false;
       if (hasSeenTutorial) {
-        unawaited(Navigator.pushReplacementNamed(context, "/home"));
+        final savedUserTypeString = prefs.getString("user_type");
+        if (savedUserTypeString == null) {
+          Navigator.pushReplacementNamed(context, "/login");
+        } else {
+          appState.userType = stringToUserType(savedUserTypeString);
+          Navigator.pushReplacementNamed(context, "/home");
+        }
       } else {
-        unawaited(Navigator.pushReplacementNamed(context, "/onboarding"));
+        Navigator.pushReplacementNamed(context, "/onboarding");
       }
     }();
 
