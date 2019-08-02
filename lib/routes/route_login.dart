@@ -107,12 +107,17 @@ class LoginRouteState extends State<LoginRoute> {
             },
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 16),
+            padding: EdgeInsets.symmetric(vertical: 8),
           ),
           RaisedButton(
-            child: Text(
-              "Use without logging in",
-              style: bigTextStyle,
+            child: Padding(
+              padding: EdgeInsets.all(5),
+              child: Column(
+                children: <Widget>[
+                  Text("Use without logging in", style: bigTextStyle),
+                  Text("(for parents, alumni, and guests)"),
+                ],
+              ),
             ),
             color: Colors.white,
             highlightColor: Colors.white,
