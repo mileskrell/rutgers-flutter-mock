@@ -89,7 +89,7 @@ class LoginRouteState extends State<LoginRoute> {
               child: Column(
                 children: <Widget>[
                   Text("Log in with Community ID", style: bigTextStyle),
-                  Text("(for admitted students)"),
+                  Text("(for parents and admitted students)"),
                 ],
               ),
             ),
@@ -115,7 +115,7 @@ class LoginRouteState extends State<LoginRoute> {
               child: Column(
                 children: <Widget>[
                   Text("Use without logging in", style: bigTextStyle),
-                  Text("(for parents, alumni, and guests)"),
+                  Text("(for alumni and guests)"),
                 ],
               ),
             ),
@@ -128,12 +128,6 @@ class LoginRouteState extends State<LoginRoute> {
                     return SimpleDialog(
                       title: Text("I am a..."),
                       children: <Widget>[
-                        SimpleDialogOption(
-                          onPressed: () {
-                            Navigator.pop(context, UserType.PARENT);
-                          },
-                          child: Text("Parent"),
-                        ),
                         SimpleDialogOption(
                           onPressed: () {
                             Navigator.pop(context, UserType.ALUMNUS);
