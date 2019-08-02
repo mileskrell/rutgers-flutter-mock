@@ -134,6 +134,7 @@ final admittedStudentApps = [
   scarletKnights,
 ];
 
+// Never seen in mockup
 final parentApps = <App>[
   ruParentsBlog,
   rutgersFacebook,
