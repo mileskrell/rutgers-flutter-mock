@@ -2,12 +2,17 @@ include: package:pedantic/analysis_options.yaml
 
 analyzer:
   strong-mode:
+    # If you want to cast something, you should have to actually cast it
     implicit-casts: false
+    # If you want something to be dynamic, you should have to actually make it dynamic
     implicit-dynamic: false
 
 linter:
   rules:
+    # Might as well mention when something is effectively final
     prefer_final_fields: true
     prefer_final_in_for_each: true
     prefer_final_locals: true
+
+    # Part of `pedantic`, but `unawaited` calls clutter up the code and just aren't worth it IMO
     unawaited_futures: false
