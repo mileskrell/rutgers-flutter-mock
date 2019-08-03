@@ -27,36 +27,36 @@ class MyApps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userType = Provider.of<AppState>(context).userType;
-    List<App> filteredApps;
+    List<App> favorites;
 
     switch (userType) {
       case UserType.CURRENT_STUDENT:
-        filteredApps = currentStudentApps;
+        favorites = currentStudentFavorites;
         break;
 
       case UserType.FACULTY:
-        filteredApps = facultyApps;
+        favorites = facultyFavorites;
         break;
 
       case UserType.STAFF:
-        filteredApps = staffApps;
+        favorites = staffFavorites;
         break;
 
       case UserType.ADMITTED_STUDENT:
-        filteredApps = admittedStudentApps;
+        favorites = admittedStudentFavorites;
         break;
 
       case UserType.PARENT:
-        filteredApps = parentApps;
+        favorites = parentFavorites;
         break;
 
       case UserType.ALUMNUS:
-        filteredApps = alumnusApps;
+        favorites = alumnusFavorites;
         break;
 
       // Guest
       case UserType.GUEST:
-        filteredApps = guestApps;
+        favorites = guestFavorites;
         break;
 
       default:
@@ -64,14 +64,32 @@ class MyApps extends StatelessWidget {
     }
 
     if (searchText.isNotEmpty) {
-      filteredApps = filteredApps
+      favorites = favorites
           .where((app) =>
               app.title.toLowerCase().contains(searchText.toLowerCase()))
           .toList();
     }
 
-    return ListView.builder(
-        itemCount: filteredApps.length,
-        itemBuilder: (context, index) => filteredApps[index]);
+    List<App> others = allApps.where((it) => !favorites.contains(it)).toList();
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Column(
+//          initiallyExpanded: true,
+//          title: Text("Favorites"),
+          children: <Widget>[
+            Expanded(
+              child: ListView.builder(
+//                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: favorites.length,
+                  itemBuilder: (context, index) => favorites[index]),
+            )
+          ],
+        ),
+
+      ],
+    );
   }
 }

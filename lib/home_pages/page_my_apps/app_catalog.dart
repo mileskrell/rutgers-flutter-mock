@@ -106,7 +106,26 @@ final goRutgers = App(
   assetString: "assets/logo_go_rutgers.jpeg",
 );
 
-final currentStudentApps = [
+final allApps = [
+  residenceLife,
+  textbookRentals,
+  handshake,
+  learningCentersNB,
+  universityMap,
+  studentHealth,
+  ruParentsBlog,
+  ruStudentsBlog,
+  ruaa,
+  employmentOpportunities,
+  placesToEat,
+  orcid,
+  rutgersFacebook,
+  rutgersSubreddit,
+  scarletKnights,
+  goRutgers,
+];
+
+final currentStudentFavorites = [
   universityMap,
   handshake,
   learningCentersNB,
@@ -121,17 +140,17 @@ final currentStudentApps = [
 ];
 
 // Never seen in mockup
-final facultyApps = <App>[
+final facultyFavorites = <App>[
   orcid,
   placesToEat,
 ];
 
 // Never seen in mockup
-final staffApps = <App>[
+final staffFavorites = <App>[
   placesToEat,
 ];
 
-final admittedStudentApps = [
+final admittedStudentFavorites = [
   universityMap,
   employmentOpportunities,
   goRutgers,
@@ -141,19 +160,20 @@ final admittedStudentApps = [
 ];
 
 // Never seen in mockup
-final parentApps = <App>[
+final parentFavorites = <App>[
   ruParentsBlog,
   rutgersFacebook,
   scarletKnights,
 ];
-final alumnusApps = <App>[
+
+final alumnusFavorites = <App>[
   ruaa,
   scarletKnights,
   rutgersSubreddit,
   placesToEat,
 ];
 
-final guestApps = [
+final guestFavorites = [
   universityMap,
   placesToEat,
   scarletKnights,
