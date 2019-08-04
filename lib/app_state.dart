@@ -2,12 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// A class for holding app-wide state
-
 class AppState extends ChangeNotifier {
   UserType _userType;
 
   UserType get userType => _userType;
 
+  // Whenever the user type is set, we notify listeners and save it to disk
   set userType(UserType userType) {
     _userType = userType;
     notifyListeners();
@@ -28,6 +28,8 @@ enum UserType {
   GUEST
 }
 
+/// In many languages, enums can contain fields and methods.
+/// But not in Dart, so we have this extra method here.
 String userTypeToString(UserType userType) {
   if (userType == null) {
     return null;

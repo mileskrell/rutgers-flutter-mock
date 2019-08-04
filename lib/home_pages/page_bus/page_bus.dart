@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/model/bus_models.dart';
 import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/repo/repository.dart';
 
+/// This was copied over from
+/// <https://github.com/mileskrell/basic-bus-tracker-react-native>.
+/// That's why it's a separate route - because it does its own stuff with the
+/// app bar, and that would have to be integrated with what's already there.
+///
+/// This whole module should be replaced with something with a map, of course.
+///
+/// Also there are memory leaks in here, because I don't really understand how
+/// Flutter's widget lifecycle works yet.
 class Bus extends StatefulWidget {
   @override
   BusState createState() => BusState();

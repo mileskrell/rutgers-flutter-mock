@@ -11,8 +11,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// By default, it acts as a standalone route.
 /// It's also used as the final page of the onboarding route.
 class LoginRoute extends StatefulWidget {
-  /// If true, only returns the body.
-  /// By default, returns a [Scaffold].
+  /// If true, only returns the body, and include text saying "choose an
+  /// option to get started".
+  ///
+  /// Otherwise, return a [Scaffold].
   final bool onboardingMode;
 
   LoginRoute({this.onboardingMode = false});
