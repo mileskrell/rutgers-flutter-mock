@@ -7,14 +7,7 @@ import 'package:rutgers_basic_flutter_mock/resources.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_basic_flutter_mock/widgets/eye-reveal.dart';
 
-class Grade {
-  String course;
-  String subject;
-  String grade;
-
-  Grade(this.course, this.subject, this.grade);
-}
-
+/// The My Dashboard page
 class MyDashboard extends StatelessWidget {
   final grades = [
     Grade("Intro to Carribean Studies", "Latino and Hispanic Carribean Studies",
@@ -352,4 +345,13 @@ class MyDashboard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Holds grades used in the My Grades table
+class Grade {
+  String course;
+  String subject;
+  String grade;
+
+  Grade(this.course, this.subject, this.grade);
 }

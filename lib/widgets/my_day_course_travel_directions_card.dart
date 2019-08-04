@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:rutgers_basic_flutter_mock/resources.dart';
 import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 
+/// My Day widget for displaying directions to a course
+///
+/// TODO: This should probably be generalized to allow showing directions to
+///  anything. E.g. a meeting or other event.
 class CourseTravelDirectionsCard extends StatelessWidget {
   final String time;
   final String directionsString;

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// A widget that switches between an eye icon and the provided text when
+/// clicked. Used to hide sensitive information (grades, GPA, etc.)
+///
+/// If [color] is provided, then both the icon and [Text] will have
+/// that color. Otherwise, both will be black.
 class EyeReveal extends StatefulWidget {
   final String text;
   final Color color;
