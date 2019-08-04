@@ -6,7 +6,7 @@ import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 /// My Day widget for displaying directions to a course
 ///
 /// TODO: This should probably be generalized to allow showing directions to
-///  anything. E.g. a meeting or other event.
+///  anything, e.g. a meeting or other event.
 class CourseTravelDirectionsCard extends StatelessWidget {
   final String time;
   final String directionsString;
@@ -30,8 +30,8 @@ class CourseTravelDirectionsCard extends StatelessWidget {
       directionsTile = ListTile(
         leading: CircleAvatar(
           child: Icon(Icons.directions_bus),
+          // So this CircleAvatar really just makes the icon centered
           backgroundColor: Colors.transparent,
-          // so there's no circle; this just makes the icon centered
           foregroundColor: pantone431,
         ),
         title: Text(directionsString),
