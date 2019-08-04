@@ -1,4 +1,4 @@
-package com.mileskrell.rutgers_basic_flutter_mock;
+package com.mileskrell.rutgers_flutter_mock;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

@@ -1,8 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
-import 'package:rutgers_basic_flutter_mock/resources.dart';
-import 'package:rutgers_basic_flutter_mock/routes/route_login.dart';
+import 'package:rutgers_flutter_mock/resources.dart';
+import 'package:rutgers_flutter_mock/routes/route_login.dart';
 
 /// The onboarding route
 class OnboardingRoute extends StatefulWidget {

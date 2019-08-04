@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rutgers_basic_flutter_mock/app_state.dart';
-import 'package:rutgers_basic_flutter_mock/widgets/my_day_assignment_card.dart';
-import 'package:rutgers_basic_flutter_mock/widgets/my_day_course_travel_directions_card.dart';
+import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/widgets/my_day_assignment_card.dart';
+import 'package:rutgers_flutter_mock/widgets/my_day_course_travel_directions_card.dart';
 
 /// My Day page (shown only to current students)
 class MyDay extends StatelessWidget {
