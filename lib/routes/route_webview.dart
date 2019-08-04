@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+/// This route contains a [WebView] that opens the provided [url] and an [AppBar]
+/// that uses the provided [title].
 class WebViewRoute extends StatefulWidget {
   final String url;
   final String title;

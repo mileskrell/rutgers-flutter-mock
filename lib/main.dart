@@ -28,7 +28,10 @@ class MyApp extends StatelessWidget {
         routes: {
           "/": (context) => OnboardingCheckRoute(),
           "/onboarding": (context) => OnboardingRoute(),
-          "/login": (context) => LoginRoute(), // as a standalone route
+
+          // To open the login page shown within the tutorial,
+          // push LoginRoute(onboardingMode: true)
+          "/login": (context) => LoginRoute(),
           "/home": (context) => HomeRoute(),
           "/bus": (context) => Bus()
         },

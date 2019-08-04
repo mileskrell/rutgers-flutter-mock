@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
 
+/// Widget for an "app" in My Apps.
+///
+/// TODO: Rename this to reflect that it's just for links
+///
+/// TODO: Add widgets to open built-in modules (e.g. bus, maps)
+///
+/// TODO: Maybe add an "info" button to this widget, like on my.rutgers.edu
 class App extends StatelessWidget {
   final String title;
   final String url;
