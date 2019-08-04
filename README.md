@@ -1,1 +1,1 @@
-# Rutgers Basic Flutter Mock
+# Rutgers Flutter Mock

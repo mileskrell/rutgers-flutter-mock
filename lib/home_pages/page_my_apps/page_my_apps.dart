@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rutgers_basic_flutter_mock/app_state.dart';
-import 'package:rutgers_basic_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
-import 'package:rutgers_basic_flutter_mock/widgets/my_apps_app_widget.dart';
+import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
+import 'package:rutgers_flutter_mock/widgets/my_apps_app_widget.dart';
 
 /// The My Apps page. Currently shows different [App]s to each type of user.
 ///

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rutgers_basic_flutter_mock/app_state.dart';
-import 'package:rutgers_basic_flutter_mock/home_pages/page_bus/page_bus.dart';
-import 'package:rutgers_basic_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
-import 'package:rutgers_basic_flutter_mock/home_pages/page_my_dashboard.dart';
-import 'package:rutgers_basic_flutter_mock/home_pages/page_my_day.dart';
-import 'package:rutgers_basic_flutter_mock/resources.dart';
+import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
+import 'package:rutgers_flutter_mock/resources.dart';
 
 /// The main route of the app, containing a multiple pages and a bottom
 /// navigation bar.

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rutgers_basic_flutter_mock/app_state.dart';
-import 'package:rutgers_basic_flutter_mock/resources.dart';
-import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
+import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/resources.dart';
+import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// This class can be used in two ways.
