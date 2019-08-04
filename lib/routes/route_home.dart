@@ -8,14 +8,13 @@ import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
-/// The main route of the app, containing a multiple pages and a bottom
+/// The main route of the app, containing multiple pages and a bottom
 /// navigation bar.
 ///
 /// Depending on the type of user logged in, different pages can be shown.
 /// Currently, "My Day" and "My Dashboard" are only shown to current students.
 ///
-/// The app bar contains items for logging out and re-showing the
-/// tutorial.
+/// The app bar contains items for logging out and re-showing the tutorial.
 class HomeRoute extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HomeState();
