@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:rutgers_basic_flutter_mock/main.dart';
+import 'package:rutgers_flutter_mock/main.dart';
 
 void main() {
   // TODO: Add tests

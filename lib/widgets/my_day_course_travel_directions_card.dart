@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:rutgers_basic_flutter_mock/resources.dart';
-import 'package:rutgers_basic_flutter_mock/routes/route_webview.dart';
+import 'package:rutgers_flutter_mock/resources.dart';
+import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 
 /// My Day widget for displaying directions to a course
 ///

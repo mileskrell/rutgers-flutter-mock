@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:rutgers_basic_flutter_mock/widgets/my_apps_app_widget.dart';
+import 'package:rutgers_flutter_mock/widgets/my_apps_app_widget.dart';
 
 /// All the [App]s are defined here. I would call them "widgets", but that
 /// obviously conflicts with Flutter.

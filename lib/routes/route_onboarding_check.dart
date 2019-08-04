@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:rutgers_basic_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/app_state.dart';
 
 /// This route is launched on app startup. It uses [SharedPreferences] to check
 /// whether the user has completed the tutorial. If not, it launches
