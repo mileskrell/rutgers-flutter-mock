@@ -7,7 +7,7 @@ import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_home.dart';
 import 'package:rutgers_flutter_mock/routes/route_login.dart';
 import 'package:rutgers_flutter_mock/routes/route_onboarding.dart';
-import 'package:rutgers_flutter_mock/routes/route_onboarding_check.dart';
+import 'package:rutgers_flutter_mock/routes/route_shared_prefs_check.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           textSelectionHandleColor: pantone431,
         ),
         routes: {
-          "/": (context) => OnboardingCheckRoute(),
+          "/": (context) => SharedPrefsCheckRoute(),
           "/onboarding": (context) => OnboardingRoute(),
 
           // To open the login page shown within the tutorial,
