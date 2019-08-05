@@ -5,22 +5,22 @@ import 'package:rutgers_flutter_mock/resources.dart';
 
 /// A class for holding app-wide state
 class AppState extends ChangeNotifier {
-  UserType _userType;
+  Role _role;
 
-  UserType get userType => _userType;
+  Role get role => _role;
 
-  // Whenever the user type is set, we notify listeners and save it to disk
-  set userType(UserType userType) {
-    _userType = userType;
+  // Whenever the role is set, we notify listeners and save it to disk
+  set role(Role role) {
+    _role = role;
     notifyListeners();
     () async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString(keyUserType, userTypeToString(userType));
+      prefs.setString(keyRole, roleToString(role));
     }();
   }
 }
 
-enum UserType {
+enum Role {
   CURRENT_STUDENT,
   FACULTY,
   STAFF,
@@ -32,47 +32,47 @@ enum UserType {
 
 /// In many languages, enums can contain fields and methods.
 /// But not in Dart, so we have this extra method here.
-String userTypeToString(UserType userType) {
-  if (userType == null) {
+String roleToString(Role role) {
+  if (role == null) {
     return null;
   }
-  switch (userType) {
-    case UserType.CURRENT_STUDENT:
+  switch (role) {
+    case Role.CURRENT_STUDENT:
       return "current_student";
-    case UserType.FACULTY:
+    case Role.FACULTY:
       return "faculty";
-    case UserType.STAFF:
+    case Role.STAFF:
       return "staff";
-    case UserType.ADMITTED_STUDENT:
+    case Role.ADMITTED_STUDENT:
       return "admitted_student";
-    case UserType.PARENT:
+    case Role.PARENT:
       return "parent";
-    case UserType.ALUMNUS:
+    case Role.ALUMNUS:
       return "alumnus";
-    case UserType.GUEST:
+    case Role.GUEST:
       return "guest";
     default:
-      throw "Unknown user type $userType";
+      throw "Unknown role $role";
   }
 }
 
-UserType stringToUserType(String userType) {
-  switch (userType) {
+Role stringToRole(String role) {
+  switch (role) {
     case "current_student":
-      return UserType.CURRENT_STUDENT;
+      return Role.CURRENT_STUDENT;
     case "faculty":
-      return UserType.FACULTY;
+      return Role.FACULTY;
     case "staff":
-      return UserType.STAFF;
+      return Role.STAFF;
     case "admitted_student":
-      return UserType.ADMITTED_STUDENT;
+      return Role.ADMITTED_STUDENT;
     case "parent":
-      return UserType.PARENT;
+      return Role.PARENT;
     case "alumnus":
-      return UserType.ALUMNUS;
+      return Role.ALUMNUS;
     case "guest":
-      return UserType.GUEST;
+      return Role.GUEST;
     default:
-      throw "Unknown user type $userType";
+      throw "Unknown role $role";
   }
 }

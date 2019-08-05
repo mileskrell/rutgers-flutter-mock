@@ -5,7 +5,7 @@ import 'package:rutgers_flutter_mock/widgets/my_apps_app_widget.dart';
 /// All the [App]s are defined here. I would call them "widgets", but that
 /// obviously conflicts with Flutter.
 ///
-/// This file also defines which apps are shown to each type of user
+/// This file also defines which apps are shown for each role
 /// (this behavior will be changed in the future; see MyApps for details).
 
 final residenceLife = App(

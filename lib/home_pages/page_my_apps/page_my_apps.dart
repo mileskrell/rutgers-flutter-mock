@@ -5,7 +5,7 @@ import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
 import 'package:rutgers_flutter_mock/widgets/my_apps_app_widget.dart';
 
-/// The My Apps page. Currently shows different [App]s to each type of user.
+/// The My Apps page. Currently shows different [App]s for each [Role].
 ///
 /// While on this page, a search button is included in the app bar. This filters
 /// the list of apps shown as the user types.
@@ -13,7 +13,7 @@ import 'package:rutgers_flutter_mock/widgets/my_apps_app_widget.dart';
 /// TODO: Display favorites and other apps separately.
 ///
 /// TODO: Probably all or almost all apps should be visible to everyone.
-///  Different types of users should just have different *favorites* by default,
+///  Different roles should just have different *favorites* by default,
 ///  that's all.
 ///
 /// TODO: Move all search bar-related logic out of HomeRoute. It should really
@@ -26,41 +26,41 @@ class MyApps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userType = Provider.of<AppState>(context).userType;
+    final role = Provider.of<AppState>(context).role;
     List<App> filteredApps;
 
-    switch (userType) {
-      case UserType.CURRENT_STUDENT:
+    switch (role) {
+      case Role.CURRENT_STUDENT:
         filteredApps = currentStudentApps;
         break;
 
-      case UserType.FACULTY:
+      case Role.FACULTY:
         filteredApps = facultyApps;
         break;
 
-      case UserType.STAFF:
+      case Role.STAFF:
         filteredApps = staffApps;
         break;
 
-      case UserType.ADMITTED_STUDENT:
+      case Role.ADMITTED_STUDENT:
         filteredApps = admittedStudentApps;
         break;
 
-      case UserType.PARENT:
+      case Role.PARENT:
         filteredApps = parentApps;
         break;
 
-      case UserType.ALUMNUS:
+      case Role.ALUMNUS:
         filteredApps = alumnusApps;
         break;
 
       // Guest
-      case UserType.GUEST:
+      case Role.GUEST:
         filteredApps = guestApps;
         break;
 
       default:
-        throw "Unknown user type $userType";
+        throw "Unknown role $role";
     }
 
     if (searchText.isNotEmpty) {

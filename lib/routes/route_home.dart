@@ -11,7 +11,7 @@ import 'package:rutgers_flutter_mock/resources.dart';
 /// The main route of the app, containing multiple pages and a bottom
 /// navigation bar.
 ///
-/// Depending on the type of user logged in, different pages can be shown.
+/// Depending on the [Role] of the user logged in, different pages can be shown.
 /// Currently, "My Day" and "My Dashboard" are only shown to current students.
 ///
 /// The app bar contains items for logging out and re-showing the tutorial.
@@ -39,17 +39,17 @@ class HomeState extends State<HomeRoute> {
     appState = Provider.of<AppState>(context);
 
     pages = <Widget>[
-      if (appState.userType == UserType.CURRENT_STUDENT) MyDay(),
-      if (appState.userType == UserType.CURRENT_STUDENT) MyDashboard(),
+      if (appState.role == Role.CURRENT_STUDENT) MyDay(),
+      if (appState.role == Role.CURRENT_STUDENT) MyDashboard(),
       MyApps(searchText),
       Bus(),
     ];
 
     bottomNavBarItems = [
-      if (appState.userType == UserType.CURRENT_STUDENT)
+      if (appState.role == Role.CURRENT_STUDENT)
         BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today), title: Text("My Day")),
-      if (appState.userType == UserType.CURRENT_STUDENT)
+      if (appState.role == Role.CURRENT_STUDENT)
         BottomNavigationBarItem(
             icon: Icon(Icons.person), title: Text("My Dashboard")),
       BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text("My Apps")),
