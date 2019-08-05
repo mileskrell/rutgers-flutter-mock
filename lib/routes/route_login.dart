@@ -173,7 +173,7 @@ class LoginRouteState extends State<LoginRoute> {
 
     () async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setBool("has_completed_tutorial", true);
+      prefs.setBool(keyHasCompletedTutorial, true);
     }();
   }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:rutgers_flutter_mock/resources.dart';
+
 /// A class for holding app-wide state
 class AppState extends ChangeNotifier {
   UserType _userType;
@@ -13,7 +15,7 @@ class AppState extends ChangeNotifier {
     notifyListeners();
     () async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString("user_type", userTypeToString(userType));
+      prefs.setString(keyUserType, userTypeToString(userType));
     }();
   }
 }
