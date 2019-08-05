@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/resources.dart';
 
 /// This route is launched on app startup. It uses [SharedPreferences] to check
 /// whether the user has completed the tutorial. If not, it launches
@@ -18,9 +19,9 @@ class OnboardingCheckRoute extends StatelessWidget {
     () async {
       final prefs = await SharedPreferences.getInstance();
 
-      final hasSeenTutorial = prefs.getBool("has_completed_tutorial") ?? false;
+      final hasSeenTutorial = prefs.getBool(keyHasCompletedTutorial) ?? false;
       if (hasSeenTutorial) {
-        final savedUserTypeString = prefs.getString("user_type");
+        final savedUserTypeString = prefs.getString(keyUserType);
         if (savedUserTypeString == null) {
           Navigator.pushReplacementNamed(context, "/login");
         } else {
