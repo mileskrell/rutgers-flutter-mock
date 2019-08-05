@@ -336,7 +336,7 @@ class MyDashboard extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, "/home");
                     () async {
                   final prefs = await SharedPreferences.getInstance();
-                  prefs.setBool("has_completed_tutorial", true);
+                  prefs.setBool(keyHasCompletedTutorial, true);
                 }();
               },
             ),
