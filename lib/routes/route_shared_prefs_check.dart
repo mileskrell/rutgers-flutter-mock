@@ -11,7 +11,7 @@ import 'package:rutgers_flutter_mock/resources.dart';
 ///
 /// If the tutorial has already been completed, it launches either LoginRoute
 /// (if the user is not logged in) or HomeRoute (if the user is logged in).
-class OnboardingCheckRoute extends StatelessWidget {
+class SharedPrefsCheckRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context, listen: false);
