@@ -22,7 +22,7 @@ class MyDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context);
 
-    if (appState.userType == UserType.CURRENT_STUDENT) {
+    if (appState.role == Role.CURRENT_STUDENT) {
       return ListView(children: [
         Card(
           child: ListTile(
@@ -331,7 +331,7 @@ class MyDashboard extends StatelessWidget {
                           "Log in with NetID");
                     }));
 
-                appState.userType = UserType.CURRENT_STUDENT;
+                appState.role = Role.CURRENT_STUDENT;
 
                 Navigator.pushReplacementNamed(context, "/home");
                     () async {

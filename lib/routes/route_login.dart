@@ -24,7 +24,7 @@ class LoginRoute extends StatefulWidget {
 }
 
 class LoginRouteState extends State<LoginRoute> {
-  bool alreadySetUserTypeToNull = false;
+  bool alreadySetRoleToNull = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,13 @@ class LoginRouteState extends State<LoginRoute> {
     //
     // To ensure the user isn't logged out until they've actually moved to this
     // route, we actually handle the logout here.
-    if (!widget.onboardingMode && !alreadySetUserTypeToNull) {
-      alreadySetUserTypeToNull = true;
+    if (!widget.onboardingMode && !alreadySetRoleToNull) {
+      alreadySetRoleToNull = true;
       () async {
         // Delay so we don't set state during build
         await Future<Null>.delayed(Duration(seconds: 1));
         // Make sure we only do this once
-        appState.userType = null;
+        appState.role = null;
       }();
     }
 
@@ -78,7 +78,7 @@ class LoginRouteState extends State<LoginRoute> {
                     "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
                     "Log in with NetID");
               }));
-              logInAndSave(appState, context, UserType.CURRENT_STUDENT);
+              logInAndSave(appState, context, Role.CURRENT_STUDENT);
               launchHome(context);
             },
           ),
@@ -104,7 +104,7 @@ class LoginRouteState extends State<LoginRoute> {
                     "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
                     "Log in with Community ID");
               }));
-              logInAndSave(appState, context, UserType.ADMITTED_STUDENT);
+              logInAndSave(appState, context, Role.ADMITTED_STUDENT);
               launchHome(context);
             },
           ),
@@ -124,7 +124,7 @@ class LoginRouteState extends State<LoginRoute> {
             color: Colors.white,
             highlightColor: Colors.white,
             onPressed: () async {
-              final userType = await showDialog<UserType>(
+              final role = await showDialog<Role>(
                   context: context,
                   builder: (context) {
                     return SimpleDialog(
@@ -132,21 +132,21 @@ class LoginRouteState extends State<LoginRoute> {
                       children: <Widget>[
                         SimpleDialogOption(
                           onPressed: () {
-                            Navigator.pop(context, UserType.ALUMNUS);
+                            Navigator.pop(context, Role.ALUMNUS);
                           },
                           child: Text("Alumnus"),
                         ),
                         SimpleDialogOption(
                           onPressed: () {
-                            Navigator.pop(context, UserType.GUEST);
+                            Navigator.pop(context, Role.GUEST);
                           },
                           child: Text("Guest"),
                         ),
                       ],
                     );
                   });
-              if (userType != null) {
-                logInAndSave(appState, context, userType);
+              if (role != null) {
+                logInAndSave(appState, context, role);
                 launchHome(context);
               }
             },
@@ -168,8 +168,8 @@ class LoginRouteState extends State<LoginRoute> {
   }
 
   void logInAndSave(
-      AppState appState, BuildContext context, UserType userType) {
-    appState.userType = userType;
+      AppState appState, BuildContext context, Role role) {
+    appState.role = role;
 
     () async {
       final prefs = await SharedPreferences.getInstance();
