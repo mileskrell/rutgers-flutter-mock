@@ -21,11 +21,11 @@ class OnboardingCheckRoute extends StatelessWidget {
 
       final hasSeenTutorial = prefs.getBool(keyHasCompletedTutorial) ?? false;
       if (hasSeenTutorial) {
-        final savedUserTypeString = prefs.getString(keyUserType);
-        if (savedUserTypeString == null) {
+        final savedRole = prefs.getString(keyRole);
+        if (savedRole == null) {
           Navigator.pushReplacementNamed(context, "/login");
         } else {
-          appState.userType = stringToUserType(savedUserTypeString);
+          appState.role = stringToRole(savedRole);
           Navigator.pushReplacementNamed(context, "/home");
         }
       } else {

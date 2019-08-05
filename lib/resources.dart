@@ -10,5 +10,5 @@ const appTitle = "Rutgers";
 const bigTextStyle = const TextStyle(fontSize: 22);
 
 // SharedPreferences keys
-const keyUserType = "user_type";
+const keyRole = "role";
 const keyHasCompletedTutorial = "has_completed_tutorial";
