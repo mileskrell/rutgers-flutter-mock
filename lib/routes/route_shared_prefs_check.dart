@@ -6,11 +6,11 @@ import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
 /// This route is launched on app startup. It uses [SharedPreferences] to check
-/// whether the user has completed the tutorial. If not, it launches
-/// OnboardingRoute.
+/// whether the user has both selected their role and completed the tutorial.
 ///
-/// If the tutorial has already been completed, it launches either LoginRoute
-/// (if the user is not logged in) or HomeRoute (if the user is logged in).
+/// If they have, it launches HomeRoute.
+///
+/// Otherwise, it launches RoleSelectionRoute.
 class SharedPrefsCheckRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,18 +18,15 @@ class SharedPrefsCheckRoute extends StatelessWidget {
 
     () async {
       final prefs = await SharedPreferences.getInstance();
+      final savedRole = prefs.getString(keyRole);
+      final hasCompletedTutorial = prefs.getBool(keyHasCompletedTutorial) ?? false;
 
-      final hasSeenTutorial = prefs.getBool(keyHasCompletedTutorial) ?? false;
-      if (hasSeenTutorial) {
-        final savedRole = prefs.getString(keyRole);
-        if (savedRole == null) {
-          Navigator.pushReplacementNamed(context, "/login");
-        } else {
-          appState.role = stringToRole(savedRole);
-          Navigator.pushReplacementNamed(context, "/home");
-        }
+      if (savedRole != null && hasCompletedTutorial) {
+        appState.role = stringToRole(savedRole);
+        appState.loggedIn = prefs.getBool(keyLoggedIn);
+        Navigator.pushReplacementNamed(context, "/home");
       } else {
-        Navigator.pushReplacementNamed(context, "/onboarding");
+        Navigator.pushReplacementNamed(context, "/roleSelection");
       }
     }();
 
