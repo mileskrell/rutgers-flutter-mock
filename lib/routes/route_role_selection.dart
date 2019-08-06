@@ -5,6 +5,13 @@ import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/widgets/square_gradient_button.dart';
 
+/// On first run, this is the first route loaded after SharedPrefsCheckRoute.
+/// This route prompts the user to select their role (student, faculty, etc.).
+/// Once they make a choice, it opens OnboardingRoute (which will contain
+/// different content depending on their chosen role).
+///
+/// The user will be able to return here from OnboardingRoute, in case they
+/// chose incorrectly.
 class RoleSelectionRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
