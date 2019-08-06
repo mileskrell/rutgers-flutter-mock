@@ -11,4 +11,5 @@ const bigTextStyle = const TextStyle(fontSize: 22);
 
 // SharedPreferences keys
 const keyRole = "role";
+const keyLoggedIn = "logged_in";
 const keyHasCompletedTutorial = "has_completed_tutorial";

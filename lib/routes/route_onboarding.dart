@@ -1,8 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
-import 'package:rutgers_flutter_mock/routes/route_login.dart';
+import 'package:rutgers_flutter_mock/widgets/onboarding_login_page.dart';
 
 /// The onboarding route
 class OnboardingRoute extends StatefulWidget {
@@ -15,6 +17,8 @@ class OnboardingState extends State<OnboardingRoute> {
 
   @override
   Widget build(BuildContext context) {
+    final appState = Provider.of<AppState>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Rutgers"),
@@ -27,15 +31,24 @@ class OnboardingState extends State<OnboardingRoute> {
             }),
             children: <Widget>[
               Center(
-                  child: Text(
-                "Onboarding content",
-                style: bigTextStyle,
+                  child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  "Welcome to the Rutgers app,\n${roleToString(appState.role)}!",
+                  style: bigTextStyle,
+                  textAlign: TextAlign.center,
+                ),
               )),
               Center(
-                  child: Text("More onboarding content", style: bigTextStyle)),
-              LoginRoute(
-                onboardingMode: true,
-              ),
+                  child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  "Some onboarding content based on your role",
+                  style: bigTextStyle,
+                  textAlign: TextAlign.center,
+                ),
+              )),
+              OnboardingLoginPage(),
             ],
           ),
           Align(

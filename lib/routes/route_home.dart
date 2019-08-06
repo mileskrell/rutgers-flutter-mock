@@ -39,17 +39,17 @@ class HomeState extends State<HomeRoute> {
     appState = Provider.of<AppState>(context);
 
     pages = <Widget>[
-      if (appState.role == Role.CURRENT_STUDENT) MyDay(),
-      if (appState.role == Role.CURRENT_STUDENT) MyDashboard(),
+      if (roleHasMyDay(appState.role)) MyDay(),
+      if (roleHasMyDashboard(appState.role)) MyDashboard(),
       MyApps(searchText),
       Bus(),
     ];
 
     bottomNavBarItems = [
-      if (appState.role == Role.CURRENT_STUDENT)
+      if (roleHasMyDay(appState.role))
         BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today), title: Text("My Day")),
-      if (appState.role == Role.CURRENT_STUDENT)
+      if (roleHasMyDashboard(appState.role))
         BottomNavigationBarItem(
             icon: Icon(Icons.person), title: Text("My Dashboard")),
       BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text("My Apps")),
@@ -65,20 +65,49 @@ class HomeState extends State<HomeRoute> {
             child: Text("View tutorial again"),
           ),
           PopupMenuItem<String>(
-            value: "log_out",
-            child: Text("Log out"),
+            value: "change_role",
+            child: Text("Change role"),
           ),
         ];
       },
       onSelected: (tag) {
         switch (tag) {
           case "tutorial":
-            Navigator.pushReplacementNamed(context, "/onboarding");
+            Navigator.pushNamed(context, "/onboarding");
             break;
-          case "log_out":
-            // The login page will log out the user, so it doesn't happen
-            // while still on this page.
-            Navigator.pushReplacementNamed(context, "/login");
+          case "change_role":
+            if (!appState.loggedIn) {
+              // Don't confirm log out, because user isn't logged in
+              appState.role = null;
+              Navigator.pushReplacementNamed(context, "/roleSelection");
+              break;
+            }
+
+            showDialog<void>(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text("Change role?"),
+                    content: SingleChildScrollView(
+                      child: Text("This will also log you out from the app"),
+                    ),
+                    actions: <Widget>[
+                      FlatButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("No"),
+                      ),
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          appState.role = null;
+                          Navigator.pushReplacementNamed(
+                              context, "/roleSelection");
+                        },
+                        child: Text("Yes"),
+                      )
+                    ],
+                  );
+                });
             break;
         }
       },

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_flutter_mock/widgets/eye-reveal.dart';
+import 'package:rutgers_flutter_mock/widgets/my_dashboard_profile_card.dart';
 
 /// The My Dashboard page
 class MyDashboard extends StatelessWidget {
@@ -22,15 +22,50 @@ class MyDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context);
 
-    if (appState.role == Role.CURRENT_STUDENT) {
-      return ListView(children: [
-        Card(
-          child: ListTile(
-            leading: CircleAvatar(
-                backgroundImage: AssetImage("assets/miles_profile.png")),
-            title: Text("Miles Krell"),
+    final loginTypeString =
+        roleHasNetID(appState.role) ? "NetID" : "CommunityID";
+    final loginUrl = roleHasNetID(appState.role)
+        ? "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login"
+        : "data:text/html,<!DOCTYPE html><p>This would be the CommunityID login page</p>";
+
+    if (appState.loggedIn == false) {
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Log in with $loginTypeString to view My Dashboard",
+                style: bigTextStyle,
+                textAlign: TextAlign.center,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
+              ),
+              RaisedButton(
+                child:
+                    Text("Log in with $loginTypeString", style: bigTextStyle),
+                onPressed: () async {
+                  await Navigator.push<bool>(context,
+                      MaterialPageRoute(builder: (context) {
+                    return WebViewRoute(
+                        loginUrl, "Log in with $loginTypeString");
+                  }));
+
+                  appState.loggedIn = true;
+                },
+              ),
+            ],
           ),
         ),
+      );
+    }
+
+    if (appState.role == Role.CURRENT_STUDENT) {
+      return ListView(children: [
+        ProfileCard("Miles Krell",
+            assetName: "assets/profile_miles_student.png"),
         Card(
           child: ExpansionTile(
               title: Text("My Schedule", style: TextStyle(color: pantone186)),
@@ -307,43 +342,82 @@ class MyDashboard extends StatelessWidget {
         ),
       ]);
     }
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Log in with NetID to view My Dashboard",
-              style: bigTextStyle,
-              textAlign: TextAlign.center,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
-            ),
-            RaisedButton(
-              child: Text("Log in with NetID", style: bigTextStyle),
-              onPressed: () async {
-                await Navigator.push<bool>(context,
-                    MaterialPageRoute(builder: (context) {
-                      return WebViewRoute(
-                          "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
-                          "Log in with NetID");
-                    }));
 
-                appState.role = Role.CURRENT_STUDENT;
-
-                Navigator.pushReplacementNamed(context, "/home");
-                    () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  prefs.setBool(keyHasCompletedTutorial, true);
-                }();
-              },
+    if (appState.role == Role.FACULTY) {
+      return ListView(
+        children: <Widget>[
+          ProfileCard("Fred the faculty member",
+              assetName: "assets/profile_fred_faculty_member.jpg"),
+          Card(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Center(
+                child:
+                    Text("More faculty content goes here (Employee Dashboard)"),
+              ),
             ),
-          ],
-        ),
-      ),
-    );
+          )
+        ],
+      );
+    }
+
+    if (appState.role == Role.STAFF) {
+      return ListView(
+        children: <Widget>[
+          ProfileCard("Samantha the staff member",
+              assetName: "assets/profile_samantha_staff_member.jpg"),
+          Card(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Center(
+                child:
+                    Text("More staff content goes here (Employee Dashboard)"),
+              ),
+            ),
+          )
+        ],
+      );
+    }
+
+    if (appState.role == Role.ADMITTED_STUDENT) {
+      return ListView(
+        children: <Widget>[
+          ProfileCard("Annie the admitted student",
+              assetName: "assets/profile_annie_admitted_student.jpg"),
+          Card(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                  "Should admitted students just see Enrollment Pathway instead of My Dashboard?"),
+            ),
+          ),
+          Card(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                  "Also, do admitted students log in with NetID or CommunityID?"),
+            ),
+          ),
+        ],
+      );
+    }
+
+    if (appState.role == Role.PARENT) {
+      return ListView(
+        children: <Widget>[
+          Card(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Center(
+                child: Text("Content for parent logged in with CommunityID"),
+              ),
+            ),
+          )
+        ],
+      );
+    }
+
+    throw "Can't view My Dashboard unless student, faculty, staff, admitted student, or parent/guardian";
   }
 }
 

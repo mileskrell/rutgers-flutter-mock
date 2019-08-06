@@ -47,7 +47,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/miles_profile.png
+    - assets/profile_miles_student.png
+    - assets/profile_annie_admitted_student.jpg
+    - assets/profile_fred_faculty_member.jpg
+    - assets/profile_samantha_staff_member.jpg
+    - assets/profile_unknown.png
     - assets/logo_facebook.png
     - assets/logo_go_rutgers.jpeg
     - assets/logo_handshake.png
