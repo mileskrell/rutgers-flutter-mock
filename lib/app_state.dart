@@ -9,13 +9,61 @@ class AppState extends ChangeNotifier {
 
   Role get role => _role;
 
-  // Whenever the role is set, we notify listeners and save it to disk
+  /// Whenever the role is set, we notify listeners and save it to disk.
+  /// We also set [loggedIn] to false.
   set role(Role role) {
     _role = role;
-    notifyListeners();
+    if (role != null) {
+      // If the role has been set to null, it means the user has just logged out.
+      // Notifying listeners would tell e.g. HomePage to rebuild with a null
+      // role, which would display errors. So instead, we'll have to just assume
+      // that any widgets depending on the role will be closed promptly.
+
+      // Tl;dr, it's assumed that setting the role to null means you're about
+      // to return to the role selection page and would prefer for the currently
+      // -displayed pages not to be updated.
+      notifyListeners();
+
+      loggedIn = false;
+      hasCompletedTutorial = false;
+    } else {
+      _loggedIn = false;
+      _hasCompletedTutorial = false;
+      () async {
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setBool(keyLoggedIn, false);
+        prefs.setBool(keyHasCompletedTutorial, false);
+      }();
+    }
     () async {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString(keyRole, roleToString(role));
+    }();
+  }
+
+  bool _loggedIn;
+
+  bool get loggedIn => _loggedIn;
+
+  set loggedIn(bool loggedIn) {
+    _loggedIn = loggedIn;
+    notifyListeners();
+    () async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setBool(keyLoggedIn, loggedIn);
+    }();
+  }
+
+  bool _hasCompletedTutorial;
+
+  bool get hasCompletedTutorial => _hasCompletedTutorial;
+
+  set hasCompletedTutorial(bool hasCompletedTutorial) {
+    _hasCompletedTutorial = hasCompletedTutorial;
+    notifyListeners();
+    () async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setBool(keyHasCompletedTutorial, hasCompletedTutorial);
     }();
   }
 }
@@ -75,4 +123,26 @@ Role stringToRole(String role) {
     default:
       throw "Unknown role $role";
   }
+}
+
+bool roleHasMyDay(Role role) {
+  return role == Role.CURRENT_STUDENT;
+}
+
+bool roleHasMyDashboard(Role role) {
+  return role == Role.CURRENT_STUDENT ||
+      role == Role.FACULTY ||
+      role == Role.STAFF ||
+      role == Role.ADMITTED_STUDENT ||
+      role == Role.PARENT;
+}
+
+bool roleHasNetID(Role role) {
+  return role == Role.CURRENT_STUDENT ||
+      role == Role.FACULTY ||
+      role == Role.STAFF;
+}
+
+bool roleHasCommunityID(Role role) {
+  return role == Role.ADMITTED_STUDENT || role == Role.PARENT;
 }

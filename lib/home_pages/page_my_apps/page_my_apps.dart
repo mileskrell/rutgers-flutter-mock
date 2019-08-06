@@ -54,7 +54,6 @@ class MyApps extends StatelessWidget {
         filteredApps = alumnusApps;
         break;
 
-      // Guest
       case Role.GUEST:
         filteredApps = guestApps;
         break;

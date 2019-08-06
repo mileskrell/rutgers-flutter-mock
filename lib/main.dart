@@ -5,8 +5,8 @@ import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_home.dart';
-import 'package:rutgers_flutter_mock/routes/route_login.dart';
 import 'package:rutgers_flutter_mock/routes/route_onboarding.dart';
+import 'package:rutgers_flutter_mock/routes/route_role_selection.dart';
 import 'package:rutgers_flutter_mock/routes/route_shared_prefs_check.dart';
 
 void main() => runApp(MyApp());
@@ -27,11 +27,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           "/": (context) => SharedPrefsCheckRoute(),
+          "/roleSelection": (context) => RoleSelectionRoute(),
           "/onboarding": (context) => OnboardingRoute(),
-
-          // To open the login page shown within the tutorial,
-          // push LoginRoute(onboardingMode: true)
-          "/login": (context) => LoginRoute(),
           "/home": (context) => HomeRoute(),
           "/bus": (context) => Bus()
         },
