@@ -6,7 +6,11 @@ import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_flutter_mock/widgets/square_gradient_button.dart';
 
-/// Role selection page. This is the last page of the tutorial.
+/// This is the last page of the tutorial. Depending on the user's role, it
+/// might prompt them to log in.
+///
+/// The app allows users to view the tutorial multiple times. If the user has
+/// seen the tutorial before, the login prompt will not be presented.
 class OnboardingLoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
