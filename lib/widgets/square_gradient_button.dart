@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
+/// A square button. Used in both RoleSelectionRoute and OnboardingRoute.
 class SquareGradientButton extends StatelessWidget {
   final String title;
   final void Function() onPressed;
