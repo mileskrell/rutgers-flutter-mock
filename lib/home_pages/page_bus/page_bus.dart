@@ -5,7 +5,7 @@ import 'package:rutgers_flutter_mock/home_pages/page_bus/model/bus_models.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_bus/repo/repository.dart';
 
 /// This was copied over from
-/// <https://github.com/mileskrell/basic-bus-tracker-react-native>.
+/// <https://github.com/mileskrell/basic-bus-tracker-flutter>.
 /// That's why it's a separate route - because it does its own stuff with the
 /// app bar, and that would have to be integrated with what's already there.
 ///
