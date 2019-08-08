@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
-import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_webview.dart';
+import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
 import 'package:rutgers_flutter_mock/widgets/my_day_assignment_card.dart';
 import 'package:rutgers_flutter_mock/widgets/my_day_course_travel_directions_card.dart';
 
@@ -17,31 +17,20 @@ class MyDay extends StatelessWidget {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "Log in with NetID to view My Day",
-                style: bigTextStyle,
-                textAlign: TextAlign.center,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-              ),
-              RaisedButton(
-                child: Text("Log in with NetID", style: bigTextStyle),
-                onPressed: () async {
-                  await Navigator.push<bool>(context,
-                      MaterialPageRoute(builder: (context) {
-                    return WebViewRoute(
-                        "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
-                        "Log in with NetID");
-                  }));
+          child: GradientButton(
+            title: "Log in with NetID to view My Day",
+            isBigSquare: true,
+            size: 170,
+            onPressed: () async {
+              await Navigator.push<bool>(context,
+                  MaterialPageRoute(builder: (context) {
+                return WebViewRoute(
+                    "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
+                    "Log in with NetID");
+              }));
 
-                  appState.loggedIn = true;
-                },
-              ),
-            ],
+              appState.loggedIn = true;
+            },
           ),
         ),
       );

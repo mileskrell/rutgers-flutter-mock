@@ -5,6 +5,7 @@ import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_flutter_mock/widgets/eye-reveal.dart';
+import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
 import 'package:rutgers_flutter_mock/widgets/my_dashboard_profile_card.dart';
 
 /// The My Dashboard page
@@ -32,31 +33,18 @@ class MyDashboard extends StatelessWidget {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "Log in with $loginTypeString to view My Dashboard",
-                style: bigTextStyle,
-                textAlign: TextAlign.center,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-              ),
-              RaisedButton(
-                child:
-                    Text("Log in with $loginTypeString", style: bigTextStyle),
-                onPressed: () async {
-                  await Navigator.push<bool>(context,
-                      MaterialPageRoute(builder: (context) {
-                    return WebViewRoute(
-                        loginUrl, "Log in with $loginTypeString");
-                  }));
+          child: GradientButton(
+            title: "Log in with $loginTypeString to view My Dashboard",
+            isBigSquare: true,
+            size: 170,
+            onPressed: () async {
+              await Navigator.push<bool>(context,
+                  MaterialPageRoute(builder: (context) {
+                return WebViewRoute(loginUrl, "Log in with $loginTypeString");
+              }));
 
-                  appState.loggedIn = true;
-                },
-              ),
-            ],
+              appState.loggedIn = true;
+            },
           ),
         ),
       );
