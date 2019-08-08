@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
-import 'package:rutgers_flutter_mock/widgets/square_gradient_button.dart';
+import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
 
 /// On first run, this is the first route loaded after SharedPrefsCheckRoute.
 /// This route prompts the user to select their role (student, faculty, etc.).
@@ -37,14 +37,16 @@ class RoleSelectionRoute extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SquareGradientButton(
+                GradientButton(
                   title: "Student",
+                  isBigSquare: true,
                   onPressed: () {
                     launchOnboarding(context, appState, Role.CURRENT_STUDENT);
                   },
                 ),
-                SquareGradientButton(
+                GradientButton(
                   title: "Staff",
+                  isBigSquare: true,
                   onPressed: () {
                     launchOnboarding(context, appState, Role.STAFF);
                   },
@@ -54,14 +56,16 @@ class RoleSelectionRoute extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SquareGradientButton(
+                GradientButton(
                   title: "Faculty",
+                  isBigSquare: true,
                   onPressed: () {
                     launchOnboarding(context, appState, Role.FACULTY);
                   },
                 ),
-                SquareGradientButton(
+                GradientButton(
                   title: "Parent or Guardian",
+                  isBigSquare: true,
                   onPressed: () {
                     launchOnboarding(context, appState, Role.PARENT);
                   },
@@ -71,14 +75,16 @@ class RoleSelectionRoute extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SquareGradientButton(
+                GradientButton(
                   title: "Admitted Student",
+                  isBigSquare: true,
                   onPressed: () {
                     launchOnboarding(context, appState, Role.ADMITTED_STUDENT);
                   },
                 ),
-                SquareGradientButton(
+                GradientButton(
                   title: "Guest",
+                  isBigSquare: true,
                   onPressed: () {
                     launchOnboarding(context, appState, Role.GUEST);
                   },
