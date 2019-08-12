@@ -23,6 +23,7 @@ class SharedPrefsCheckRoute extends StatelessWidget {
 
       if (savedRole != null && hasCompletedTutorial) {
         appState.role = stringToRole(savedRole);
+        appState.hasCompletedTutorial = true;
         appState.loggedIn = prefs.getBool(keyLoggedIn);
         Navigator.pushReplacementNamed(context, "/home");
       } else {
