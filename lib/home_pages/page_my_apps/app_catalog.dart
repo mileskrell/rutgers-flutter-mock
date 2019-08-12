@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 import 'package:rutgers_flutter_mock/widgets/my_apps_app_widget.dart';
 
 /// All the [App]s are defined here. I would call them "widgets", but that
@@ -20,6 +21,19 @@ final textbookRentals = App(
   url:
       "http://rutgers.bncollege.com/webapp/wcs/stores/servlet/BNCBRentalView?langId=-1&storeId=58552&catalogId=10001",
   iconData: Icons.book,
+  inactive: true,
+  inactiveExplanation: LinkText(
+    children: [
+      "The Barnes and Noble textbook rentals website is currently down. Service is expected to be restored shortly.\n\n"
+          "Updates will be posted to the ",
+      Link(
+        text: "Rutgers University Bookstore Facebook page",
+        url: "https://www.facebook.com/rubookstore",
+        linkTitle: "Rutgers University Bookstore",
+      ),
+      ".",
+    ],
+  ),
 );
 
 final handshake = App(
@@ -53,10 +67,15 @@ final ruParentsBlog = App(
 );
 
 final ruStudentsBlog = App(
-  title: "RU Students Blog",
-  url: "https://rustudentblogs.wordpress.com/",
-  iconData: Icons.computer,
-);
+    title: "RU Students Blog",
+    url: "https://rustudentblogs.wordpress.com/",
+    iconData: Icons.computer,
+    inactive: true,
+    inactiveExplanation: LinkText(
+      children: [
+        "The RU Students Blog is currently down due to scheduled maintenance. Service is expected to be restored by 5:00 PM."
+      ],
+    ));
 
 final ruaa = App(
   title: "Rutgers University Alumni Association website",
