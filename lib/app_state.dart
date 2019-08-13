@@ -9,36 +9,25 @@ class AppState extends ChangeNotifier {
 
   Role get role => _role;
 
-  /// Whenever the role is set, we notify listeners and save it to disk.
-  /// We also set [loggedIn] to false.
   set role(Role role) {
     _role = role;
-    if (role != null) {
-      // If the role has been set to null, it means the user has just logged out.
-      // Notifying listeners would tell e.g. HomePage to rebuild with a null
-      // role, which would display errors. So instead, we'll have to just assume
-      // that any widgets depending on the role will be closed promptly.
 
-      // Tl;dr, it's assumed that setting the role to null means you're about
-      // to return to the role selection page and would prefer for the currently
-      // -displayed pages not to be updated.
-      notifyListeners();
-
-      loggedIn = false;
-      hasCompletedTutorial = false;
-    } else {
-      _loggedIn = false;
-      _hasCompletedTutorial = false;
-      () async {
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setBool(keyLoggedIn, false);
-        prefs.setBool(keyHasCompletedTutorial, false);
-      }();
-    }
     () async {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString(keyRole, roleToString(role));
     }();
+
+    // If the role has been set to null, it means the user has just logged out.
+    // Notifying listeners would tell e.g. HomePage to rebuild with a null
+    // role, which would display errors. So instead, we'll have to just assume
+    // that any widgets depending on the role will be closed promptly.
+
+    // Tl;dr, it's assumed that setting the role to null means you're about
+    // to return to the role selection page and would prefer for the currently
+    // -displayed pages not to be updated.
+    if (role != null) {
+      notifyListeners();
+    }
   }
 
   bool _loggedIn;
