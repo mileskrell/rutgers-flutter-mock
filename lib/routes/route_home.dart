@@ -131,6 +131,9 @@ class HomeState extends State<HomeRoute> {
               currentPageIndex = newIndex;
             });
           }
+          if (currentlySearching) {
+            onPressSearch();
+          }
         },
         items: bottomNavBarItems,
       ),
