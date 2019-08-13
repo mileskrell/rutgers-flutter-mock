@@ -100,6 +100,8 @@ class RoleSelectionRoute extends StatelessWidget {
   void launchOnboarding(
       BuildContext context, AppState appState, Role role) async {
     appState.role = role;
+    appState.loggedIn = false;
+    appState.hasCompletedTutorial = false;
 
     Navigator.pushNamed(context, "/onboarding");
   }
