@@ -98,7 +98,7 @@ final placesToEat = App(
 final orcid = App(
   title: "Update or create Open Researcher and Contributor ID",
   url: "https://personalinfo.rutgers.edu/pi/updateOrcid.htm",
-  iconData: Icons.settings_backup_restore,
+  assetString: "assets/logo_orcid.png",
 );
 
 final rutgersFacebook = App(
