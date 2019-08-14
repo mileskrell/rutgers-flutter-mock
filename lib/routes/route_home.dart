@@ -89,15 +89,24 @@ class HomeState extends State<HomeRoute> {
           if (appState.loggedIn)
             PopupMenuItem<String>(
               value: "settings",
-              child: Text("Settings"),
+              child: ListTile(
+                title: Text("Settings"),
+                leading: Icon(Icons.settings),
+              ),
             ),
           PopupMenuItem<String>(
             value: "tutorial",
-            child: Text("View tutorial again"),
+            child: ListTile(
+              title: Text("Replay tutorial"),
+              leading: Icon(Icons.help),
+            ),
           ),
           PopupMenuItem<String>(
             value: "change_role",
-            child: Text("Change role"),
+            child: ListTile(
+              title: Text("Change role"),
+              leading: Icon(Icons.person),
+            ),
           ),
         ];
       },
