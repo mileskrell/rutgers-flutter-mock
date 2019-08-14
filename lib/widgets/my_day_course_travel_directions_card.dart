@@ -85,7 +85,7 @@ class CourseTravelDirectionsCard extends StatelessWidget {
             subtitle: Row(
               children: <Widget>[
                 Text("$courseTime @ "),
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.push<Null>(context,
                         MaterialPageRoute(builder: (context) {
