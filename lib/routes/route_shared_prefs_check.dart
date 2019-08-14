@@ -26,6 +26,7 @@ class SharedPrefsCheckRoute extends StatelessWidget {
         appState.role = stringToRole(savedRole);
         appState.hasCompletedTutorial = true;
         appState.loggedIn = prefs.getBool(keyLoggedIn);
+        appState.setHomePageFromTitle(prefs.getString(keyHomePage));
         appState.loadFavoriteAppsFromTags(
             prefs.getStringList(keyFavoriteApps) ?? []);
         Navigator.pushReplacementNamed(context, "/home");
