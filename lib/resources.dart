@@ -14,3 +14,4 @@ const keyRole = "role";
 const keyLoggedIn = "logged_in";
 const keyHasCompletedTutorial = "has_completed_tutorial";
 const keyFavoriteApps = "favorite_apps";
+const keyHomePage = "home_page";

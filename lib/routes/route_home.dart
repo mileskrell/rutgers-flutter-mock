@@ -23,7 +23,9 @@ class HomeRoute extends StatefulWidget {
 class HomeState extends State<HomeRoute> {
   AppState appState;
 
-  var currentPageIndex = 0;
+  /// This will be set to the index of the user's chosen [HomePage] when [build]
+  /// runs for the first time.
+  int currentPageIndex;
 
   var currentlySearching = false;
   String searchText = "";
@@ -33,6 +35,8 @@ class HomeState extends State<HomeRoute> {
   PopupMenuButton popupMenuButton;
 
   AppBar appBar;
+
+  bool hasSeenHomePage = false;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +48,28 @@ class HomeState extends State<HomeRoute> {
       MyApps(searchText),
       Bus(),
     ];
+
+    if (!hasSeenHomePage) {
+      hasSeenHomePage = true;
+      switch (appState.homePage) {
+        case MY_DAY:
+          currentPageIndex =
+              pages.indexOf(pages.where((it) => it is MyDay).toList()[0]);
+          break;
+        case MY_DASHBOARD:
+          currentPageIndex =
+              pages.indexOf(pages.where((it) => it is MyDashboard).toList()[0]);
+          break;
+        case MY_APPS:
+          currentPageIndex =
+              pages.indexOf(pages.where((it) => it is MyApps).toList()[0]);
+          break;
+        case BUS:
+          currentPageIndex =
+              pages.indexOf(pages.where((it) => it is Bus).toList()[0]);
+          break;
+      }
+    }
 
     bottomNavBarItems = [
       if (roleHasMyDay(appState.role))
@@ -60,6 +86,11 @@ class HomeState extends State<HomeRoute> {
     popupMenuButton ??= PopupMenuButton<String>(
       itemBuilder: (context) {
         return [
+          if (appState.loggedIn)
+            PopupMenuItem<String>(
+              value: "settings",
+              child: Text("Settings"),
+            ),
           PopupMenuItem<String>(
             value: "tutorial",
             child: Text("View tutorial again"),
@@ -72,6 +103,9 @@ class HomeState extends State<HomeRoute> {
       },
       onSelected: (tag) {
         switch (tag) {
+          case "settings":
+            Navigator.pushNamed(context, "/settings");
+            break;
           case "tutorial":
             Navigator.pushNamed(context, "/onboarding");
             break;
