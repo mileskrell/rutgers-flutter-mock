@@ -20,7 +20,7 @@ class EyeRevealState extends State<EyeReveal> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
