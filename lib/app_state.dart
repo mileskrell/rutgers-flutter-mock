@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
+import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
 /// A class for holding app-wide state
@@ -54,6 +56,29 @@ class AppState extends ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       prefs.setBool(keyHasCompletedTutorial, hasCompletedTutorial);
     }();
+  }
+
+  List<App> _favoriteApps;
+
+  List<App> get favoriteApps => _favoriteApps;
+
+  set favoriteApps(List<App> favoriteApps) {
+    _favoriteApps = favoriteApps;
+    notifyListeners();
+    () async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setStringList(
+          keyFavoriteApps, favoriteApps.map((app) => app.tag).toList());
+    }();
+  }
+
+  /// Used by [SharedPrefsCheckRoute] to load favorites from [SharedPreferences]
+  void loadFavoriteAppsFromTags(List<String> favoriteAppsTags) {
+    favoriteApps = favoriteAppsTags
+        // Make sure the current apps still contain the favorite apps
+        .where((tag) => allApps.containsKey(tag))
+        .map((tag) => allApps[tag])
+        .toList();
   }
 }
 
