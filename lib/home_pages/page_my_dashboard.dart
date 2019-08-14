@@ -25,8 +25,8 @@ class MyDashboard extends StatelessWidget {
     final appState = Provider.of<AppState>(context);
 
     final loginTypeString =
-        roleHasNetID(appState.role) ? "NetID" : "CommunityID";
-    final loginUrl = roleHasNetID(appState.role)
+    appState.role.hasNetID ? "NetID" : "CommunityID";
+    final loginUrl = appState.role.hasNetID
         ? "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login"
         : "data:text/html,<!DOCTYPE html><p>This would be the CommunityID login page</p>";
 

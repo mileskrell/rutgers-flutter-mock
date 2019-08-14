@@ -43,8 +43,8 @@ class HomeState extends State<HomeRoute> {
     appState = Provider.of<AppState>(context);
 
     pages = <Widget>[
-      if (roleHasMyDay(appState.role)) MyDay(),
-      if (roleHasMyDashboard(appState.role)) MyDashboard(),
+      if (appState.role.hasMyDay) MyDay(),
+      if (appState.role.hasMyDashboard) MyDashboard(),
       MyApps(searchText),
       Bus(),
     ];
@@ -72,10 +72,10 @@ class HomeState extends State<HomeRoute> {
     }
 
     bottomNavBarItems = [
-      if (roleHasMyDay(appState.role))
+      if (appState.role.hasMyDay)
         BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today), title: Text("My Day")),
-      if (roleHasMyDashboard(appState.role))
+      if (appState.role.hasMyDashboard)
         BottomNavigationBarItem(
             icon: Icon(Icons.person), title: Text("My Dashboard")),
       BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text("My Apps")),
