@@ -103,6 +103,7 @@ class RoleSelectionRoute extends StatelessWidget {
     appState.role = role;
     appState.loggedIn = false;
     appState.hasCompletedTutorial = false;
+    appState.setHomePageFromTitle(null);
     setDefaultFavoriteApps(appState);
 
     Navigator.pushNamed(context, "/onboarding");

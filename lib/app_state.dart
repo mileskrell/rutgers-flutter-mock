@@ -1,7 +1,12 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
 import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
@@ -79,6 +84,43 @@ class AppState extends ChangeNotifier {
         .where((tag) => allApps.containsKey(tag))
         .map((tag) => allApps[tag])
         .toList();
+  }
+
+  HomePage _homePage;
+
+  HomePage get homePage => _homePage;
+
+  set homePage(HomePage homePage) {
+    _homePage = homePage;
+    notifyListeners();
+    () async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString(keyHomePage, homePage.title);
+    }();
+  }
+
+  /// Used by [SharedPrefsCheckRoute] to load favorites from [SharedPreferences].
+  /// Note that the provided [title] can be null, in which case it's ignored.
+  void setHomePageFromTitle(String title) {
+    // If the page the user had selected as their home still exists, use it
+    if (HomePage.pages.containsKey(title)) {
+      homePage = HomePage.pages[title];
+      return;
+    }
+
+    // Otherwise, try one of the other pages
+
+    if (roleHasMyDay(role)) {
+      homePage = MY_DAY;
+      return;
+    }
+
+    if (roleHasMyDashboard(role)) {
+      homePage = MY_DASHBOARD;
+      return;
+    }
+
+    homePage = MY_APPS;
   }
 }
 
@@ -159,4 +201,39 @@ bool roleHasNetID(Role role) {
 
 bool roleHasCommunityID(Role role) {
   return role == Role.ADMITTED_STUDENT || role == Role.PARENT;
+}
+
+const MY_DAY = HomePage(
+  title: "My Day",
+  associatedPage: MyDay,
+);
+const HomePage MY_DASHBOARD = HomePage(
+  title: "My Dashboard",
+  associatedPage: MyDashboard,
+);
+const HomePage MY_APPS = HomePage(
+  title: "My Apps",
+  associatedPage: MyApps,
+);
+const HomePage BUS = HomePage(
+  title: "Bus",
+  associatedPage: Bus,
+);
+
+class HomePage {
+  final String title;
+
+  final Type associatedPage;
+
+  const HomePage({this.title, this.associatedPage});
+
+  static final pages = Map<String, HomePage>.fromIterable(
+    <HomePage>[
+      MY_DAY,
+      MY_DASHBOARD,
+      MY_APPS,
+      BUS,
+    ],
+    key: (dynamic element) => (element as HomePage).title,
+  );
 }
