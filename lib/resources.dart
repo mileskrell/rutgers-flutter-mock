@@ -13,3 +13,4 @@ const bigTextStyle = const TextStyle(fontSize: 22);
 const keyRole = "role";
 const keyLoggedIn = "logged_in";
 const keyHasCompletedTutorial = "has_completed_tutorial";
+const keyFavoriteApps = "favorite_apps";
