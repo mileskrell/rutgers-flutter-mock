@@ -28,8 +28,8 @@ class SettingsRoute extends StatelessWidget {
                   DropdownButton<HomePage>(
                     value: appState.homePage,
                     items: <HomePage>[
-                      if (roleHasMyDay(appState.role)) MY_DAY,
-                      if (roleHasMyDashboard(appState.role))
+                      if (appState.role.hasMyDay) MY_DAY,
+                      if (appState.role.hasMyDashboard)
                         MY_DASHBOARD,
                       MY_APPS,
 //                      BUS, // Commented out for now because the current Bus page opens in a new route

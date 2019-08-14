@@ -21,7 +21,7 @@ class AppState extends ChangeNotifier {
 
     () async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString(keyRole, roleToString(role));
+      prefs.setString(keyRole, role.title);
     }();
 
     // If the role has been set to null, it means the user has just logged out.
@@ -110,12 +110,12 @@ class AppState extends ChangeNotifier {
 
     // Otherwise, try one of the other pages
 
-    if (roleHasMyDay(role)) {
+    if (role.hasMyDay) {
       homePage = MY_DAY;
       return;
     }
 
-    if (roleHasMyDashboard(role)) {
+    if (role.hasMyDashboard) {
       homePage = MY_DASHBOARD;
       return;
     }
@@ -124,83 +124,81 @@ class AppState extends ChangeNotifier {
   }
 }
 
-enum Role {
-  CURRENT_STUDENT,
-  FACULTY,
-  STAFF,
-  ADMITTED_STUDENT,
-  PARENT,
-  ALUMNUS,
-  GUEST
-}
+class Role {
+  static const CURRENT_STUDENT = Role(
+    title: "current student",
+    hasMyDay: true,
+    hasMyDashboard: true,
+    hasNetID: true,
+    hasCommunityID: false,
+  );
+  static const FACULTY = Role(
+    title: "faculty",
+    hasMyDay: false,
+    hasMyDashboard: true,
+    hasNetID: true,
+    hasCommunityID: false,
+  );
+  static const STAFF = Role(
+    title: "staff",
+    hasMyDay: false,
+    hasMyDashboard: true,
+    hasNetID: true,
+    hasCommunityID: false,
+  );
+  static const ADMITTED_STUDENT = Role(
+    title: "admitted student",
+    hasMyDay: false,
+    hasMyDashboard: true,
+    hasNetID: false,
+    hasCommunityID: true,
+  );
+  static const PARENT = Role(
+    title: "parent",
+    hasMyDay: false,
+    hasMyDashboard: true,
+    hasNetID: false,
+    hasCommunityID: true,
+  );
+  static const ALUMNUS = Role(
+    title: "alumnus",
+    hasMyDay: false,
+    hasMyDashboard: false,
+    hasNetID: false, // TODO Check this
+    hasCommunityID: false,
+  );
+  static const GUEST = Role(
+    title: "guest",
+    hasMyDay: false,
+    hasMyDashboard: false,
+    hasNetID: false,
+    hasCommunityID: false,
+  );
 
-/// In many languages, enums can contain fields and methods.
-/// But not in Dart, so we have this extra method here.
-String roleToString(Role role) {
-  if (role == null) {
-    return null;
+  final String title;
+  final bool hasMyDay;
+  final bool hasMyDashboard;
+  final bool hasNetID;
+  final bool hasCommunityID;
+
+  const Role({
+    @required this.title,
+    @required this.hasMyDay,
+    @required this.hasMyDashboard,
+    @required this.hasNetID,
+    @required this.hasCommunityID,
+  });
+
+  factory Role.fromTitle(String title) {
+    if (title == CURRENT_STUDENT.title) return CURRENT_STUDENT;
+    if (title == FACULTY.title) return FACULTY;
+    if (title == STAFF.title) return STAFF;
+    if (title == ADMITTED_STUDENT.title) return ADMITTED_STUDENT;
+    if (title == PARENT.title) return PARENT;
+    if (title == ALUMNUS.title) return ALUMNUS;
+    if (title == GUEST.title) return GUEST;
+    throw "Cannot create Role instance from unknown title $title";
   }
-  switch (role) {
-    case Role.CURRENT_STUDENT:
-      return "current_student";
-    case Role.FACULTY:
-      return "faculty";
-    case Role.STAFF:
-      return "staff";
-    case Role.ADMITTED_STUDENT:
-      return "admitted_student";
-    case Role.PARENT:
-      return "parent";
-    case Role.ALUMNUS:
-      return "alumnus";
-    case Role.GUEST:
-      return "guest";
-    default:
-      throw "Unknown role $role";
-  }
-}
-
-Role stringToRole(String role) {
-  switch (role) {
-    case "current_student":
-      return Role.CURRENT_STUDENT;
-    case "faculty":
-      return Role.FACULTY;
-    case "staff":
-      return Role.STAFF;
-    case "admitted_student":
-      return Role.ADMITTED_STUDENT;
-    case "parent":
-      return Role.PARENT;
-    case "alumnus":
-      return Role.ALUMNUS;
-    case "guest":
-      return Role.GUEST;
-    default:
-      throw "Unknown role $role";
-  }
-}
-
-bool roleHasMyDay(Role role) {
-  return role == Role.CURRENT_STUDENT;
-}
-
-bool roleHasMyDashboard(Role role) {
-  return role == Role.CURRENT_STUDENT ||
-      role == Role.FACULTY ||
-      role == Role.STAFF ||
-      role == Role.ADMITTED_STUDENT ||
-      role == Role.PARENT;
-}
-
-bool roleHasNetID(Role role) {
-  return role == Role.CURRENT_STUDENT ||
-      role == Role.FACULTY ||
-      role == Role.STAFF;
-}
-
-bool roleHasCommunityID(Role role) {
-  return role == Role.ADMITTED_STUDENT || role == Role.PARENT;
 }
 
 const MY_DAY = HomePage(
