@@ -51,5 +51,6 @@ class Link {
   final String url;
   final String linkTitle;
 
-  Link({@required this.text, @required this.url, @required this.linkTitle});
+  const Link(
+      {@required this.text, @required this.url, @required this.linkTitle});
 }
