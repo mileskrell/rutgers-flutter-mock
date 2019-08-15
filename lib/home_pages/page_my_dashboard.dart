@@ -6,6 +6,7 @@ import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_flutter_mock/widgets/eye-reveal.dart';
 import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
+import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 import 'package:rutgers_flutter_mock/widgets/my_dashboard_favorite_apps_card.dart';
 import 'package:rutgers_flutter_mock/widgets/my_dashboard_profile_card.dart';
 
@@ -24,28 +25,56 @@ class MyDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context);
 
-    final loginTypeString =
-    appState.role.hasNetID ? "NetID" : "CommunityID";
-    final loginUrl = appState.role.hasNetID
-        ? "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login"
-        : "data:text/html,<!DOCTYPE html><p>This would be the CommunityID login page</p>";
+    final loginMethod = appState.role.hasNetID ? netID : communityID;
 
     if (appState.loggedIn == false) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Center(
-          child: GradientButton(
-            title: "Log in with $loginTypeString to view My Dashboard",
-            isBigSquare: true,
-            size: 170,
-            onPressed: () async {
-              await Navigator.push<bool>(context,
-                  MaterialPageRoute(builder: (context) {
-                return WebViewRoute(loginUrl, "Log in with $loginTypeString");
-              }));
-
-              appState.loggedIn = true;
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              GradientButton(
+                title: "Log in with $loginMethod to view My Dashboard",
+                isBigSquare: true,
+                size: 170,
+                onPressed: () async {
+                  await Navigator.push<bool>(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebViewRoute(
+                          appState.role.loginUrl, "Log in with $loginMethod"),
+                    ),
+                  );
+                  appState.loggedIn = true;
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 2),
+              ),
+              GradientButton(
+                title: "What's a $loginMethod?",
+                isBigSquare: false,
+                onPressed: () {
+                  showDialog<void>(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text("What's a $loginMethod?"),
+                        content:
+                            LinkText(children: appState.role.loginExplanation),
+                        actions: <Widget>[
+                          FlatButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text("Close"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
           ),
         ),
       );

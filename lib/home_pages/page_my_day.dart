@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
+import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 import 'package:rutgers_flutter_mock/widgets/my_day_assignment_card.dart';
 import 'package:rutgers_flutter_mock/widgets/my_day_course_travel_directions_card.dart';
 
@@ -17,20 +19,50 @@ class MyDay extends StatelessWidget {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Center(
-          child: GradientButton(
-            title: "Log in with NetID to view My Day",
-            isBigSquare: true,
-            size: 170,
-            onPressed: () async {
-              await Navigator.push<bool>(context,
-                  MaterialPageRoute(builder: (context) {
-                return WebViewRoute(
-                    "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login",
-                    "Log in with NetID");
-              }));
-
-              appState.loggedIn = true;
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              GradientButton(
+                title: "Log in with NetID to view My Day",
+                isBigSquare: true,
+                size: 170,
+                onPressed: () async {
+                  await Navigator.push<bool>(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          WebViewRoute(netIdUrl, "Log in with NetID"),
+                    ),
+                  );
+                  appState.loggedIn = true;
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 2),
+              ),
+              GradientButton(
+                title: "What's a NetID?",
+                isBigSquare: false,
+                onPressed: () {
+                  showDialog<void>(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text("What's a NetID?"),
+                        content:
+                            LinkText(children: appState.role.loginExplanation),
+                        actions: <Widget>[
+                          FlatButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text("Close"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
           ),
         ),
       );
