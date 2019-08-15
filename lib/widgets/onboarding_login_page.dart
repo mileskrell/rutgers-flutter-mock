@@ -49,8 +49,6 @@ class OnboardingLoginPage extends StatelessWidget {
 
     // Everyone else (non-guests who haven't seen the tutorial before)
     final loginMethod = appState.role.hasNetID ? netID : communityID;
-    final loginUrl = appState.role.loginUrl;
-    final loginMethodExplanation = appState.role.loginExplanation;
 
     return Scaffold(
       body: Center(
@@ -72,7 +70,8 @@ class OnboardingLoginPage extends StatelessWidget {
               onPressed: () async {
                 await Navigator.push<bool>(context,
                     MaterialPageRoute(builder: (context) {
-                  return WebViewRoute(loginUrl, "Log in with $loginMethod");
+                  return WebViewRoute(
+                      appState.role.loginUrl, "Log in with $loginMethod");
                 }));
                 appState.loggedIn = true;
                 launchHome(context, appState);
@@ -86,19 +85,21 @@ class OnboardingLoginPage extends StatelessWidget {
               isBigSquare: false,
               onPressed: () {
                 showDialog<void>(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text("What's a $loginMethod?"),
-                        content: LinkText(children: loginMethodExplanation),
-                        actions: <Widget>[
-                          FlatButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text("Close"),
-                          ),
-                        ],
-                      );
-                    });
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("What's a $loginMethod?"),
+                      content:
+                          LinkText(children: appState.role.loginExplanation),
+                      actions: <Widget>[
+                        FlatButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Close"),
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
             ),
             Padding(
