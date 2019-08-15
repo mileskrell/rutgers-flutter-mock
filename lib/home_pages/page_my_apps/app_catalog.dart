@@ -164,17 +164,11 @@ final allApps = Map<String, App>.fromIterable(
 );
 
 final currentStudentDefaultFavoriteApps = <App>[
-  universityMap,
   handshake,
-  learningCentersNB,
   textbookRentals,
   residenceLife,
   studentHealth,
-  rutgersSubreddit,
-  employmentOpportunities,
-  placesToEat,
   ruStudentsBlog,
-  scarletKnights,
 ];
 
 final facultyDefaultFavoriteApps = <App>[
@@ -188,7 +182,6 @@ final staffDefaultFavoriteApps = <App>[
 
 final admittedStudentDefaultFavoriteApps = <App>[
   universityMap,
-  employmentOpportunities,
   goRutgers,
   ruStudentsBlog,
   rutgersSubreddit,
