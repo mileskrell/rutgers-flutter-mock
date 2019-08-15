@@ -84,6 +84,7 @@ class HomeState extends State<HomeRoute> {
     ];
 
     popupMenuButton ??= PopupMenuButton<String>(
+      tooltip: "Other menu items",
       itemBuilder: (context) {
         return [
           if (appState.loggedIn)
@@ -208,7 +209,7 @@ class HomeState extends State<HomeRoute> {
       setState(() {
         appBar = AppBar(
           leading: IconButton(
-              tooltip: "Close",
+              tooltip: "Close search",
               icon: Icon(Icons.close),
               onPressed: () => onPressSearch()),
           title: TextField(
@@ -231,7 +232,7 @@ class HomeState extends State<HomeRoute> {
               .title,
           actions: <Widget>[
             IconButton(
-                tooltip: "Search",
+                tooltip: "Search My Apps",
                 icon: Icon(Icons.search),
                 onPressed: () => onPressSearch()),
             popupMenuButton,
