@@ -199,6 +199,20 @@ class Role {
     if (title == GUEST.title) return GUEST;
     throw "Cannot create Role instance from unknown title $title";
   }
+
+  String get loginUrl {
+    if (hasNetID) {
+      return netIdUrl;
+    }
+    return communityIdUrl;
+  }
+
+  List<Object> get loginExplanation {
+    if (hasNetID) {
+      return netIDExplanation;
+    }
+    return communityIDExplanation;
+  }
 }
 
 const MY_DAY = HomePage(
