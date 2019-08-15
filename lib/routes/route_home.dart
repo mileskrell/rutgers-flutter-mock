@@ -213,6 +213,11 @@ class HomeState extends State<HomeRoute> {
               icon: Icon(Icons.close),
               onPressed: () => onPressSearch()),
           title: TextField(
+            decoration: InputDecoration(
+              labelStyle: TextStyle(color: Colors.white),
+              labelText: "Search My Apps",
+              border: InputBorder.none,
+            ),
             autofocus: true,
             autocorrect: false,
             style: TextStyle(color: Colors.white),
