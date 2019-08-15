@@ -48,41 +48,9 @@ class OnboardingLoginPage extends StatelessWidget {
     }
 
     // Everyone else (non-guests who haven't seen the tutorial before)
-    String loginMethod, loginUrl;
-    List<Object> loginMethodExplanation;
-
-    if (appState.role == Role.ADMITTED_STUDENT ||
-        appState.role == Role.PARENT) {
-      loginMethod = "CommunityID";
-      loginMethodExplanation = [
-        "A CommunityID account is used to access applications by the "
-            "extended community of Rutgers University."
-            "\n\nIf you have not yet created a CommunityID, you can do so ",
-        Link(
-            text: "here",
-            url: "https://rcm.rutgers.edu",
-            linkTitle: "CommunityID"),
-        "."
-      ];
-
-      loginUrl =
-          "data:text/html,<!DOCTYPE html><p>This would be the CommunityID login page</p>";
-    } else {
-      // user is student, staff, or faculty
-      loginMethod = "NetID";
-      loginMethodExplanation = [
-        "All faculty, staff, students and guests are assigned a "
-            "Rutgers unique identifier known as a NetID, comprised of "
-            "initials and a unique number (e.g. jqs23)."
-            "\n\nIf you have not yet activated your NetID, you can do so ",
-        Link(
-            text: "here", url: "https://netid.rutgers.edu", linkTitle: "NetID"),
-        "."
-      ];
-
-      loginUrl =
-          "https://cas.rutgers.edu/login?renew=true&service=https://my.rutgers.edu/portal/Login";
-    }
+    final loginMethod = appState.role.hasNetID ? netID : communityID;
+    final loginUrl = appState.role.loginUrl;
+    final loginMethodExplanation = appState.role.loginExplanation;
 
     return Scaffold(
       body: Center(
