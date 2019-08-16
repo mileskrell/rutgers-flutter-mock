@@ -161,12 +161,12 @@ class HomeState extends State<HomeRoute> {
 
     return Scaffold(
       appBar: appBar,
-      body: pages[currentPageIndex < pages.length ? currentPageIndex : 0],
+      body: pages[currentPageIndex],
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: pantone431,
         selectedItemColor: pantone186,
         showUnselectedLabels: true,
-        currentIndex: currentPageIndex < pages.length ? currentPageIndex : 0,
+        currentIndex: currentPageIndex,
         onTap: (newIndex) {
           if ((bottomNavBarItems[newIndex].title as Text).data == "Bus") {
             Navigator.pushNamed(context, "/bus");
@@ -197,9 +197,7 @@ class HomeState extends State<HomeRoute> {
         "My Apps")) {
       setState(() {
         appBar = AppBar(
-          title: bottomNavBarItems[
-                  currentPageIndex < pages.length ? currentPageIndex : 0]
-              .title,
+          title: bottomNavBarItems[currentPageIndex].title,
           actions: [popupMenuButton],
         );
       });
@@ -232,9 +230,7 @@ class HomeState extends State<HomeRoute> {
     } else {
       setState(() {
         appBar = AppBar(
-          title: bottomNavBarItems[
-                  currentPageIndex < pages.length ? currentPageIndex : 0]
-              .title,
+          title: bottomNavBarItems[currentPageIndex].title,
           actions: <Widget>[
             IconButton(
                 tooltip: "Search My Apps",
