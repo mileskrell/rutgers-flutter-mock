@@ -8,9 +8,9 @@ import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 ///
 /// This file also defines the default favorites for each role.
 
-final residenceLife = App(
-  tag: "link_residence_life",
-  title: "Residence Life",
+final residenceLifeHousing = App(
+  tag: "link_residence_life_housing",
+  title: "Residence Life (housing)",
   url:
       "https://oncampus.rutgers.edu/hmswebstudent/Login.asp?TargetPage=Default.asp?",
   iconData: Icons.home,
@@ -143,7 +143,7 @@ final goRutgers = App(
 /// Map of [App.tag] to [App]
 final allApps = Map<String, App>.fromIterable(
   <App>[
-    residenceLife,
+    residenceLifeHousing,
     textbookRentals,
     handshake,
     learningCentersNB,
@@ -166,7 +166,7 @@ final allApps = Map<String, App>.fromIterable(
 final currentStudentDefaultFavoriteApps = <App>[
   handshake,
   textbookRentals,
-  residenceLife,
+  residenceLifeHousing,
   studentHealth,
   ruStudentsBlog,
 ];
