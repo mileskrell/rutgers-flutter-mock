@@ -52,11 +52,15 @@ flutter:
     - assets/profile_fred_faculty_member.jpg
     - assets/profile_samantha_staff_member.jpg
     - assets/profile_unknown.png
+    - assets/logo_canvas.png
     - assets/logo_facebook.png
+    - assets/logo_gmail.png
     - assets/logo_go_rutgers.jpeg
     - assets/logo_handshake.png
+    - assets/logo_office_365.png
     - assets/logo_orcid.png
     - assets/logo_reddit.png
+    - assets/logo_sakai.png
     - assets/logo_scarlet_knights.png
     - assets/fa_compass_431.png
     - assets/fa_exchange_alt_431.png

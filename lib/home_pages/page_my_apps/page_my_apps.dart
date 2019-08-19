@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
-import 'package:rutgers_flutter_mock/models/app.dart';
-import 'package:rutgers_flutter_mock/widgets/app_widget.dart';
+import 'package:rutgers_flutter_mock/models/app_category.dart';
+import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/widgets/app_category_widget.dart';
 
 /// The My Apps page.
 ///
@@ -19,25 +20,33 @@ class MyApps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<App> filteredApps;
+    final appState = Provider.of<AppState>(context, listen: false);
 
-    if (searchText.isEmpty) {
-      filteredApps = allApps.values.toList();
-    } else {
-      filteredApps = allApps.values
-          .where((app) =>
-              app.title.toLowerCase().contains(searchText.toLowerCase()))
+    List<AppCategory> appCategories = appState.role.appCategories;
+
+    if (searchText.isNotEmpty) {
+      appCategories = appCategories
+          // Only show apps matching search text in each category
+          .map((category) {
+            final filteredApps = category.apps
+                .where((app) =>
+                    app.title.toLowerCase().contains(searchText.toLowerCase()))
+                .toList();
+            return AppCategory(title: category.title, apps: filteredApps);
+          })
+          // Filter out any categories that are now empty
+          .where((category) => category.apps.isNotEmpty)
           .toList();
     }
 
-    if (filteredApps.isNotEmpty) {
+    if (appCategories.isNotEmpty) {
       return ListView.builder(
-        itemCount: filteredApps.length,
+        itemCount: appCategories.length,
         itemBuilder: (context, index) {
-          return AppWidget(
-            filteredApps[index],
-            style: AppWidgetStyle.CARD,
-          );
+          return AppCategoryWidget(AppCategory(
+            title: appCategories[index].title,
+            apps: appCategories[index].apps,
+          ));
         },
       );
     }
