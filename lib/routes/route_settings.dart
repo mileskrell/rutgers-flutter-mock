@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/models/home_page.dart';
 
 /// A page where the user can configure app-wide settings
 class SettingsRoute extends StatelessWidget {
@@ -28,11 +29,11 @@ class SettingsRoute extends StatelessWidget {
                   DropdownButton<HomePage>(
                     value: appState.homePage,
                     items: <HomePage>[
-                      if (appState.role.hasMyDay) MY_DAY,
+                      if (appState.role.hasMyDay) HomePage.MY_DAY,
                       if (appState.role.hasMyDashboard)
-                        MY_DASHBOARD,
-                      MY_APPS,
-//                      BUS, // Commented out for now because the current Bus page opens in a new route
+                        HomePage.MY_DASHBOARD,
+                      HomePage.MY_APPS,
+//                      HomePage.BUS, // Commented out for now because the current Bus page opens in a new route
                     ].map((HomePage page) {
                       return new DropdownMenuItem<HomePage>(
                         value: page,

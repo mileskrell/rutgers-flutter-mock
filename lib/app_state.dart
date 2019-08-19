@@ -2,12 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
 import 'package:rutgers_flutter_mock/models/app.dart';
+import 'package:rutgers_flutter_mock/models/home_page.dart';
 import 'package:rutgers_flutter_mock/models/role.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
@@ -112,50 +109,15 @@ class AppState extends ChangeNotifier {
     // Otherwise, try one of the other pages
 
     if (role.hasMyDay) {
-      homePage = MY_DAY;
+      homePage = HomePage.MY_DAY;
       return;
     }
 
     if (role.hasMyDashboard) {
-      homePage = MY_DASHBOARD;
+      homePage = HomePage.MY_DASHBOARD;
       return;
     }
 
-    homePage = MY_APPS;
+    homePage = HomePage.MY_APPS;
   }
-}
-
-const MY_DAY = HomePage(
-  title: "My Day",
-  associatedPage: MyDay,
-);
-const HomePage MY_DASHBOARD = HomePage(
-  title: "My Dashboard",
-  associatedPage: MyDashboard,
-);
-const HomePage MY_APPS = HomePage(
-  title: "My Apps",
-  associatedPage: MyApps,
-);
-const HomePage BUS = HomePage(
-  title: "Bus",
-  associatedPage: Bus,
-);
-
-class HomePage {
-  final String title;
-
-  final Type associatedPage;
-
-  const HomePage({this.title, this.associatedPage});
-
-  static final pages = Map<String, HomePage>.fromIterable(
-    <HomePage>[
-      MY_DAY,
-      MY_DASHBOARD,
-      MY_APPS,
-      BUS,
-    ],
-    key: (dynamic element) => (element as HomePage).title,
-  );
 }
