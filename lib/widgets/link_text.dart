@@ -8,11 +8,8 @@ import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 class LinkText extends StatelessWidget {
   final List<Object> children;
 
-  LinkText({@required this.children}) {
-    if (children == null) {
-      throw "Elements cannot be null";
-    }
-  }
+  const LinkText({@required this.children})
+      : assert(children != null, "Elements cannot be null");
 
   @override
   Widget build(BuildContext context) {
