@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/models/role.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
 
