@@ -30,14 +30,20 @@ class MyApps extends StatelessWidget {
           .toList();
     }
 
-    return ListView.builder(
-      itemCount: filteredApps.length,
-      itemBuilder: (context, index) {
-        return AppWidget(
-          filteredApps[index],
-          style: AppWidgetStyle.CARD,
-        );
-      },
+    if (filteredApps.isNotEmpty) {
+      return ListView.builder(
+        itemCount: filteredApps.length,
+        itemBuilder: (context, index) {
+          return AppWidget(
+            filteredApps[index],
+            style: AppWidgetStyle.CARD,
+          );
+        },
+      );
+    }
+
+    return Center(
+      child: Text("No results found"),
     );
   }
 }
