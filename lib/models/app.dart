@@ -18,24 +18,20 @@ class App {
   final bool inactive;
   final LinkText inactiveExplanation;
 
-  App(
+  const App(
       {@required this.tag,
       @required this.title,
       @required this.url,
       this.iconData,
       this.assetString,
       this.inactive = false,
-      this.inactiveExplanation}) {
-    if (title == null || url == null) {
-      throw "App \"$title\" must provide both a title and URL";
-    }
-
-    if (iconData == null && assetString == null) {
-      throw "App \"$title\" must provide either icon data or asset string";
-    }
-
-    if (inactive && inactiveExplanation == null) {
-      throw "Inactive app \"$title\" must provide a reason for being inactive";
-    }
-  }
+      this.inactiveExplanation})
+      : assert(title != null, "App \"$title\" doesn't provide a title"),
+        assert(url != null, "App \"$title\" doesn't provide a URL"),
+        assert(iconData != null || assetString != null,
+            "App \"$title\" doesn't provide icon data or asset string"),
+        assert((iconData == null || assetString == null),
+            "App \"$title\" provides both icon data and asset string"),
+        assert(!inactive || inactiveExplanation != null,
+            "App $title is inactive, but no inactiveExplanation was provided");
 }
