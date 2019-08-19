@@ -17,8 +17,7 @@ class FavoriteAppsCard extends StatelessWidget {
       itemBuilder: (context, index, animation) {
         return AppWidget(
           appState.favoriteApps[index],
-          style: AppWidgetStyle.TILE,
-          index: index,
+          removeIndex: index,
         );
       },
     );
