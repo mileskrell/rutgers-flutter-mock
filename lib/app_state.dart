@@ -131,6 +131,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: true,
     hasCommunityID: false,
+    defaultFavoriteApps: currentStudentDefaultFavoriteApps,
   );
   static const FACULTY = Role(
     title: "faculty",
@@ -138,6 +139,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: true,
     hasCommunityID: false,
+    defaultFavoriteApps: facultyDefaultFavoriteApps,
   );
   static const STAFF = Role(
     title: "staff",
@@ -145,6 +147,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: true,
     hasCommunityID: false,
+    defaultFavoriteApps: staffDefaultFavoriteApps,
   );
   static const ADMITTED_STUDENT = Role(
     title: "admitted student",
@@ -152,6 +155,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: false,
     hasCommunityID: true,
+    defaultFavoriteApps: admittedStudentDefaultFavoriteApps,
   );
   static const PARENT = Role(
     title: "parent",
@@ -159,6 +163,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: false,
     hasCommunityID: true,
+    defaultFavoriteApps: parentDefaultFavoriteApps,
   );
   static const ALUMNUS = Role(
     title: "alumnus",
@@ -166,6 +171,7 @@ class Role {
     hasMyDashboard: false,
     hasNetID: false, // TODO Check this
     hasCommunityID: false,
+    defaultFavoriteApps: alumnusDefaultFavoriteApps,
   );
   static const GUEST = Role(
     title: "guest",
@@ -173,6 +179,7 @@ class Role {
     hasMyDashboard: false,
     hasNetID: false,
     hasCommunityID: false,
+    defaultFavoriteApps: guestDefaultFavoriteApps,
   );
 
   final String title;
@@ -180,6 +187,7 @@ class Role {
   final bool hasMyDashboard;
   final bool hasNetID;
   final bool hasCommunityID;
+  final List<App> defaultFavoriteApps;
 
   const Role({
     @required this.title,
@@ -187,6 +195,7 @@ class Role {
     @required this.hasMyDashboard,
     @required this.hasNetID,
     @required this.hasCommunityID,
+    @required this.defaultFavoriteApps,
   });
 
   factory Role.fromTitle(String title) {

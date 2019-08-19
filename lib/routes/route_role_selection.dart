@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
 
@@ -104,43 +103,8 @@ class RoleSelectionRoute extends StatelessWidget {
     appState.loggedIn = false;
     appState.hasCompletedTutorial = false;
     appState.setHomePageFromTitle(null);
-    setDefaultFavoriteApps(appState);
+    appState.favoriteApps = appState.role.defaultFavoriteApps;
 
     Navigator.pushNamed(context, "/onboarding");
-  }
-
-  void setDefaultFavoriteApps(AppState appState) {
-    switch (appState.role) {
-      case Role.CURRENT_STUDENT:
-        appState.favoriteApps = currentStudentDefaultFavoriteApps;
-        break;
-
-      case Role.FACULTY:
-        appState.favoriteApps = facultyDefaultFavoriteApps;
-        break;
-
-      case Role.STAFF:
-        appState.favoriteApps = staffDefaultFavoriteApps;
-        break;
-
-      case Role.ADMITTED_STUDENT:
-        appState.favoriteApps = admittedStudentDefaultFavoriteApps;
-        break;
-
-      case Role.PARENT:
-        appState.favoriteApps = parentDefaultFavoriteApps;
-        break;
-
-      case Role.ALUMNUS:
-        appState.favoriteApps = alumnusDefaultFavoriteApps;
-        break;
-
-      case Role.GUEST:
-        appState.favoriteApps = guestDefaultFavoriteApps;
-        break;
-
-      default:
-        throw "Unknown role ${appState.role}";
-    }
   }
 }
