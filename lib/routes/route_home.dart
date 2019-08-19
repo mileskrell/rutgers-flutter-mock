@@ -6,6 +6,7 @@ import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
+import 'package:rutgers_flutter_mock/models/home_page.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
 /// The main route of the app, containing multiple pages and a bottom
@@ -52,19 +53,19 @@ class HomeState extends State<HomeRoute> {
     if (!hasSeenHomePage) {
       hasSeenHomePage = true;
       switch (appState.homePage) {
-        case MY_DAY:
+        case HomePage.MY_DAY:
           currentPageIndex =
               pages.indexOf(pages.where((it) => it is MyDay).toList()[0]);
           break;
-        case MY_DASHBOARD:
+        case HomePage.MY_DASHBOARD:
           currentPageIndex =
               pages.indexOf(pages.where((it) => it is MyDashboard).toList()[0]);
           break;
-        case MY_APPS:
+        case HomePage.MY_APPS:
           currentPageIndex =
               pages.indexOf(pages.where((it) => it is MyApps).toList()[0]);
           break;
-        case BUS:
+        case HomePage.BUS:
           currentPageIndex =
               pages.indexOf(pages.where((it) => it is Bus).toList()[0]);
           break;
