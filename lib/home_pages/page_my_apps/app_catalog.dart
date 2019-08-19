@@ -8,7 +8,7 @@ import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 ///
 /// This file also defines the default favorites for each role.
 
-final residenceLifeHousing = App(
+const residenceLifeHousing = App(
   tag: "link_residence_life_housing",
   title: "Residence Life (housing)",
   url:
@@ -16,7 +16,7 @@ final residenceLifeHousing = App(
   iconData: Icons.home,
 );
 
-final textbookRentals = App(
+const textbookRentals = App(
   tag: "link_textbook_rentals",
   title: "Textbook rentals",
   url:
@@ -37,42 +37,42 @@ final textbookRentals = App(
   ),
 );
 
-final handshake = App(
+const handshake = App(
   tag: "link_handshake",
   title: "Handshake",
   url: "https://app.joinhandshake.com/auth?auth=590",
   assetString: "assets/logo_handshake.png",
 );
 
-final learningCentersNB = App(
+const learningCentersNB = App(
   tag: "link_learning_centers_nb",
   title: "Learning Centers (New Brunswick)",
   url: "https://rlc.rutgers.edu/",
   iconData: Icons.local_library,
 );
 
-final universityMap = App(
+const universityMap = App(
   tag: "link_university_map",
   title: "University map",
   url: "https://maps.rutgers.edu/",
   iconData: Icons.map,
 );
 
-final studentHealth = App(
+const studentHealth = App(
   tag: "link_student_health",
   title: "Student Health",
   url: "http://health.rutgers.edu/",
   iconData: Icons.local_hospital,
 );
 
-final ruParentsBlog = App(
+const ruParentsBlog = App(
   tag: "link_ru_parents_blog",
   title: "RU Parents Blog",
   url: "http://rublogs.rutgers.edu/parents/",
   iconData: Icons.computer,
 );
 
-final ruStudentsBlog = App(
+const ruStudentsBlog = App(
   tag: "link_ru_students_blog",
     title: "RU Students Blog",
     url: "https://rustudentblogs.wordpress.com/",
@@ -84,56 +84,56 @@ final ruStudentsBlog = App(
       ],
     ));
 
-final ruaa = App(
+const ruaa = App(
   tag: "link_ruaa",
   title: "Rutgers University Alumni Association website",
   url: "http://www.ralumni.com/",
   iconData: Icons.people,
 );
 
-final employmentOpportunities = App(
+const employmentOpportunities = App(
   tag: "link_employment_opportunities",
   title: "Employment opportunities",
   url: "https://jobs.rutgers.edu/postings/search",
   iconData: Icons.work,
 );
 
-final placesToEat = App(
+const placesToEat = App(
   tag: "link_places_to_eat",
   title: "Places to eat",
   url: "http://food.rutgers.edu/places-to-eat/",
   iconData: Icons.fastfood,
 );
 
-final orcid = App(
+const orcid = App(
   tag: "link_orcid",
   title: "Update or create Open Researcher and Contributor ID",
   url: "https://personalinfo.rutgers.edu/pi/updateOrcid.htm",
   assetString: "assets/logo_orcid.png",
 );
 
-final rutgersFacebook = App(
+const rutgersFacebook = App(
   tag: "link_rutgers_facebook",
   title: "Rutgers on Facebook",
   url: "https://www.facebook.com/RutgersU/",
   assetString: "assets/logo_facebook.png",
 );
 
-final rutgersSubreddit = App(
+const rutgersSubreddit = App(
   tag: "link_rutgers_subreddit",
   title: "Rutgers subreddit",
   url: "https://www.reddit.com/r/rutgers/",
   assetString: "assets/logo_reddit.png",
 );
 
-final scarletKnights = App(
+const scarletKnights = App(
   tag: "link_scarlet_knights",
   title: "Scarlet Knights",
   url: "http://www.scarletknights.com/index-main.html",
   assetString: "assets/logo_scarlet_knights.png",
 );
 
-final goRutgers = App(
+const goRutgers = App(
   tag: "link_go_rutgers",
   title: "Go Rutgers",
   url: "http://go-rutgers.com",
@@ -163,7 +163,7 @@ final allApps = Map<String, App>.fromIterable(
   key: (dynamic element) => (element as App).tag,
 );
 
-final currentStudentDefaultFavoriteApps = <App>[
+const currentStudentDefaultFavoriteApps = <App>[
   handshake,
   textbookRentals,
   residenceLifeHousing,
@@ -171,16 +171,16 @@ final currentStudentDefaultFavoriteApps = <App>[
   ruStudentsBlog,
 ];
 
-final facultyDefaultFavoriteApps = <App>[
+const facultyDefaultFavoriteApps = [
   orcid,
   placesToEat,
 ];
 
-final staffDefaultFavoriteApps = <App>[
+const staffDefaultFavoriteApps = [
   placesToEat,
 ];
 
-final admittedStudentDefaultFavoriteApps = <App>[
+const admittedStudentDefaultFavoriteApps = [
   universityMap,
   goRutgers,
   ruStudentsBlog,
@@ -188,21 +188,21 @@ final admittedStudentDefaultFavoriteApps = <App>[
   scarletKnights,
 ];
 
-final parentDefaultFavoriteApps = <App>[
+const parentDefaultFavoriteApps = [
   ruParentsBlog,
   rutgersFacebook,
   scarletKnights,
 ];
 
 // Never seen in mockup
-final alumnusDefaultFavoriteApps = <App>[
+const alumnusDefaultFavoriteApps = <App>[
   ruaa,
   scarletKnights,
   rutgersSubreddit,
   placesToEat,
 ];
 
-final guestDefaultFavoriteApps = <App>[
+const guestDefaultFavoriteApps = <App>[
   universityMap,
   placesToEat,
   scarletKnights,
