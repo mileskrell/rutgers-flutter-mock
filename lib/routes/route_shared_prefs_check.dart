@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
+import 'package:rutgers_flutter_mock/models/role.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
 /// This route is launched on app startup. It uses [SharedPreferences] to check
