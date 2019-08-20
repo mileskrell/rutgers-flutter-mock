@@ -15,6 +15,7 @@ class App {
 
   final IconData iconData;
   final String assetString;
+  final bool isNew;
   final bool inactive;
   final LinkText inactiveExplanation;
 
@@ -24,6 +25,7 @@ class App {
       @required this.url,
       this.iconData,
       this.assetString,
+      this.isNew = false,
       this.inactive = false,
       this.inactiveExplanation})
       : assert(title != null, "App \"$title\" doesn't provide a title"),

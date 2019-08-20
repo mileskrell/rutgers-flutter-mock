@@ -52,40 +52,70 @@ class AppWidget extends StatelessWidget {
       },
       child: Container(
         color: app.inactive ? Colors.grey.shade300 : null,
-        child: ListTile(
-          title: Text(app.title),
-          leading: app.iconData != null
-              ? Icon(app.iconData)
-              : Image.asset(app.assetString, width: 25),
-          trailing: appState.loggedIn
-              ? IconButton(
-                  onPressed: () {
-                    if (isFavorite) {
-                      appState.favoriteApps = appState.favoriteApps
-                        ..remove(app);
-                      if (removeIndex != null) {
-                        AnimatedList.of(context).removeItem(
-                          removeIndex,
-                          (context, animation) => SizeTransition(
-                            sizeFactor: animation,
-                            child: AppWidget(app, removeIndex: removeIndex),
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: Text(app.title),
+              subtitle: app.isNew
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            color: app.inactive
+                                ? Colors.grey.shade600
+                                : Colors.green,
+                            borderRadius: BorderRadius.circular(3),
                           ),
-                        );
-                      }
-                    } else {
-                      appState.favoriteApps = appState.favoriteApps..add(app);
-                      if (removeIndex != null) {
-                        // Won't ever happen with the current UI
-                        AnimatedList.of(context).insertItem(removeIndex);
-                      }
-                    }
-                  },
-                  icon: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: Colors.red.shade900,
-                  ),
-                )
-              : null,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 2,
+                              horizontal: 4,
+                            ),
+                            child: Text(
+                              "New",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : null,
+              leading: app.iconData != null
+                  ? Icon(app.iconData)
+                  : Image.asset(app.assetString, width: 25),
+              trailing: appState.loggedIn
+                  ? IconButton(
+                      onPressed: () {
+                        if (isFavorite) {
+                          appState.favoriteApps = appState.favoriteApps
+                            ..remove(app);
+                          if (removeIndex != null) {
+                            AnimatedList.of(context).removeItem(
+                              removeIndex,
+                              (context, animation) => SizeTransition(
+                                sizeFactor: animation,
+                                child: AppWidget(app, removeIndex: removeIndex),
+                              ),
+                            );
+                          }
+                        } else {
+                          appState.favoriteApps = appState.favoriteApps
+                            ..add(app);
+                          if (removeIndex != null) {
+                            // Won't ever happen with the current UI
+                            AnimatedList.of(context).insertItem(removeIndex);
+                          }
+                        }
+                      },
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: Colors.red.shade900,
+                      ),
+                    )
+                  : null,
+            )
+          ],
         ),
       ),
     );
