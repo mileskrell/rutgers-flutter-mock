@@ -233,10 +233,26 @@ class HomeState extends State<HomeRoute> {
         appBar = AppBar(
           title: bottomNavBarItems[currentPageIndex].title,
           actions: <Widget>[
-            IconButton(
-                tooltip: "Search My Apps",
-                icon: Icon(Icons.search),
-                onPressed: () => onPressSearch()),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 4),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 6),
+                decoration: BoxDecoration(
+                  color: pantone431,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: InkWell(
+                  onTap: () => onPressSearch(),
+                  child: Row(
+                    children: <Widget>[
+                      Text("Search My Apps"),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
+                      Icon(Icons.search),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             popupMenuButton,
           ],
         );
