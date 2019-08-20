@@ -117,6 +117,7 @@ const canvas = App(
   title: "Canvas",
   url: "https://rutgers.instructure.com/login/saml/",
   assetString: "assets/logo_canvas.png",
+  isNew: true,
 );
 
 const sakai = App(
@@ -173,6 +174,7 @@ const healthInsuranceWaiverPolicy = App(
   url:
       "http://riskmanagement.rutgers.edu/student-information/student-health-insurance",
   iconData: Icons.healing,
+  isNew: true,
 );
 
 const financialAidAwardStatus = App(
@@ -227,6 +229,7 @@ const rutgersSubreddit = App(
   title: "Rutgers Subreddit",
   url: "https://www.reddit.com/r/rutgers/",
   assetString: "assets/logo_reddit.png",
+  isNew: true,
 );
 
 const ruParentsBlog = App(
@@ -241,6 +244,7 @@ const ruStudentsBlog = App(
     title: "RU Students Blog",
     url: "https://rustudentblogs.wordpress.com/",
     iconData: Icons.computer,
+    isNew: true,
     inactive: true,
     inactiveExplanation: LinkText(
       children: [
