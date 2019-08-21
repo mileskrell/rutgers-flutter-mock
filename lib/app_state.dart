@@ -71,7 +71,7 @@ class AppState extends ChangeNotifier {
     () async {
       final prefs = await SharedPreferences.getInstance();
       prefs.setStringList(
-          keyFavoriteApps, favoriteApps.map((app) => app.tag).toList());
+          keyFavoriteApps, favoriteApps.map((app) => app.sharedPrefsTag).toList());
     }();
   }
 
@@ -79,8 +79,8 @@ class AppState extends ChangeNotifier {
   void loadFavoriteAppsFromTags(List<String> favoriteAppsTags) {
     favoriteApps = favoriteAppsTags
         // Make sure the current apps still contain the favorite apps
-        .where((tag) => allApps.containsKey(tag))
-        .map((tag) => allApps[tag])
+        .where((sharedPrefsTag) => allApps.containsKey(sharedPrefsTag))
+        .map((sharedPrefsTag) => allApps[sharedPrefsTag])
         .toList();
   }
 

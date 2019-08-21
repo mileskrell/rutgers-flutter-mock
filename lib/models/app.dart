@@ -8,7 +8,7 @@ import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 ///
 /// TODO: Maybe add an "info" button to this widget, like on my.rutgers.edu
 class App {
-  final String tag;
+  final String sharedPrefsTag;
 
   final String title;
   final String url;
@@ -20,7 +20,7 @@ class App {
   final LinkText inactiveExplanation;
 
   const App(
-      {@required this.tag,
+      {@required this.sharedPrefsTag,
       @required this.title,
       @required this.url,
       this.iconData,
