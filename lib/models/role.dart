@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/link_catalog.dart';
 import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/models/app_category.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
@@ -13,7 +13,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: true,
     hasCommunityID: false,
-    defaultFavoriteApps: currentStudentDefaultFavoriteApps,
+    defaultFavoriteApps: currentStudentDefaultFavoriteLinks,
     linkCategories: currentStudentLinkCategories,
   );
   static const FACULTY = Role(
@@ -22,7 +22,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: true,
     hasCommunityID: false,
-    defaultFavoriteApps: facultyDefaultFavoriteApps,
+    defaultFavoriteApps: facultyDefaultFavoriteLinks,
     linkCategories: facultyLinkCategories,
   );
   static const STAFF = Role(
@@ -31,7 +31,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: true,
     hasCommunityID: false,
-    defaultFavoriteApps: staffDefaultFavoriteApps,
+    defaultFavoriteApps: staffDefaultFavoriteLinks,
     linkCategories: staffLinkCategories,
   );
   static const ADMITTED_STUDENT = Role(
@@ -40,7 +40,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: false,
     hasCommunityID: true,
-    defaultFavoriteApps: admittedStudentDefaultFavoriteApps,
+    defaultFavoriteApps: admittedStudentDefaultFavoriteLinks,
     linkCategories: admittedStudentLinkCategories,
   );
   static const PARENT = Role(
@@ -49,7 +49,7 @@ class Role {
     hasMyDashboard: true,
     hasNetID: false,
     hasCommunityID: true,
-    defaultFavoriteApps: parentDefaultFavoriteApps,
+    defaultFavoriteApps: parentDefaultFavoriteLinks,
     linkCategories: parentLinkCategories,
   );
   static const ALUMNUS = Role(
@@ -59,7 +59,7 @@ class Role {
     hasMyDashboard: false,
     hasNetID: false, // TODO Check this
     hasCommunityID: false,
-    defaultFavoriteApps: alumnusDefaultFavoriteApps,
+    defaultFavoriteApps: alumnusDefaultFavoriteLinks,
     linkCategories: alumnusLinkCategories,
   );
   static const GUEST = Role(
@@ -68,7 +68,7 @@ class Role {
     hasMyDashboard: false,
     hasNetID: false,
     hasCommunityID: false,
-    defaultFavoriteApps: guestDefaultFavoriteApps,
+    defaultFavoriteApps: guestDefaultFavoriteLinks,
     linkCategories: guestLinkCategories,
   );
 

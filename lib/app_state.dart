@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/app_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/link_catalog.dart';
 import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/models/home_page.dart';
 import 'package:rutgers_flutter_mock/models/role.dart';
@@ -79,8 +79,8 @@ class AppState extends ChangeNotifier {
   void loadFavoriteAppsFromTags(List<String> favoriteAppsTags) {
     favoriteApps = favoriteAppsTags
         // Make sure the current apps still contain the favorite apps
-        .where((sharedPrefsTag) => allApps.containsKey(sharedPrefsTag))
-        .map((sharedPrefsTag) => allApps[sharedPrefsTag])
+        .where((sharedPrefsTag) => allLinks.containsKey(sharedPrefsTag))
+        .map((sharedPrefsTag) => allLinks[sharedPrefsTag])
         .toList();
   }
 

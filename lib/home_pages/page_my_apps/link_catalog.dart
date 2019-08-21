@@ -4,10 +4,10 @@ import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/models/app_category.dart';
 import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 
-/// All the [App]s are defined here. I would call them "widgets", but that
-/// obviously conflicts with Flutter.
+/// All the link [App]s are defined here.
 ///
-/// This file also defines the default favorites for each role.
+/// This file also defines the link categories
+/// and default favorite links for each role.
 
 const learningCentersNB = App(
   sharedPrefsTag: "link_learning_centers_nb",
@@ -310,7 +310,7 @@ const allLinkCategories = {
 };
 
 /// Map of [App.sharedPrefsTag] to [App]
-final allApps = Map<String, App>.fromIterable(
+final allLinks = Map<String, App>.fromIterable(
   allLinkCategories.expand<App>((category) => category.apps),
   key: (dynamic element) => (element as App).sharedPrefsTag,
 );
@@ -398,9 +398,9 @@ const guestLinkCategories = [
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// Default favorite apps for each role
+/// Default favorite links for each role
 
-const currentStudentDefaultFavoriteApps = [
+const currentStudentDefaultFavoriteLinks = [
   canvas,
   sakai,
   handshake,
@@ -408,16 +408,16 @@ const currentStudentDefaultFavoriteApps = [
   ruStudentsBlog,
 ];
 
-const facultyDefaultFavoriteApps = [
+const facultyDefaultFavoriteLinks = [
   orcid,
   placesToEat,
 ];
 
-const staffDefaultFavoriteApps = [
+const staffDefaultFavoriteLinks = [
   placesToEat,
 ];
 
-const admittedStudentDefaultFavoriteApps = [
+const admittedStudentDefaultFavoriteLinks = [
   universityMap,
   goRutgers,
   ruStudentsBlog,
@@ -425,20 +425,20 @@ const admittedStudentDefaultFavoriteApps = [
   scarletKnights,
 ];
 
-const parentDefaultFavoriteApps = [
+const parentDefaultFavoriteLinks = [
   ruParentsBlog,
   rutgersFacebook,
   scarletKnights,
 ];
 
-const alumnusDefaultFavoriteApps = <App>[
+const alumnusDefaultFavoriteLinks = <App>[
   ruaa,
   scarletKnights,
   rutgersSubreddit,
   placesToEat,
 ];
 
-const guestDefaultFavoriteApps = <App>[
+const guestDefaultFavoriteLinks = <App>[
   universityMap,
   placesToEat,
   scarletKnights,
