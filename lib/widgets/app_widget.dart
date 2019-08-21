@@ -43,11 +43,17 @@ class AppWidget extends StatelessWidget {
             },
           );
         } else {
-          Navigator.push(
-              context,
-              MaterialPageRoute<Null>(
-                builder: (context) => WebViewRoute(app.url, app.title),
-              ));
+          Navigator.push(context, MaterialPageRoute<Null>(
+            builder: (context) {
+              if (app.url != null) {
+                return WebViewRoute(app.url, app.title);
+              } else {
+                final moduleData =
+                    "data:text/html,<!DOCTYPE html><p>This would open the ${app.title} module</p>";
+                return WebViewRoute(moduleData, app.title);
+              }
+            },
+          ));
         }
       },
       child: Container(

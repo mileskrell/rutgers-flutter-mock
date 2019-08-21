@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart';
+
 import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
 
@@ -16,7 +17,7 @@ class HomePage {
   );
   static const MY_APPS = HomePage(
     title: "My Apps",
-    associatedPage: MyApps,
+    associatedPage: TabBarView,
   );
   static const BUS = HomePage(
     title: "Bus",

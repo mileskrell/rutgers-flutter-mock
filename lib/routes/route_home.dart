@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/page_my_apps.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/my_apps_featured.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/my_apps_links.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/my_apps_modules.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
 import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
 import 'package:rutgers_flutter_mock/models/home_page.dart';
@@ -46,7 +48,13 @@ class HomeState extends State<HomeRoute> {
     pages = <Widget>[
       if (appState.role.hasMyDay) MyDay(),
       if (appState.role.hasMyDashboard) MyDashboard(),
-      MyApps(searchText),
+      TabBarView(
+        children: <Widget>[
+          MyAppsFeatured(),
+          MyAppsLinks(),
+          MyAppsModules(),
+        ],
+      ),
       Bus(),
     ];
 
@@ -63,7 +71,7 @@ class HomeState extends State<HomeRoute> {
           break;
         case HomePage.MY_APPS:
           currentPageIndex =
-              pages.indexOf(pages.where((it) => it is MyApps).toList()[0]);
+              pages.indexOf(pages.where((it) => it is TabBarView).toList()[0]);
           break;
         case HomePage.BUS:
           currentPageIndex =
@@ -160,27 +168,35 @@ class HomeState extends State<HomeRoute> {
 
     setAppBarState();
 
-    return Scaffold(
-      appBar: appBar,
-      body: pages[currentPageIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: pantone431,
-        selectedItemColor: pantone186,
-        showUnselectedLabels: true,
-        currentIndex: currentPageIndex,
-        onTap: (newIndex) {
-          if ((bottomNavBarItems[newIndex].title as Text).data == "Bus") {
-            Navigator.pushNamed(context, "/bus");
-          } else {
-            setState(() {
-              currentPageIndex = newIndex;
-            });
-          }
-          if (currentlySearching) {
-            onPressSearch();
-          }
-        },
-        items: bottomNavBarItems,
+    // This controller is used for MyApps
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: appBar,
+        body: currentlySearching
+            ? Center(
+                child: Text("searching..."),
+              )
+            : pages[currentPageIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: pantone431,
+          selectedItemColor: pantone186,
+          showUnselectedLabels: true,
+          currentIndex: currentPageIndex,
+          onTap: (newIndex) {
+            if ((bottomNavBarItems[newIndex].title as Text).data == "Bus") {
+              Navigator.pushNamed(context, "/bus");
+            } else {
+              setState(() {
+                currentPageIndex = newIndex;
+              });
+            }
+            if (currentlySearching) {
+              onPressSearch();
+            }
+          },
+          items: bottomNavBarItems,
+        ),
       ),
     );
   }
@@ -200,10 +216,22 @@ class HomeState extends State<HomeRoute> {
         appBar = AppBar(
           title: bottomNavBarItems[currentPageIndex].title,
           actions: [popupMenuButton],
+          // No tab bar, since we're not on the My Apps page
         );
       });
       return;
     }
+
+    // If we're here, we're on the My Apps page
+
+    final tabBar = TabBar(
+      tabs: <Widget>[
+        Tab(text: "Featured", icon: Icon(Icons.star)),
+        Tab(text: "Links", icon: Icon(Icons.link)),
+        Tab(text: "Modules", icon: Icon(Icons.view_module)),
+      ],
+    );
+
     if (currentlySearching) {
       setState(() {
         appBar = AppBar(
@@ -239,6 +267,7 @@ class HomeState extends State<HomeRoute> {
                 onPressed: () => onPressSearch()),
             popupMenuButton,
           ],
+          bottom: tabBar,
         );
       });
     }
