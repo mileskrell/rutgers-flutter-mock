@@ -22,10 +22,10 @@ class MyApps extends StatelessWidget {
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context, listen: false);
 
-    List<AppCategory> appCategories = appState.role.appCategories;
+    List<AppCategory> linkCategories = appState.role.linkCategories;
 
     if (searchText.isNotEmpty) {
-      appCategories = appCategories
+      linkCategories = linkCategories
           // Only show apps matching search text in each category
           .map((category) {
             final filteredApps = category.apps
@@ -39,13 +39,13 @@ class MyApps extends StatelessWidget {
           .toList();
     }
 
-    if (appCategories.isNotEmpty) {
+    if (linkCategories.isNotEmpty) {
       return ListView.builder(
-        itemCount: appCategories.length,
+        itemCount: linkCategories.length,
         itemBuilder: (context, index) {
           return AppCategoryWidget(AppCategory(
-            title: appCategories[index].title,
-            apps: appCategories[index].apps,
+            title: linkCategories[index].title,
+            apps: linkCategories[index].apps,
           ));
         },
       );
