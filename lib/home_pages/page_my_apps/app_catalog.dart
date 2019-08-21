@@ -10,14 +10,14 @@ import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 /// This file also defines the default favorites for each role.
 
 const learningCentersNB = App(
-  tag: "link_learning_centers_nb",
+  sharedPrefsTag: "link_learning_centers_nb",
   title: "Learning Centers (New Brunswick)",
   url: "https://rlc.rutgers.edu/",
   iconData: Icons.local_library,
 );
 
 const textbookRentals = App(
-  tag: "link_textbook_rentals",
+  sharedPrefsTag: "link_textbook_rentals",
   title: "Textbook rentals",
   url:
       "http://rutgers.bncollege.com/webapp/wcs/stores/servlet/BNCBRentalView?langId=-1&storeId=58552&catalogId=10001",
@@ -38,7 +38,7 @@ const textbookRentals = App(
 );
 
 const orcid = App(
-  tag: "link_orcid",
+  sharedPrefsTag: "link_orcid",
   title: "Update or create Open Researcher and Contributor ID",
   url: "https://personalinfo.rutgers.edu/pi/updateOrcid.htm",
   assetString: "assets/logo_orcid.png",
@@ -56,7 +56,7 @@ const academicSupport = AppCategory(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const residenceLifeHousing = App(
-  tag: "link_residence_life_housing",
+  sharedPrefsTag: "link_residence_life_housing",
   title: "Residence Life (housing)",
   url:
       "https://oncampus.rutgers.edu/hmswebstudent/Login.asp?TargetPage=Default.asp?",
@@ -64,35 +64,35 @@ const residenceLifeHousing = App(
 );
 
 const handshake = App(
-  tag: "link_handshake",
+  sharedPrefsTag: "link_handshake",
   title: "Handshake",
   url: "https://app.joinhandshake.com/auth?auth=590",
   assetString: "assets/logo_handshake.png",
 );
 
 const employmentOpportunities = App(
-  tag: "link_employment_opportunities",
+  sharedPrefsTag: "link_employment_opportunities",
   title: "Employment opportunities",
   url: "https://jobs.rutgers.edu/postings/search",
   iconData: Icons.work,
 );
 
 const placesToEat = App(
-  tag: "link_places_to_eat",
+  sharedPrefsTag: "link_places_to_eat",
   title: "Places to eat",
   url: "http://food.rutgers.edu/places-to-eat/",
   iconData: Icons.fastfood,
 );
 
 const universityMap = App(
-  tag: "link_university_map",
+  sharedPrefsTag: "link_university_map",
   title: "University map",
   url: "https://maps.rutgers.edu/",
   iconData: Icons.map,
 );
 
 const studentHealth = App(
-  tag: "link_student_health",
+  sharedPrefsTag: "link_student_health",
   title: "Student Health",
   url: "http://health.rutgers.edu/",
   iconData: Icons.local_hospital,
@@ -113,7 +113,7 @@ const campusServices = AppCategory(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const canvas = App(
-  tag: "link_canvas",
+  sharedPrefsTag: "link_canvas",
   title: "Canvas",
   url: "https://rutgers.instructure.com/login/saml/",
   assetString: "assets/logo_canvas.png",
@@ -121,7 +121,7 @@ const canvas = App(
 );
 
 const sakai = App(
-  tag: "link_sakai",
+  sharedPrefsTag: "link_sakai",
   title: "Sakai",
   url: "https://sakai.rutgers.edu/portal/login",
   assetString: "assets/logo_sakai.png",
@@ -138,14 +138,14 @@ const classesAndDegree = AppCategory(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const rutgersConnect = App(
-  tag: "link_rutgers_connect",
+  sharedPrefsTag: "link_rutgers_connect",
   title: "Rutgers Connect",
   url: "https://connect.rutgers.edu/",
   assetString: "assets/logo_office_365.png",
 );
 
 const scarletMail = App(
-  tag: "link_scarletmail",
+  sharedPrefsTag: "link_scarletmail",
   title: "ScarletMail",
   url: "http://mail.scarletmail.rutgers.edu",
   assetString: "assets/logo_gmail.png",
@@ -162,14 +162,14 @@ const computingServices = AppCategory(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const officeOfFinancialAid = App(
-  tag: "link_office_of_financial_aid",
+  sharedPrefsTag: "link_office_of_financial_aid",
   title: "Office of Financial Aid",
   url: "https://financialaid.rutgers.edu/",
   iconData: Icons.attach_money,
 );
 
 const healthInsuranceWaiverPolicy = App(
-  tag: "link_health_insurance_waiver_policy",
+  sharedPrefsTag: "link_health_insurance_waiver_policy",
   title: "Health Insurance Waiver Policy",
   url:
       "http://riskmanagement.rutgers.edu/student-information/student-health-insurance",
@@ -178,7 +178,7 @@ const healthInsuranceWaiverPolicy = App(
 );
 
 const financialAidAwardStatus = App(
-  tag: "link_financial_aid_award_status",
+  sharedPrefsTag: "link_financial_aid_award_status",
   title: "Financial Aid Award Status",
   url: "https://finservices.rutgers.edu/faaward/letter/awardLogin.htm",
   iconData: Icons.attach_money,
@@ -196,14 +196,14 @@ const financialInformation = AppCategory(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const officialGrades = App(
-  tag: "link_official_grades",
+  sharedPrefsTag: "link_official_grades",
   title: "Official Grades",
   url: "https://my.rutgers.edu/service/my-grades",
   iconData: Icons.list
 );
 
 const transcriptRequestApplicationAndForms = App(
-  tag: "link_transcript_request_application_and_forms",
+  sharedPrefsTag: "link_transcript_request_application_and_forms",
   title: "Transcript Request Application and Forms",
   url:
       "https://transcripts.rutgers.edu/transcripts/displayRutgersRbhsFormerStudentSearchPage.html",
@@ -218,14 +218,14 @@ const gradesAndRecords = AppCategory(title: "Grades and Records", apps: [
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const rutgersFacebook = App(
-  tag: "link_rutgers_facebook",
+  sharedPrefsTag: "link_rutgers_facebook",
   title: "Rutgers on Facebook",
   url: "https://www.facebook.com/RutgersU/",
   assetString: "assets/logo_facebook.png",
 );
 
 const rutgersSubreddit = App(
-  tag: "link_rutgers_subreddit",
+  sharedPrefsTag: "link_rutgers_subreddit",
   title: "Rutgers Subreddit",
   url: "https://www.reddit.com/r/rutgers/",
   assetString: "assets/logo_reddit.png",
@@ -233,14 +233,14 @@ const rutgersSubreddit = App(
 );
 
 const ruParentsBlog = App(
-  tag: "link_ru_parents_blog",
+  sharedPrefsTag: "link_ru_parents_blog",
   title: "RU Parents Blog",
   url: "http://rublogs.rutgers.edu/parents/",
   iconData: Icons.computer,
 );
 
 const ruStudentsBlog = App(
-    tag: "link_ru_students_blog",
+    sharedPrefsTag: "link_ru_students_blog",
     title: "RU Students Blog",
     url: "https://rustudentblogs.wordpress.com/",
     iconData: Icons.computer,
@@ -253,14 +253,14 @@ const ruStudentsBlog = App(
     ));
 
 const ruaa = App(
-  tag: "link_ruaa",
+  sharedPrefsTag: "link_ruaa",
   title: "Rutgers University Alumni Association website",
   url: "http://www.ralumni.com/",
   iconData: Icons.people,
 );
 
 const scarletKnights = App(
-  tag: "link_scarlet_knights",
+  sharedPrefsTag: "link_scarlet_knights",
   title: "Scarlet Knights",
   url: "http://www.scarletknights.com/index-main.html",
   assetString: "assets/logo_scarlet_knights.png",
@@ -283,7 +283,7 @@ const studentLife = AppCategory(
 // This one isn't an actual category on myRutgers
 
 const goRutgers = App(
-  tag: "link_go_rutgers",
+  sharedPrefsTag: "link_go_rutgers",
   title: "Go Rutgers",
   url: "http://go-rutgers.com",
   assetString: "assets/logo_go_rutgers.jpeg",
@@ -309,10 +309,10 @@ const allAppCategories = {
   newStudentResources,
 };
 
-/// Map of [App.tag] to [App]
+/// Map of [App.sharedPrefsTag] to [App]
 final allApps = Map<String, App>.fromIterable(
   allAppCategories.expand<App>((category) => category.apps),
-  key: (dynamic element) => (element as App).tag,
+  key: (dynamic element) => (element as App).sharedPrefsTag,
 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
