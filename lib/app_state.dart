@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:rutgers_flutter_mock/home_pages/page_my_apps/module_catalog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:rutgers_flutter_mock/home_pages/page_my_apps/link_catalog.dart';
@@ -70,17 +71,18 @@ class AppState extends ChangeNotifier {
     notifyListeners();
     () async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setStringList(
-          keyFavoriteApps, favoriteApps.map((app) => app.sharedPrefsTag).toList());
+      prefs.setStringList(keyFavoriteApps,
+          favoriteApps.map((app) => app.sharedPrefsTag).toList());
     }();
   }
 
   /// Used by [SharedPrefsCheckRoute] to load favorites from [SharedPreferences]
   void loadFavoriteAppsFromTags(List<String> favoriteAppsTags) {
     favoriteApps = favoriteAppsTags
-        // Make sure the current apps still contain the favorite apps
-        .where((sharedPrefsTag) => allLinks.containsKey(sharedPrefsTag))
-        .map((sharedPrefsTag) => allLinks[sharedPrefsTag])
+        .map((sharedPrefsTag) =>
+            allLinks[sharedPrefsTag] ?? allModules[sharedPrefsTag])
+        // Remove any apps that we couldn't find
+        .where((app) => app != null)
         .toList();
   }
 
