@@ -7,18 +7,16 @@ import 'package:rutgers_flutter_mock/home_pages/page_my_apps/module_catalog.dart
 
 const currentStudentDefaultFavoriteApps = [
   places,
-  bus,
+  scheduleOfClasses,
   canvas,
   sakai,
-  handshake,
-  textbookRentals,
   ruStudentsBlog,
   // LINKS
 ];
 
 const facultyDefaultFavoriteApps = [
   places,
-  bus,
+  scheduleOfClasses,
   // LINKS
   orcid,
   placesToEat,
@@ -26,7 +24,7 @@ const facultyDefaultFavoriteApps = [
 
 const staffDefaultFavoriteApps = [
   places,
-  bus,
+  scheduleOfClasses,
   // LINKS
   placesToEat,
 ];
@@ -35,18 +33,16 @@ const staffDefaultFavoriteApps = [
 
 const admittedStudentDefaultFavoriteApps = [
   places,
-  bus,
+  scheduleOfClasses,
   // LINKS
   universityMap,
   goRutgers,
   ruStudentsBlog,
-  rutgersSubreddit,
-  scarletKnights,
 ];
 
 const parentDefaultFavoriteApps = [
   places,
-  bus,
+  scheduleOfClasses,
   // LINKS
   ruParentsBlog,
   rutgersFacebook,
@@ -55,7 +51,7 @@ const parentDefaultFavoriteApps = [
 
 const alumnusDefaultFavoriteApps = [
   places,
-  bus,
+  scheduleOfClasses,
   // LINKS
   ruaa,
   scarletKnights,
@@ -65,7 +61,7 @@ const alumnusDefaultFavoriteApps = [
 
 const guestDefaultFavoriteApps = [
   places,
-  bus,
+  scheduleOfClasses,
   // LINKS
   universityMap,
   placesToEat,

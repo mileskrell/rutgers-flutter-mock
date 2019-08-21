@@ -42,6 +42,7 @@ const orcid = App(
   title: "Update or create Open Researcher and Contributor ID",
   url: "https://personalinfo.rutgers.edu/pi/updateOrcid.htm",
   assetString: "assets/logo_orcid.png",
+  isNew: true,
 );
 
 const academicSupport = AppCategory(
@@ -166,6 +167,7 @@ const officeOfFinancialAid = App(
   title: "Office of Financial Aid",
   url: "https://financialaid.rutgers.edu/",
   iconData: Icons.attach_money,
+  isNew: true,
 );
 
 const healthInsuranceWaiverPolicy = App(
