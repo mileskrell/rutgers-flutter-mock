@@ -12,11 +12,11 @@ const places = App(
   isNew: true,
 );
 
-const bus = App(
-  sharedPrefsTag: "module_bus",
-  title: "Bus",
-  moduleTag: "bus",
-  iconData: Icons.directions_bus,
+const scheduleOfClasses = App(
+  sharedPrefsTag: "module_schedule_of_classes",
+  title: "Schedule of Classes",
+  moduleTag: "schedule_of_classes",
+  iconData: Icons.calendar_today,
 );
 
 const news = App(
@@ -24,13 +24,14 @@ const news = App(
   title: "News",
   moduleTag: "news",
   iconData: Icons.library_books,
+  isNew: true,
 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const _allModules = {
   places,
-  bus,
+  scheduleOfClasses,
   news,
 };
 
@@ -45,36 +46,43 @@ final allModules = Map<String, App>.fromIterable(
 /// Module order for each role
 
 const currentStudentModules = [
+  scheduleOfClasses,
   places,
-  bus,
+  news,
 ];
 
 const facultyModules = [
+  news,
   places,
-  bus,
+  scheduleOfClasses,
 ];
 
 const staffModules = [
   places,
-  bus,
+  scheduleOfClasses,
+  news,
 ];
 
 const admittedStudentModules = [
   places,
-  bus,
+  news,
+  scheduleOfClasses,
 ];
 
 const parentModules = [
+  news,
   places,
-  bus,
+  scheduleOfClasses,
 ];
 
 const alumnusModules = [
   places,
-  bus,
+  scheduleOfClasses,
+  news,
 ];
 
 const guestModules = [
   places,
-  bus,
+  scheduleOfClasses,
+  news,
 ];
