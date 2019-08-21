@@ -8,14 +8,29 @@ import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 class App {
   final String sharedPrefsTag;
 
+  /// A title to display for the App (displayed in AppWidget)
   final String title;
+
+  /// A URL that should be opened when the App is opened
   final String url;
+
+  /// A module that should be opened when the App is opened
   final String moduleTag;
 
+  /// A Material Design icon (from [Icons])
   final IconData iconData;
+
+  /// A string for an asset that can be used as an icon
   final String assetString;
+
+  /// Whether this App has been recently added to My Apps
   final bool isNew;
+
+  /// Whether the App is inactive
   final bool inactive;
+
+  /// An explanation for why the App is inactive
+  /// (required if and only if the App is inactive)
   final LinkText inactiveExplanation;
 
   const App(
