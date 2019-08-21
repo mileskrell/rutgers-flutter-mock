@@ -14,7 +14,7 @@ class Role {
     hasNetID: true,
     hasCommunityID: false,
     defaultFavoriteApps: currentStudentDefaultFavoriteApps,
-    appCategories: currentStudentAppCategories,
+    linkCategories: currentStudentLinkCategories,
   );
   static const FACULTY = Role(
     title: "faculty",
@@ -23,7 +23,7 @@ class Role {
     hasNetID: true,
     hasCommunityID: false,
     defaultFavoriteApps: facultyDefaultFavoriteApps,
-    appCategories: facultyAppCategories,
+    linkCategories: facultyLinkCategories,
   );
   static const STAFF = Role(
     title: "staff",
@@ -32,7 +32,7 @@ class Role {
     hasNetID: true,
     hasCommunityID: false,
     defaultFavoriteApps: staffDefaultFavoriteApps,
-    appCategories: staffAppCategories,
+    linkCategories: staffLinkCategories,
   );
   static const ADMITTED_STUDENT = Role(
     title: "admitted student",
@@ -41,7 +41,7 @@ class Role {
     hasNetID: false,
     hasCommunityID: true,
     defaultFavoriteApps: admittedStudentDefaultFavoriteApps,
-    appCategories: admittedStudentAppCategories,
+    linkCategories: admittedStudentLinkCategories,
   );
   static const PARENT = Role(
     title: "parent",
@@ -50,7 +50,7 @@ class Role {
     hasNetID: false,
     hasCommunityID: true,
     defaultFavoriteApps: parentDefaultFavoriteApps,
-    appCategories: parentAppCategories,
+    linkCategories: parentLinkCategories,
   );
   static const ALUMNUS = Role(
     // Never seen in mockup
@@ -60,7 +60,7 @@ class Role {
     hasNetID: false, // TODO Check this
     hasCommunityID: false,
     defaultFavoriteApps: alumnusDefaultFavoriteApps,
-    appCategories: alumnusAppCategories,
+    linkCategories: alumnusLinkCategories,
   );
   static const GUEST = Role(
     title: "guest",
@@ -69,7 +69,7 @@ class Role {
     hasNetID: false,
     hasCommunityID: false,
     defaultFavoriteApps: guestDefaultFavoriteApps,
-    appCategories: guestAppCategories,
+    linkCategories: guestLinkCategories,
   );
 
   final String title;
@@ -78,7 +78,7 @@ class Role {
   final bool hasNetID;
   final bool hasCommunityID;
   final List<App> defaultFavoriteApps;
-  final List<AppCategory> appCategories;
+  final List<AppCategory> linkCategories;
 
   const Role({
     @required this.title,
@@ -87,7 +87,7 @@ class Role {
     @required this.hasNetID,
     @required this.hasCommunityID,
     @required this.defaultFavoriteApps,
-    @required this.appCategories,
+    @required this.linkCategories,
   });
 
   factory Role.fromTitle(String title) {
