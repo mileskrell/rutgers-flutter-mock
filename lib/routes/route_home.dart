@@ -52,8 +52,8 @@ class HomeState extends State<HomeRoute> {
       TabBarView(
         children: <Widget>[
           MyAppsFeatured(),
-          MyAppsLinks(),
           MyAppsModules(),
+          MyAppsLinks(),
         ],
       ),
       Bus(),
@@ -226,8 +226,8 @@ class HomeState extends State<HomeRoute> {
     final tabBar = TabBar(
       tabs: <Widget>[
         Tab(text: "Featured", icon: Icon(Icons.star)),
-        Tab(text: "Links", icon: Icon(Icons.link)),
         Tab(text: "Modules", icon: Icon(Icons.view_module)),
+        Tab(text: "Links", icon: Icon(Icons.link)),
       ],
     );
 
