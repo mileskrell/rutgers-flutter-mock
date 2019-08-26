@@ -20,13 +20,13 @@ class MyAppsLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context, listen: false);
 
-    if (appState.role.linkCategories.isNotEmpty) {
+    if (appState.role.appCategories.isNotEmpty) {
       return ListView.builder(
-        itemCount: appState.role.linkCategories.length,
+        itemCount: appState.role.appCategories.length,
         itemBuilder: (context, index) {
           return AppCategoryWidget(AppCategory(
-            title: appState.role.linkCategories[index].title,
-            apps: appState.role.linkCategories[index].apps,
+            title: appState.role.appCategories[index].title,
+            apps: appState.role.appCategories[index].apps,
           ));
         },
       );

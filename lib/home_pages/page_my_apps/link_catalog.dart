@@ -300,7 +300,7 @@ const newStudentResources = AppCategory(
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const allLinkCategories = {
+const allAppCategories = {
   academicSupport,
   campusServices,
   classesAndDegree,
@@ -313,7 +313,7 @@ const allLinkCategories = {
 
 /// Map of [App.sharedPrefsTag] to [App]
 final allLinks = Map<String, App>.fromIterable(
-  allLinkCategories.expand<App>((category) => category.apps),
+  allAppCategories.expand<App>((category) => category.apps),
   key: (dynamic element) => (element as App).sharedPrefsTag,
 );
 
@@ -321,7 +321,7 @@ final allLinks = Map<String, App>.fromIterable(
 
 /// App category order for each role
 
-const currentStudentLinkCategories = [
+const currentStudentAppCategories = [
   classesAndDegree,
   gradesAndRecords,
   financialInformation,
@@ -332,7 +332,7 @@ const currentStudentLinkCategories = [
   newStudentResources,
 ];
 
-const facultyLinkCategories = [
+const facultyAppCategories = [
   campusServices,
   computingServices,
   classesAndDegree,
@@ -343,7 +343,7 @@ const facultyLinkCategories = [
   newStudentResources,
 ];
 
-const staffLinkCategories = [
+const staffAppCategories = [
   campusServices,
   computingServices,
   studentLife,
@@ -354,7 +354,7 @@ const staffLinkCategories = [
   newStudentResources,
 ];
 
-const admittedStudentLinkCategories = [
+const admittedStudentAppCategories = [
   newStudentResources,
   campusServices,
   studentLife,
@@ -365,7 +365,7 @@ const admittedStudentLinkCategories = [
   gradesAndRecords,
 ];
 
-const parentLinkCategories = [
+const parentAppCategories = [
   financialInformation,
   studentLife,
   campusServices,
@@ -376,7 +376,7 @@ const parentLinkCategories = [
   newStudentResources,
 ];
 
-const alumnusLinkCategories = [
+const alumnusAppCategories = [
   studentLife,
   campusServices,
   computingServices,
@@ -387,7 +387,7 @@ const alumnusLinkCategories = [
   newStudentResources,
 ];
 
-const guestLinkCategories = [
+const guestAppCategories = [
   campusServices,
   computingServices,
   classesAndDegree,
