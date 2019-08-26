@@ -5,7 +5,7 @@ import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/home_pages/bus/bus.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_featured.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_links.dart';
-import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_modules.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_favorites.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_search.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_dashboard.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_day.dart';
@@ -52,7 +52,7 @@ class HomeState extends State<HomeRoute> {
       TabBarView(
         children: <Widget>[
           MyAppsFeatured(),
-          MyAppsModules(),
+          MyAppsFavorites(),
           MyAppsLinks(),
         ],
       ),
@@ -226,7 +226,7 @@ class HomeState extends State<HomeRoute> {
     final tabBar = TabBar(
       tabs: <Widget>[
         Tab(text: "Featured", icon: Icon(Icons.star)),
-        Tab(text: "Modules", icon: Icon(Icons.view_module)),
+        Tab(text: "Favorites", icon: Icon(Icons.favorite)),
         Tab(text: "Links", icon: Icon(Icons.link)),
       ],
     );

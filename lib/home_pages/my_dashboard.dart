@@ -8,7 +8,6 @@ import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 import 'package:rutgers_flutter_mock/widgets/eye-reveal.dart';
 import 'package:rutgers_flutter_mock/widgets/gradient_button.dart';
 import 'package:rutgers_flutter_mock/widgets/link_text.dart';
-import 'package:rutgers_flutter_mock/widgets/my_dashboard_favorite_apps_card.dart';
 import 'package:rutgers_flutter_mock/widgets/my_dashboard_profile_card.dart';
 
 /// The My Dashboard page
@@ -85,7 +84,6 @@ class MyDashboard extends StatelessWidget {
       return ListView(children: [
         ProfileCard("Miles Krell",
             assetName: "assets/profile_miles_student.png"),
-        FavoriteAppsCard(),
         Card(
           child: ExpansionTile(
               title: Text("My Schedule", style: TextStyle(color: pantone186)),
@@ -368,7 +366,6 @@ class MyDashboard extends StatelessWidget {
         children: <Widget>[
           ProfileCard("Fred the faculty member",
               assetName: "assets/profile_fred_faculty_member.jpg"),
-          FavoriteAppsCard(),
           Card(
             child: Padding(
               padding: EdgeInsets.all(16),
@@ -387,7 +384,6 @@ class MyDashboard extends StatelessWidget {
         children: <Widget>[
           ProfileCard("Samantha the staff member",
               assetName: "assets/profile_samantha_staff_member.jpg"),
-          FavoriteAppsCard(),
           Card(
             child: Padding(
               padding: EdgeInsets.all(16),
@@ -406,7 +402,6 @@ class MyDashboard extends StatelessWidget {
         children: <Widget>[
           ProfileCard("Annie the admitted student",
               assetName: "assets/profile_annie_admitted_student.jpg"),
-          FavoriteAppsCard(),
           Card(
             child: Padding(
               padding: EdgeInsets.all(16),
@@ -428,7 +423,6 @@ class MyDashboard extends StatelessWidget {
     if (appState.role == Role.PARENT) {
       return ListView(
         children: <Widget>[
-          FavoriteAppsCard(),
           Card(
             child: Padding(
               padding: EdgeInsets.all(16),
