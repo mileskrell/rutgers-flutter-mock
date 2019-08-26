@@ -84,13 +84,22 @@ class HomeState extends State<HomeRoute> {
     bottomNavBarItems = [
       if (appState.role.hasMyDay)
         BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today), title: Text("My Day")),
+          icon: Icon(Icons.calendar_today),
+          title: Text(HomePage.MY_DAY.title),
+        ),
       if (appState.role.hasMyDashboard)
         BottomNavigationBarItem(
-            icon: Icon(Icons.person), title: Text("My Dashboard")),
-      BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text("My Apps")),
+          icon: Icon(Icons.person),
+          title: Text(HomePage.MY_DASHBOARD.title),
+        ),
       BottomNavigationBarItem(
-          icon: Icon(Icons.directions_bus), title: Text("Bus")),
+        icon: Icon(Icons.apps),
+        title: Text(HomePage.MY_APPS.title),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.directions_bus),
+        title: Text(HomePage.BUS.title),
+      ),
     ];
 
     popupMenuButton ??= PopupMenuButton<String>(
@@ -210,7 +219,7 @@ class HomeState extends State<HomeRoute> {
 
   void setAppBarState() {
     if (!((bottomNavBarItems[currentPageIndex].title as Text).data ==
-        "My Apps")) {
+        HomePage.MY_APPS.title)) {
       setState(() {
         appBar = AppBar(
           title: bottomNavBarItems[currentPageIndex].title,
