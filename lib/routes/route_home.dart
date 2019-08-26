@@ -9,6 +9,7 @@ import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_favorites.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_search.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_dashboard.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_day.dart';
+import 'package:rutgers_flutter_mock/home_pages/ru_search.dart';
 import 'package:rutgers_flutter_mock/models/home_page.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
@@ -56,6 +57,7 @@ class HomeState extends State<HomeRoute> {
           MyAppsLinks(),
         ],
       ),
+      RuSearch(),
       Bus(),
     ];
 
@@ -95,6 +97,10 @@ class HomeState extends State<HomeRoute> {
       BottomNavigationBarItem(
         icon: Icon(Icons.apps),
         title: Text(HomePage.MY_APPS.title),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.search),
+        title: Text(HomePage.RU_SEARCH.title),
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.directions_bus),
