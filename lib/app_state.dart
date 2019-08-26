@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/module_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/module_catalog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/link_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/link_catalog.dart';
 import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/models/home_page.dart';
 import 'package:rutgers_flutter_mock/models/role.dart';

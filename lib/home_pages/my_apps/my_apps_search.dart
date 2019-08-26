@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/link_catalog.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/module_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/link_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/module_catalog.dart';
 import 'package:rutgers_flutter_mock/widgets/app_widget.dart';
 
 /// The search page in My Apps

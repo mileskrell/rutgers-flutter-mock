@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/my_apps_featured.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/my_apps_links.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/my_apps_modules.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/my_apps_search.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_dashboard.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_day.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/bus.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_featured.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_links.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_modules.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_search.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_dashboard.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_day.dart';
 import 'package:rutgers_flutter_mock/models/home_page.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 

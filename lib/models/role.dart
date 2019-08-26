@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/default_favorite_apps.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/link_catalog.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/module_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/default_favorite_apps.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/link_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/module_catalog.dart';
 import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/models/app_category.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
