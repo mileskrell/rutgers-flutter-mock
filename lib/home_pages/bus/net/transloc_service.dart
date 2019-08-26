@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 
-import 'package:rutgers_flutter_mock/home_pages/page_bus/net/arrival_estimates_response.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_bus/net/routes_response.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_bus/net/stops_response.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/net/arrival_estimates_response.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/net/routes_response.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/net/stops_response.dart';
 
 const AUTHORITY = "transloc-api-1-2.p.rapidapi.com";
 const TRANSLOC_KEY = "get ur own";

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import 'package:rutgers_flutter_mock/home_pages/page_bus/model/bus_models.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_bus/repo/repository.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/model/bus_models.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/repo/repository.dart';
 
 /// This was copied over from
 /// <https://github.com/mileskrell/basic-bus-tracker-flutter>.

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rutgers_flutter_mock/app_state.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_bus/page_bus.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/bus.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 import 'package:rutgers_flutter_mock/routes/route_home.dart';
 import 'package:rutgers_flutter_mock/routes/route_onboarding.dart';

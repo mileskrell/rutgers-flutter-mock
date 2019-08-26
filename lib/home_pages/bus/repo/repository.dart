@@ -1,5 +1,5 @@
-import 'package:rutgers_flutter_mock/home_pages/page_bus/model/bus_models.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_bus/net/transloc_service.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/model/bus_models.dart';
+import 'package:rutgers_flutter_mock/home_pages/bus/net/transloc_service.dart';
 
 // Translated from https://github.com/mileskrell/basic-bus-tracker-react-native/blob/master/src/repo/repository.js
 

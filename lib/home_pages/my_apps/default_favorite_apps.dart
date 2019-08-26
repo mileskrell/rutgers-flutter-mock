@@ -1,5 +1,5 @@
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/link_catalog.dart';
-import 'package:rutgers_flutter_mock/home_pages/page_my_apps/module_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/link_catalog.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/module_catalog.dart';
 
 /// Default favorite apps for each role
 
