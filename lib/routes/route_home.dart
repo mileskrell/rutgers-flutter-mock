@@ -195,7 +195,6 @@ class HomeState extends State<HomeRoute> {
         bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: pantone431,
           selectedItemColor: pantone186,
-          showUnselectedLabels: true,
           currentIndex: currentPageIndex,
           onTap: (newIndex) {
             if ((bottomNavBarItems[newIndex].title as Text).data == "Bus") {
