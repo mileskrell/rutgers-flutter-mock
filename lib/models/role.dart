@@ -10,7 +10,8 @@ import 'package:rutgers_flutter_mock/resources.dart';
 /// A category of user, as shown on the role selection route
 class Role {
   static const CURRENT_STUDENT = Role(
-    title: "current student",
+    singular: "current student",
+    plural: "current students",
     hasMyDay: true,
     hasMyDashboard: true,
     hasNetID: true,
@@ -20,7 +21,8 @@ class Role {
     modules: currentStudentModules,
   );
   static const FACULTY = Role(
-    title: "faculty",
+    singular: "faculty",
+    plural: "faculty",
     hasMyDay: false,
     hasMyDashboard: true,
     hasNetID: true,
@@ -30,7 +32,8 @@ class Role {
     modules: facultyModules,
   );
   static const STAFF = Role(
-    title: "staff",
+    singular: "staff",
+    plural: "staff",
     hasMyDay: false,
     hasMyDashboard: true,
     hasNetID: true,
@@ -40,7 +43,8 @@ class Role {
     modules: staffModules,
   );
   static const ADMITTED_STUDENT = Role(
-    title: "admitted student",
+    singular: "admitted student",
+    plural: "admitted students",
     hasMyDay: false,
     hasMyDashboard: true,
     hasNetID: false,
@@ -50,7 +54,8 @@ class Role {
     modules: admittedStudentModules,
   );
   static const PARENT = Role(
-    title: "parent",
+    singular: "parent",
+    plural: "parents",
     hasMyDay: false,
     hasMyDashboard: true,
     hasNetID: false,
@@ -61,7 +66,8 @@ class Role {
   );
   static const ALUMNUS = Role(
     // Never seen in mockup
-    title: "alumnus",
+    singular: "alumnus",
+    plural: "alumni",
     hasMyDay: false,
     hasMyDashboard: false,
     hasNetID: false,
@@ -72,7 +78,8 @@ class Role {
     modules: alumnusModules,
   );
   static const GUEST = Role(
-    title: "guest",
+    singular: "guest",
+    plural: "guests",
     hasMyDay: false,
     hasMyDashboard: false,
     hasNetID: false,
@@ -82,7 +89,8 @@ class Role {
     modules: guestModules,
   );
 
-  final String title;
+  final String singular;
+  final String plural;
   final bool hasMyDay;
   final bool hasMyDashboard;
   final bool hasNetID;
@@ -92,7 +100,8 @@ class Role {
   final List<App> modules;
 
   const Role({
-    @required this.title,
+    @required this.singular,
+    @required this.plural,
     @required this.hasMyDay,
     @required this.hasMyDashboard,
     @required this.hasNetID,
@@ -102,15 +111,15 @@ class Role {
     @required this.modules,
   });
 
-  factory Role.fromTitle(String title) {
-    if (title == CURRENT_STUDENT.title) return CURRENT_STUDENT;
-    if (title == FACULTY.title) return FACULTY;
-    if (title == STAFF.title) return STAFF;
-    if (title == ADMITTED_STUDENT.title) return ADMITTED_STUDENT;
-    if (title == PARENT.title) return PARENT;
-    if (title == ALUMNUS.title) return ALUMNUS;
-    if (title == GUEST.title) return GUEST;
-    throw "Cannot create Role instance from unknown title $title";
+  factory Role.fromSingular(String singular) {
+    if (singular == CURRENT_STUDENT.singular) return CURRENT_STUDENT;
+    if (singular == FACULTY.singular) return FACULTY;
+    if (singular == STAFF.singular) return STAFF;
+    if (singular == ADMITTED_STUDENT.singular) return ADMITTED_STUDENT;
+    if (singular == PARENT.singular) return PARENT;
+    if (singular == ALUMNUS.singular) return ALUMNUS;
+    if (singular == GUEST.singular) return GUEST;
+    throw "Cannot create Role instance from unknown singular $singular";
   }
 
   String get loginUrl {
