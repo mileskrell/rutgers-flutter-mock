@@ -20,7 +20,7 @@ class AppState extends ChangeNotifier {
 
     () async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString(keyRole, role?.title);
+      prefs.setString(keyRole, role?.singular);
     }();
 
     // If the role has been set to null, it means the user has just logged out.

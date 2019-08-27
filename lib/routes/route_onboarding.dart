@@ -34,7 +34,7 @@ class OnboardingState extends State<OnboardingRoute> {
                   child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "Welcome to the Rutgers app,\n${appState.role.title}!",
+                  "Welcome to the Rutgers app,\n${appState.role.singular}!",
                   style: bigTextStyle,
                   textAlign: TextAlign.center,
                 ),

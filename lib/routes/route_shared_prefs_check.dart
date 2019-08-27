@@ -24,7 +24,7 @@ class SharedPrefsCheckRoute extends StatelessWidget {
           prefs.getBool(keyHasCompletedTutorial) ?? false;
 
       if (savedRoleTitle != null && hasCompletedTutorial) {
-        appState.role = Role.fromTitle(savedRoleTitle);
+        appState.role = Role.fromSingular(savedRoleTitle);
         appState.hasCompletedTutorial = true;
         appState.loggedIn = prefs.getBool(keyLoggedIn);
         appState.setHomePageFromTitle(prefs.getString(keyHomePage));
