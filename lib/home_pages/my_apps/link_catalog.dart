@@ -268,8 +268,8 @@ const scarletKnights = App(
   assetString: "assets/logo_scarlet_knights.png",
 );
 
-const studentLife = AppCategory(
-  title: "Student Life",
+const newsAndRecreation = AppCategory(
+  title: "News and Recreation",
   apps: [
     rutgersFacebook,
     rutgersSubreddit,
@@ -308,7 +308,7 @@ const allAppCategories = {
   financialInformation,
   gradesAndRecords,
   newStudentResources,
-  studentLife,
+  newsAndRecreation,
 };
 
 /// Map of [App.sharedPrefsTag] to [App]
@@ -327,7 +327,7 @@ const currentStudentAppCategories = [
   financialInformation,
   academicSupport,
   campusServices,
-  studentLife,
+  newsAndRecreation,
   computingServices,
   newStudentResources,
 ];
@@ -336,7 +336,7 @@ const facultyAppCategories = [
   campusServices,
   computingServices,
   classesAndDegree,
-  studentLife,
+  newsAndRecreation,
   academicSupport,
   financialInformation,
   gradesAndRecords,
@@ -346,7 +346,7 @@ const facultyAppCategories = [
 const staffAppCategories = [
   campusServices,
   computingServices,
-  studentLife,
+  newsAndRecreation,
   classesAndDegree,
   academicSupport,
   financialInformation,
@@ -357,7 +357,7 @@ const staffAppCategories = [
 const admittedStudentAppCategories = [
   newStudentResources,
   campusServices,
-  studentLife,
+  newsAndRecreation,
   computingServices,
   classesAndDegree,
   academicSupport,
@@ -367,7 +367,7 @@ const admittedStudentAppCategories = [
 
 const parentAppCategories = [
   financialInformation,
-  studentLife,
+  newsAndRecreation,
   campusServices,
   computingServices,
   classesAndDegree,
@@ -377,7 +377,7 @@ const parentAppCategories = [
 ];
 
 const alumnusAppCategories = [
-  studentLife,
+  newsAndRecreation,
   campusServices,
   computingServices,
   classesAndDegree,
@@ -391,7 +391,7 @@ const guestAppCategories = [
   campusServices,
   computingServices,
   classesAndDegree,
-  studentLife,
+  newsAndRecreation,
   academicSupport,
   financialInformation,
   gradesAndRecords,
