@@ -12,6 +12,7 @@ import 'package:rutgers_flutter_mock/home_pages/my_day.dart';
 import 'package:rutgers_flutter_mock/home_pages/ru_search.dart';
 import 'package:rutgers_flutter_mock/models/home_page.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
+import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 
 /// The main route of the app, containing multiple pages and a bottom
 /// navigation bar.
@@ -205,7 +206,7 @@ class HomeState extends State<HomeRoute> {
               });
             }
             if (currentlySearching) {
-              onPressSearch();
+              onPressMyAppsSearch();
             }
           },
           items: bottomNavBarItems,
@@ -214,7 +215,19 @@ class HomeState extends State<HomeRoute> {
     );
   }
 
-  void onPressSearch() {
+  void onPressMyDashboardAdd() {
+    Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WebViewRoute(
+          "data:text/html,<!DOCTYPE html><p>This would open the page for launching widgets and adding them to My Dashboard.</p>",
+          "Add/launch widgets",
+        ),
+      ),
+    );
+  }
+
+  void onPressMyAppsSearch() {
     currentlySearching = !currentlySearching;
     if (!currentlySearching) {
       searchText = "";
@@ -223,66 +236,85 @@ class HomeState extends State<HomeRoute> {
   }
 
   void setAppBarState() {
-    if (!((bottomNavBarItems[currentPageIndex].title as Text).data ==
-        HomePage.MY_APPS.title)) {
-      setState(() {
-        appBar = AppBar(
-          title: bottomNavBarItems[currentPageIndex].title,
-          actions: [popupMenuButton],
-          // No tab bar, since we're not on the My Apps page
-        );
-      });
+    // If on My Apps
+    if ((bottomNavBarItems[currentPageIndex].title as Text).data ==
+        HomePage.MY_APPS.title) {
+      final tabBar = TabBar(
+        tabs: <Widget>[
+          Tab(text: "Featured", icon: Icon(Icons.star)),
+          Tab(text: "Favorites", icon: Icon(Icons.favorite)),
+          Tab(text: "All", icon: Icon(Icons.list)),
+        ],
+      );
+
+      if (currentlySearching) {
+        setState(() {
+          appBar = AppBar(
+            leading: IconButton(
+                tooltip: "Close search",
+                icon: Icon(Icons.close),
+                onPressed: () => onPressMyAppsSearch()),
+            title: TextField(
+              decoration: InputDecoration(
+                labelStyle: TextStyle(color: Colors.white),
+                labelText: "Search My Apps",
+                border: InputBorder.none,
+              ),
+              autofocus: true,
+              autocorrect: false,
+              style: TextStyle(color: Colors.white),
+              onChanged: (input) {
+                setState(() {
+                  searchText = input;
+                });
+              },
+            ),
+          );
+        });
+      } else {
+        setState(() {
+          appBar = AppBar(
+            title: bottomNavBarItems[currentPageIndex].title,
+            actions: <Widget>[
+              IconButton(
+                  tooltip: "Search My Apps",
+                  icon: Icon(Icons.search),
+                  onPressed: () => onPressMyAppsSearch()),
+              popupMenuButton,
+            ],
+            bottom: tabBar,
+          );
+        });
+      }
       return;
     }
 
-    // If we're here, we're on the My Apps page
-
-    final tabBar = TabBar(
-      tabs: <Widget>[
-        Tab(text: "Featured", icon: Icon(Icons.star)),
-        Tab(text: "Favorites", icon: Icon(Icons.favorite)),
-        Tab(text: "All", icon: Icon(Icons.list)),
-      ],
-    );
-
-    if (currentlySearching) {
-      setState(() {
-        appBar = AppBar(
-          leading: IconButton(
-              tooltip: "Close search",
-              icon: Icon(Icons.close),
-              onPressed: () => onPressSearch()),
-          title: TextField(
-            decoration: InputDecoration(
-              labelStyle: TextStyle(color: Colors.white),
-              labelText: "Search My Apps",
-              border: InputBorder.none,
-            ),
-            autofocus: true,
-            autocorrect: false,
-            style: TextStyle(color: Colors.white),
-            onChanged: (input) {
-              setState(() {
-                searchText = input;
-              });
-            },
-          ),
-        );
-      });
-    } else {
+    // If on My Dashboard
+    if ((bottomNavBarItems[currentPageIndex].title as Text).data ==
+        HomePage.MY_DASHBOARD.title) {
       setState(() {
         appBar = AppBar(
           title: bottomNavBarItems[currentPageIndex].title,
           actions: <Widget>[
             IconButton(
-                tooltip: "Search My Apps",
-                icon: Icon(Icons.search),
-                onPressed: () => onPressSearch()),
+              tooltip: "Add or launch widgets",
+              icon: Icon(Icons.add),
+              onPressed: () => onPressMyDashboardAdd(),
+            ),
             popupMenuButton,
           ],
-          bottom: tabBar,
         );
       });
+      return;
     }
+
+    // Otherwise
+    setState(() {
+      appBar = AppBar(
+        title: bottomNavBarItems[currentPageIndex].title,
+        actions: [popupMenuButton],
+        // No tab bar, since we're not on the My Apps page
+      );
+    });
   }
 }
