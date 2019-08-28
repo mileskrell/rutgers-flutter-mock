@@ -33,7 +33,7 @@ class AppWidget extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text("\"${app.title}\" is temporarily unavailable"),
+                title: Text("${app.title} is temporarily unavailable"),
                 content: app.inactiveExplanation,
                 actions: <Widget>[
                   FlatButton(
