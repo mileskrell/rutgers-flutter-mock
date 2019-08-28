@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/models/app_category.dart';
+import 'package:rutgers_flutter_mock/models/role.dart';
 import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 
 /// All the link [App]s are defined here.
@@ -62,6 +63,7 @@ const residenceLifeHousing = App(
   url:
       "https://oncampus.rutgers.edu/hmswebstudent/Login.asp?TargetPage=Default.asp?",
   iconData: Icons.home,
+  roles: {currentStudentSingular},
 );
 
 const handshake = App(
@@ -143,6 +145,7 @@ const rutgersConnect = App(
   title: "Rutgers Connect",
   url: "https://connect.rutgers.edu/",
   assetString: "assets/logo_office_365.png",
+  roles: {facultySingular, staffSingular},
 );
 
 const scarletMail = App(
@@ -201,7 +204,8 @@ const officialGrades = App(
   sharedPrefsTag: "link_official_grades",
   title: "Official Grades",
   url: "https://my.rutgers.edu/service/my-grades",
-  iconData: Icons.list
+  iconData: Icons.list,
+  roles: {currentStudentSingular},
 );
 
 const transcriptRequestApplicationAndForms = App(
@@ -289,6 +293,7 @@ const goRutgers = App(
   title: "Go Rutgers",
   url: "http://go-rutgers.com",
   assetString: "assets/logo_go_rutgers.jpeg",
+  roles: {admittedStudentSingular},
 );
 
 const newStudentResources = AppCategory(
