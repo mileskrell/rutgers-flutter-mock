@@ -7,10 +7,31 @@ import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/models/app_category.dart';
 import 'package:rutgers_flutter_mock/resources.dart';
 
+/// This allows us to reference the roles in *some* way from [App] without
+/// *actually* referencing them, since that would create a circular dependency.
+const allSingulars = {
+  currentStudentSingular,
+  facultySingular,
+  staffSingular,
+  admittedStudentSingular,
+  parentSingular,
+  alumnusSingular,
+  guestSingular,
+};
+
+// This lets us refer to the "singular" as a constant
+const currentStudentSingular = "current student";
+const facultySingular = "faculty";
+const staffSingular = "staff";
+const admittedStudentSingular = "admitted student";
+const parentSingular = "parent";
+const alumnusSingular = "alumnus";
+const guestSingular = "guest";
+
 /// A category of user, as shown on the role selection route
 class Role {
   static const CURRENT_STUDENT = Role(
-    singular: "current student",
+    singular: currentStudentSingular,
     plural: "current students",
     hasMyDay: true,
     hasMyDashboard: true,
@@ -21,7 +42,7 @@ class Role {
     modules: currentStudentModules,
   );
   static const FACULTY = Role(
-    singular: "faculty",
+    singular: facultySingular,
     plural: "faculty",
     hasMyDay: false,
     hasMyDashboard: true,
@@ -32,7 +53,7 @@ class Role {
     modules: facultyModules,
   );
   static const STAFF = Role(
-    singular: "staff",
+    singular: staffSingular,
     plural: "staff",
     hasMyDay: false,
     hasMyDashboard: true,
@@ -43,7 +64,7 @@ class Role {
     modules: staffModules,
   );
   static const ADMITTED_STUDENT = Role(
-    singular: "admitted student",
+    singular: admittedStudentSingular,
     plural: "admitted students",
     hasMyDay: false,
     hasMyDashboard: true,
@@ -54,7 +75,7 @@ class Role {
     modules: admittedStudentModules,
   );
   static const PARENT = Role(
-    singular: "parent",
+    singular: parentSingular,
     plural: "parents",
     hasMyDay: false,
     hasMyDashboard: true,
@@ -66,7 +87,7 @@ class Role {
   );
   static const ALUMNUS = Role(
     // Never seen in mockup
-    singular: "alumnus",
+    singular: alumnusSingular,
     plural: "alumni",
     hasMyDay: false,
     hasMyDashboard: false,
@@ -78,7 +99,7 @@ class Role {
     modules: alumnusModules,
   );
   static const GUEST = Role(
-    singular: "guest",
+    singular: guestSingular,
     plural: "guests",
     hasMyDay: false,
     hasMyDashboard: false,
