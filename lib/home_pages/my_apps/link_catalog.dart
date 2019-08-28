@@ -45,15 +45,6 @@ const orcid = App(
   isNew: true,
 );
 
-const academicSupport = AppCategory(
-  title: "Academic Support",
-  apps: [
-    learningCentersNB,
-    textbookRentals,
-    orcid,
-  ],
-);
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const residenceLifeHousing = App(
@@ -97,18 +88,6 @@ const studentHealth = App(
   title: "Student Health",
   url: "http://health.rutgers.edu/",
   iconData: Icons.local_hospital,
-);
-
-const campusServices = AppCategory(
-  title: "Campus Services",
-  apps: [
-    employmentOpportunities,
-    handshake,
-    placesToEat,
-    residenceLifeHousing,
-    studentHealth,
-    universityMap,
-  ],
 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,11 +177,10 @@ const financialInformation = AppCategory(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const officialGrades = App(
-  sharedPrefsTag: "link_official_grades",
-  title: "Official Grades",
-  url: "https://my.rutgers.edu/service/my-grades",
-  iconData: Icons.list
-);
+    sharedPrefsTag: "link_official_grades",
+    title: "Official Grades",
+    url: "https://my.rutgers.edu/service/my-grades",
+    iconData: Icons.list);
 
 const transcriptRequestApplicationAndForms = App(
   sharedPrefsTag: "link_transcript_request_application_and_forms",
@@ -245,17 +223,17 @@ const ruParentsBlog = App(
 );
 
 const ruStudentsBlog = App(
-    sharedPrefsTag: "link_ru_students_blog",
-    title: "RU Students Blog",
-    url: "https://rustudentblogs.wordpress.com/",
-    iconData: Icons.computer,
-    isNew: true,
-    inactive: true,
-    inactiveExplanation: LinkText(
-      children: [
-        "The RU Students Blog is currently down due to scheduled maintenance. Service is expected to be restored by 5:00 PM."
-      ],
-    ),
+  sharedPrefsTag: "link_ru_students_blog",
+  title: "RU Students Blog",
+  url: "https://rustudentblogs.wordpress.com/",
+  iconData: Icons.computer,
+  isNew: true,
+  inactive: true,
+  inactiveExplanation: LinkText(
+    children: [
+      "The RU Students Blog is currently down due to scheduled maintenance. Service is expected to be restored by 5:00 PM."
+    ],
+  ),
 );
 
 const ruaa = App(
@@ -304,16 +282,33 @@ const newStudentResources = AppCategory(
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const allAppCategories = {
-  academicSupport,
-  campusServices,
+const allAppCategories = [
+  AppCategory(
+    title: "Academic Support",
+    apps: [
+      learningCentersNB,
+      textbookRentals,
+      orcid,
+    ],
+  ),
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   classesAndDegree,
   computingServices,
   financialInformation,
   gradesAndRecords,
   newStudentResources,
   newsAndRecreation,
-};
+];
 
 /// Map of [App.sharedPrefsTag] to [App]
 final allLinks = Map<String, App>.fromIterable(
@@ -323,81 +318,224 @@ final allLinks = Map<String, App>.fromIterable(
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// App category order for each role
+/// Categories shown to each user in "For You"
 
 const currentStudentAppCategories = [
-  classesAndDegree,
-  gradesAndRecords,
-  financialInformation,
-  academicSupport,
-  campusServices,
+  AppCategory(
+    title: "Classes and Degree",
+    apps: [
+      canvas,
+      sakai,
+    ],
+  ),
+  AppCategory(
+    title: "Grades and Records",
+    apps: [
+      officialGrades,
+      transcriptRequestApplicationAndForms,
+    ],
+  ),
+  AppCategory(
+    title: "Financial Information",
+    apps: [
+      financialAidAwardStatus,
+      healthInsuranceWaiverPolicy,
+      officeOfFinancialAid,
+    ],
+  ),
+  AppCategory(
+    title: "Academic Support",
+    apps: [
+      learningCentersNB,
+      textbookRentals,
+      orcid,
+    ],
+  ),
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   newsAndRecreation,
   computingServices,
-  newStudentResources,
 ];
 
 const facultyAppCategories = [
-  campusServices,
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   computingServices,
   classesAndDegree,
   newsAndRecreation,
-  academicSupport,
-  financialInformation,
+  AppCategory(
+    title: "Financial Information",
+    apps: [
+      financialAidAwardStatus,
+      healthInsuranceWaiverPolicy,
+      officeOfFinancialAid,
+    ],
+  ),
   gradesAndRecords,
-  newStudentResources,
 ];
 
 const staffAppCategories = [
-  campusServices,
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   computingServices,
   newsAndRecreation,
   classesAndDegree,
-  academicSupport,
-  financialInformation,
+  AppCategory(
+    title: "Financial Information",
+    apps: [
+      financialAidAwardStatus,
+      healthInsuranceWaiverPolicy,
+      officeOfFinancialAid,
+    ],
+  ),
   gradesAndRecords,
-  newStudentResources,
 ];
 
 const admittedStudentAppCategories = [
   newStudentResources,
-  campusServices,
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   newsAndRecreation,
   computingServices,
   classesAndDegree,
-  academicSupport,
-  financialInformation,
+  AppCategory(
+    title: "Financial Information",
+    apps: [
+      financialAidAwardStatus,
+      healthInsuranceWaiverPolicy,
+      officeOfFinancialAid,
+    ],
+  ),
   gradesAndRecords,
 ];
 
 const parentAppCategories = [
-  financialInformation,
+  AppCategory(
+    title: "Financial Information",
+    apps: [
+      financialAidAwardStatus,
+      healthInsuranceWaiverPolicy,
+      officeOfFinancialAid,
+    ],
+  ),
   newsAndRecreation,
-  campusServices,
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   computingServices,
   classesAndDegree,
-  academicSupport,
+  AppCategory(
+    title: "Academic Support",
+    apps: [
+      learningCentersNB,
+      textbookRentals,
+      orcid,
+    ],
+  ),
   gradesAndRecords,
-  newStudentResources,
 ];
 
 const alumnusAppCategories = [
   newsAndRecreation,
-  campusServices,
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   computingServices,
   classesAndDegree,
-  academicSupport,
-  financialInformation,
+  AppCategory(
+    title: "Financial Information",
+    apps: [
+      financialAidAwardStatus,
+      healthInsuranceWaiverPolicy,
+      officeOfFinancialAid,
+    ],
+  ),
   gradesAndRecords,
-  newStudentResources,
 ];
 
 const guestAppCategories = [
-  campusServices,
+  AppCategory(
+    title: "Campus Services",
+    apps: [
+      employmentOpportunities,
+      handshake,
+      placesToEat,
+      residenceLifeHousing,
+      studentHealth,
+      universityMap,
+    ],
+  ),
   computingServices,
   classesAndDegree,
   newsAndRecreation,
-  academicSupport,
-  financialInformation,
+  AppCategory(
+    title: "Academic Support",
+    apps: [
+      learningCentersNB,
+      textbookRentals,
+      orcid,
+    ],
+  ),
+  AppCategory(
+    title: "Financial Information",
+    apps: [
+      financialAidAwardStatus,
+      healthInsuranceWaiverPolicy,
+      officeOfFinancialAid,
+    ],
+  ),
   gradesAndRecords,
   newStudentResources,
 ];
