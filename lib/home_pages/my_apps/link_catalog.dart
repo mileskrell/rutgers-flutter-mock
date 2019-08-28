@@ -212,10 +212,13 @@ const transcriptRequestApplicationAndForms = App(
   iconData: Icons.list,
 );
 
-const gradesAndRecords = AppCategory(title: "Grades and Records", apps: [
-  officialGrades,
-  transcriptRequestApplicationAndForms,
-]);
+const gradesAndRecords = AppCategory(
+  title: "Grades and Records",
+  apps: [
+    officialGrades,
+    transcriptRequestApplicationAndForms,
+  ],
+);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -252,7 +255,8 @@ const ruStudentsBlog = App(
       children: [
         "The RU Students Blog is currently down due to scheduled maintenance. Service is expected to be restored by 5:00 PM."
       ],
-    ));
+    ),
+);
 
 const ruaa = App(
   sharedPrefsTag: "link_ruaa",
