@@ -14,7 +14,7 @@ import 'package:rutgers_flutter_mock/widgets/app_category_widget.dart';
 /// TODO: The first time the app runs, things can’t be favorited/un-favorited
 ///
 /// TODO: The app currently remembers state for My Apps, but not for the other pages
-class MyAppsLinks extends StatelessWidget {
+class MyAppsAll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

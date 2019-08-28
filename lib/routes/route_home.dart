@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:rutgers_flutter_mock/app_state.dart';
 import 'package:rutgers_flutter_mock/home_pages/bus/bus.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_featured.dart';
-import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_links.dart';
+import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_all.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_favorites.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_apps/my_apps_search.dart';
 import 'package:rutgers_flutter_mock/home_pages/my_dashboard.dart';
@@ -54,7 +54,7 @@ class HomeState extends State<HomeRoute> {
         children: <Widget>[
           MyAppsFeatured(),
           MyAppsFavorites(),
-          MyAppsLinks(),
+          MyAppsAll(),
         ],
       ),
       RuSearch(),
@@ -241,7 +241,7 @@ class HomeState extends State<HomeRoute> {
       tabs: <Widget>[
         Tab(text: "Featured", icon: Icon(Icons.star)),
         Tab(text: "Favorites", icon: Icon(Icons.favorite)),
-        Tab(text: "Links", icon: Icon(Icons.link)),
+        Tab(text: "All", icon: Icon(Icons.list)),
       ],
     );
 
