@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 
 /// Data class representing a My Apps "App".
-///
-/// TODO: Maybe add an "info" button to this widget, like on my.rutgers.edu
 class App {
   final String sharedPrefsTag;
 
