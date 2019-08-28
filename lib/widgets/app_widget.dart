@@ -6,6 +6,8 @@ import 'package:rutgers_flutter_mock/models/app.dart';
 import 'package:rutgers_flutter_mock/routes/route_webview.dart';
 
 /// Widget for an "app" in My Apps/My Dashboard
+///
+/// TODO: Maybe add an "info" button to this widget, like on my.rutgers.edu
 class AppWidget extends StatelessWidget {
   final App app;
 
