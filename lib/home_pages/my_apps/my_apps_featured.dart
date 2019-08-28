@@ -34,11 +34,7 @@ class MyAppsFeatured extends StatelessWidget {
           ),
         ),
         AppCategoryWidget(AppCategory(
-          title: "New Modules",
-          apps: allModules.values.where((app) => app.isNew).toList(),
-        )),
-        AppCategoryWidget(AppCategory(
-          title: "New Links",
+          title: "New",
           apps: allLinks.values.where((app) => app.isNew).toList(),
         )),
       ],
