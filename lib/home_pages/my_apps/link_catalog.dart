@@ -102,12 +102,12 @@ const studentHealth = App(
 const campusServices = AppCategory(
   title: "Campus Services",
   apps: [
-    residenceLifeHousing,
-    handshake,
     employmentOpportunities,
+    handshake,
     placesToEat,
-    universityMap,
+    residenceLifeHousing,
     studentHealth,
+    universityMap,
   ],
 );
 
@@ -189,9 +189,9 @@ const financialAidAwardStatus = App(
 const financialInformation = AppCategory(
   title: "Financial Information",
   apps: [
-    officeOfFinancialAid,
-    healthInsuranceWaiverPolicy,
     financialAidAwardStatus,
+    healthInsuranceWaiverPolicy,
+    officeOfFinancialAid,
   ],
 );
 
@@ -273,9 +273,9 @@ const studentLife = AppCategory(
   apps: [
     rutgersFacebook,
     rutgersSubreddit,
+    ruaa,
     ruParentsBlog,
     ruStudentsBlog,
-    ruaa,
     scarletKnights,
   ],
 );
@@ -307,8 +307,8 @@ const allAppCategories = {
   computingServices,
   financialInformation,
   gradesAndRecords,
-  studentLife,
   newStudentResources,
+  studentLife,
 };
 
 /// Map of [App.sharedPrefsTag] to [App]
