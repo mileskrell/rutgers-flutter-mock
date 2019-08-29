@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:rutgers_flutter_mock/models/role.dart';
 import 'package:rutgers_flutter_mock/widgets/link_text.dart';
 
 /// Data class representing a My Apps "App".
@@ -33,17 +34,21 @@ class App {
   /// (required if and only if the App is inactive)
   final LinkText inactiveExplanation;
 
-  const App(
-      {@required this.sharedPrefsTag,
-      @required this.title,
-      this.url,
-      this.moduleTag,
-      this.iconData,
-      this.assetString,
-      this.isNew = false,
-      this.inactive = false,
-      this.inactiveExplanation})
-      : assert(title != null, "App \"$title\" doesn't provide a title"),
+  /// A list of [Role.singular], defining the roles that this app can be used by.
+  final Set<String> roles;
+
+  const App({
+    @required this.sharedPrefsTag,
+    @required this.title,
+    this.url,
+    this.moduleTag,
+    this.iconData,
+    this.assetString,
+    this.isNew = false,
+    this.inactive = false,
+    this.inactiveExplanation,
+    this.roles = allSingulars,
+  })  : assert(title != null, "App \"$title\" doesn't provide a title"),
         assert(url != null || moduleTag != null,
             "App \"$title\" doesn't provide a URL or module tag"),
         assert(url == null || moduleTag == null,
