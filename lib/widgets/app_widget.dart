@@ -92,37 +92,58 @@ class AppWidget extends StatelessWidget {
         }
       },
       child: Container(
-        color: app.inactive
-            ? Colors.grey.shade300
-            : app.roles == null || app.roles.contains(appState.role.singular)
-                ? null
-                : Colors.red.shade200,
+        color: app.inactive ? Colors.grey.shade300 : null,
         child: Column(
           children: <Widget>[
             ListTile(
               title: Text(app.title),
-              subtitle: app.isNew
+              subtitle: app.isNew || !app.roles.contains(appState.role.singular)
                   ? Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                            color: app.inactive
-                                ? Colors.grey.shade600
-                                : Colors.green,
-                            borderRadius: BorderRadius.circular(3),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 2,
-                              horizontal: 4,
+                        if (app.isNew)
+                          Container(
+                            decoration: BoxDecoration(
+                              color: app.inactive
+                                  ? Colors.grey.shade600
+                                  : Colors.green,
+                              borderRadius: BorderRadius.circular(3),
                             ),
-                            child: Text(
-                              "New",
-                              style: TextStyle(color: Colors.white),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 2,
+                                horizontal: 4,
+                              ),
+                              child: Text(
+                                "New",
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
-                        ),
+                        if (app.isNew && // TODO: Do this properly; this check is redundant
+                            !app.roles.contains(appState.role.singular))
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 2),
+                          ),
+                        if (!app.roles.contains(appState.role.singular))
+                          Container(
+                            decoration: BoxDecoration(
+                              color: app.inactive
+                                  ? Colors.grey.shade600
+                                  : Colors.red,
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 2,
+                                horizontal: 4,
+                              ),
+                              child: Text(
+                                "Not accessible to you",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          )
                       ],
                     )
                   : null,
