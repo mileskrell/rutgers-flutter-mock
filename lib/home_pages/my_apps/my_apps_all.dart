@@ -16,7 +16,7 @@ import 'package:rutgers_flutter_mock/widgets/app_category_widget.dart';
 class MyAppsAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final allCategoriesList = allAppCategories;
+    final allCategoriesList = allAppCategories.toList();
 
     if (allCategoriesList.isNotEmpty) {
       return ListView.builder(
