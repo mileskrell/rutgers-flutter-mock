@@ -86,7 +86,7 @@ class MyDashboard extends StatelessWidget {
             assetName: "assets/profile_miles_student.png"),
         Card(
           child: ExpansionTile(
-              title: Text("My Schedule", style: TextStyle(color: pantone186)),
+              title: Text("My Schedule"),
               initiallyExpanded: true,
               children: <Widget>[
                 ListTile(
@@ -117,7 +117,7 @@ class MyDashboard extends StatelessWidget {
         ),
         Card(
           child: ExpansionTile(
-              title: Text("My Degree", style: TextStyle(color: pantone186)),
+              title: Text("My Degree"),
               initiallyExpanded: true,
               children: <Widget>[
                 Row(
@@ -311,7 +311,7 @@ class MyDashboard extends StatelessWidget {
         ),
         Card(
           child: ExpansionTile(
-              title: Text("My Grades", style: TextStyle(color: pantone186)),
+              title: Text("My Grades"),
               initiallyExpanded: true,
               children: <Widget>[
                 Table(
